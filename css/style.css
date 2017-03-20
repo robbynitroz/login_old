@@ -1,0 +1,169 @@
+/**,*/
+/**:after,*/
+/**:before {*/
+    /*-webkit-box-sizing: border-box;*/
+    /*-moz-box-sizing: border-box;*/
+    /*box-sizing: border-box;*/
+    /*padding: 0;*/
+    /*margin: 0;*/
+    /*font-family: 'NeoSansProRegular';*/
+/*}*/
+/*html, body{*/
+    /*height: 100%;*/
+    /*min-height: 100%;*/
+/*}*/
+/*@font-face {*/
+    /*font-family: 'NeoSansProRegular';*/
+    /*src: url('fonts/NeoSansProRegular.eot');*/
+    /*src: local('☺'), url('fonts/NeoSansProRegular.woff') format('woff'), url('fonts/NeoSansProRegular.ttf') format('truetype'), url('fonts/NeoSansProRegular.svg') format('svg');*/
+    /*font-weight: normal;*/
+    /*font-style: normal;*/
+/*}*/
+/*@font-face {*/
+    /*font-family: 'NeoSansProBold';*/
+    /*src: url('fonts/NeoSansProBold.eot');*/
+    /*src: local('☺'), url('fonts/NeoSansProBold.woff') format('woff'), url('fonts/NeoSansProBold.ttf') format('truetype'), url('fonts/NeoSansProBold.svg') format('svg');*/
+    /*font-weight: normal;*/
+    /*font-style: normal;*/
+/*}*/
+/*.big-wrapper {*/
+    /*width: 100%;*/
+    /*min-height: 100%;*/
+    /*background: url("../images/bg01.jpg") center;*/
+    /*background-size: cover;*/
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
+/*}*/
+/*.offer-wrapper {*/
+    /*width: 660px;*/
+    /*background: rgba(0, 0, 0, 0.90);*/
+    /*padding: 15px;*/
+    /*border-radius: 10px;*/
+/*}*/
+/*.terms-link {*/
+    /*display: block;*/
+    /*width: 100%;*/
+    /*text-align: right;*/
+    /*text-transform: uppercase;*/
+    /*color: #706f6f;*/
+    /*text-decoration: none;*/
+    /*font-size: 18px;*/
+/*}*/
+/*.terms-link:hover {*/
+    /*color: #aeadad;*/
+/*}*/
+/*.heading {*/
+    /*color: #c09e4c;*/
+    /*font-size: 50px;*/
+    /*text-align: center;*/
+    /*margin: 60px 0;*/
+/*}*/
+/*.go-online {*/
+    /*display: block;*/
+    /*cursor: pointer;*/
+    /*height: 80px;*/
+    /*padding: 5px 70px;*/
+    /*background-color: #c09e4c;*/
+    /*font-family: 'NeoSansProBold';*/
+    /*font-size: 32px;*/
+    /*text-transform: uppercase;*/
+    /*color: rgba(0, 0, 0, 0.7);*/
+    /*border: none;*/
+    /*border-bottom: 4px solid #8d7335;*/
+    /*margin: 40px auto;*/
+/*}*/
+/*.go-online:active {*/
+    /*border-bottom: none;*/
+/*}*/
+/*.check-link {*/
+    /*display: block;*/
+    /*text-align: center;*/
+    /*font-style: italic;*/
+    /*color: #e7e7e7;*/
+    /*font-size: 28px;*/
+    /*text-decoration: none;*/
+    /*margin: 10px 0 50px 0;*/
+/*}*/
+/*.check-link span {*/
+    /*font-style: normal;*/
+/*}*/
+/*.check-link:hover {*/
+    /*color: #fff;*/
+/*}*/
+/*.logo {*/
+    /*display: block;*/
+    /*margin: 0 auto;*/
+    /*max-width: 170px;*/
+/*}*/
+/*.logo img {*/
+    /*width: 100%;*/
+    /*height: auto;*/
+/*}*/
+/*@media screen and (min-width: 767px) and (max-width: 1600px) {*/
+    /*.offer-wrapper {*/
+        /*width: 500px;*/
+        /*padding: 12px;*/
+    /*}*/
+    /*.terms-link {*/
+        /*font-size: 16px;*/
+    /*}*/
+    /*.heading {*/
+        /*font-size: 36px;*/
+        /*margin: 40px 0;*/
+    /*}*/
+    /*.go-online {*/
+        /*height: 60px;*/
+        /*padding: 4px 55px;*/
+        /*font-size: 28px;*/
+        /*border-bottom: 3px solid #8d7335;*/
+        /*margin: 25px auto;*/
+    /*}*/
+    /*.go-online:active {*/
+        /*border-bottom: none;*/
+    /*}*/
+    /*.check-link {*/
+        /*font-size: 24px;*/
+        /*margin: 10px 0 35px 0;*/
+    /*}*/
+    /*.logo {*/
+        /*max-width: 140px;*/
+    /*}*/
+/*}*/
+/*@media screen and (max-width: 767px) {*/
+    /*.big-wrapper {*/
+        /*min-height: 100%;*/
+        /*background: rgb(0, 0, 0);*/
+        /*height: auto;*/
+    /*}*/
+    /*.offer-wrapper {*/
+        /*width: 100%;*/
+        /*background: rgb(0, 0, 0);*/
+        /*padding: 10px;*/
+        /*border-radius: 0;*/
+    /*}*/
+    /*.terms-link {*/
+        /*font-size: 14px;*/
+    /*}*/
+    /*.heading {*/
+        /*font-size: 28px;*/
+        /*margin: 30px 0;*/
+    /*}*/
+    /*.go-online {*/
+        /*height: 50px;*/
+        /*padding: 4px 30px;*/
+        /*font-size: 24px;*/
+        /*border-bottom: 3px solid #8d7335;*/
+        /*margin: 20px auto;*/
+    /*}*/
+    /*.go-online:active {*/
+        /*border-bottom: none;*/
+    /*}*/
+    /*.check-link {*/
+        /*font-size: 20px;*/
+        /*margin: 10px 0 25px 0;*/
+    /*}*/
+    /*.logo {*/
+        /*max-width: 100px;*/
+    /*}*/
+/*}*/
