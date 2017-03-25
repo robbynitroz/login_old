@@ -1,5 +1,6 @@
 <?php
-var_dump('HELLLOOO');exit;
+error_reporting(E_ERROR);
+
 $language_codes = [
     'en' => 'English',
     'fr' => 'French',
@@ -25,7 +26,7 @@ if ($macaddress == '') {
 }
 
 $link = mysql_connect('localhost', 'radius', 'rcFGmPSu68ZY') or die('Connection failed ' . mysql_error());
-var_dump($link); exit;
+
 mysql_select_db('radius') or die('DB selection failed');
 
 $query = 'SELECT  COUNT(username)  FROM radcheck where username="' . $macaddress . '" and attribute="User-Password"';
