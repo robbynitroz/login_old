@@ -25,7 +25,7 @@ if ($macaddress == '') {
     exit;
 }
 
-$link = mysql_connect('localhost', 'radius', 'Zq4F3R607h1K') or die('Connection failed ' . mysql_error());
+$link = mysql_connect('root', 'radius', 'Zq4F3R607h1K') or die('Connection failed ' . mysql_error());
 
 mysql_select_db('radius') or die('DB selection failed');
 
