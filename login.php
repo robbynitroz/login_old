@@ -487,7 +487,7 @@
         </form>
         <a href="" class="check-link"><?php echo $GLOBALS['hotel_label_2']; ?> <span>></span></a>
 
-        <div class="logo"><img src="images/<?php echo $GLOBALS['image']; ?>" alt=""></div>
+        <div class="logo"><img src="http://84.22.106.82/assets/variables/<?php echo $GLOBALS['image']; ?>" alt=""></div>
     </div>
     <div class="terms_offer-wrapper hidden"><a href="#" class="terms-back-link" onclick="return false">< Back</a>
 
