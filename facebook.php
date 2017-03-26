@@ -490,7 +490,7 @@
         <a href="#" class="terms-link terms-link-xs" onclick="return false">Terms & conditions></a>
 
         <div style='margin-top: 300px;' class="fb-like" data-href="https://www.facebook.com/coderiders.am/?fref=ts"
-             data-width="standard"
+             data-width="400"
              data-layout="button"
              data-action="like"
              data-size="large"
