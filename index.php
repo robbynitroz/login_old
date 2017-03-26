@@ -19,7 +19,7 @@ $ua_info = parse_user_agent();
 $ua_info['platform'];
 $ua_info['browser'];
 $lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
-
+var_dump($lang);exit;
 if ($macaddress == '') {
     header('Location: http://login.com/status.php', true, 301);
     exit;
@@ -110,7 +110,7 @@ $query = "select * from hotel_language
           where hotel_language.hotel_id='$hotel_id' and languages.name='$language_codes[$lang]'";
 $result = mysql_query($query) or die('NAS query error 5' . mysql_error());
 $check_language = mysql_num_rows($result);
-var_dump($language_codes[$lang]);exit;
+
 $translate_id = 0;
 
 if($check_language)
