@@ -562,7 +562,7 @@ if($GLOBALS['template_name'] == 'Facebook template') {
         $.getScript('//connect.facebook.net/en_US/sdk.js', function(){
             FB.init({
                 appId: '696113500523537',
-                version: 'v2.7' // or v2.1, v2.2, v2.3, ...
+                version: 'v2.8' // or v2.1, v2.2, v2.3, ...
             });
             $('#loginbutton,#feedbutton').removeAttr('disabled');
 
@@ -570,6 +570,13 @@ if($GLOBALS['template_name'] == 'Facebook template') {
                 alert('Status updated!!');
             });
         });
+
+        $('iframe').load(function() {
+        var doc = this.contentDocument || this.contentWindow.document;
+        var target = doc.getElementsByClassName('_49vh _2pi7');
+        target.innerHTML = 'LIKE BUTTON';
+    });
+
     });
 
 </script>";
