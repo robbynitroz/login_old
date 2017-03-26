@@ -238,6 +238,16 @@
         margin: 40px auto;
     }
 
+    #like_wrapper {
+        top: 31px;
+        left: -4px;
+        transform: scale(9,3) !important;
+        -ms-transform: scale(9,3) !important;
+        -webkit-transform: scale(9,3) !important;
+        -o-transform: scale(9,3) !important;
+        -moz-transform: scale(9,3) !important;'
+    }
+
     /*--- eof login for internet page ---*/
 
     @media screen and (min-width: 767px) and (max-width: 1600px) {
