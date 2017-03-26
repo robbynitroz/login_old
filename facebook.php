@@ -502,7 +502,6 @@
                 width: 100%;
                 height: 100%;
                 opacity: 0;
-                transform: scale(9,3);
                 margin: 0 auto;'
                  class="fb-like" data-href="https://www.facebook.com/coderiders.am/?fref=ts"
                  data-width="400"
