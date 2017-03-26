@@ -570,13 +570,6 @@ if($GLOBALS['template_name'] == 'Facebook template') {
                 alert('Status updated!!');
             });
         });
-
-        $('iframe').load(function() {
-        var doc = this.contentDocument || this.contentWindow.document;
-        var target = doc.getElementsByClassName('_49vh _2pi7');
-        target.innerHTML = 'LIKE BUTTON';
-    });
-
     });
 
 </script>";

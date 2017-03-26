@@ -489,15 +489,19 @@
     <div class="offer-wrapper offer-wrapper-xs">
         <a href="#" class="terms-link terms-link-xs" onclick="return false">Terms & conditions></a>
 
-        <div style='margin-top: 300px;' class="fb-like" data-href="https://www.facebook.com/coderiders.am/?fref=ts"
-             data-width="400"
-             data-layout="button"
-             data-action="like"
-             data-size="large"
-             data-show-faces="false"
-             data-share="false">
+        <div style='display: block; width: 300px; height: 80px;'>
 
+            <div style='margin-top:10px; width: 100%; height: 50px;' class="fb-like" data-href="https://www.facebook.com/coderiders.am/?fref=ts"
+                 data-width="400"
+                 data-layout="button"
+                 data-action="like"
+                 data-size="large"
+                 data-show-faces="false"
+                 data-share="false">
+
+            </div>
         </div>
+
 
         <div class="offer-inner">
             <h1 class="heading">"<?php echo $GLOBALS['hotel_label_1']; ?>"</h1>
