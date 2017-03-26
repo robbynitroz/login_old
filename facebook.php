@@ -243,10 +243,13 @@
     @media screen and (min-width: 767px) and (max-width: 1600px) {
 
         #like_wrapper {
-            -ms-transform: scale(9,3) !important;
-            -webkit-transform: scale(9,3) !important;
-            -o-transform: scale(9,3) !important;
-            -moz-transform: scale(9,3) !important;'
+            top: 31px;
+            left: -4px;
+            transform: scale(7,3) !important;
+            -ms-transform: scale(7,3) !important;
+            -webkit-transform: scale(7,3) !important;
+            -o-transform: scale(7,3) !important;
+            -moz-transform: scale(7,3) !important;'
         }
 
         .offer-wrapper {
