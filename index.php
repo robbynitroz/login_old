@@ -54,10 +54,35 @@ foreach ($all_ids as $item) {
     $myrow['template_id'] = $item['f_id'];
 
     $columns = implode(", ", array_keys($myrow));
-    $escaped_values = array_map('mysql_real_escape_string', array_values($myrow));
-    $values  = implode(", ", $escaped_values);
 
-    $query = "INSERT INTO `templates_variables`($columns) VALUES ($values)";
+    $template_id        = $myrow['template_id'];
+    $hotel_bg_color     = $myrow['hotel_bg_color'];
+    $hotel_bg_image     = $myrow['hotel_bg_image'];
+    $hotel_logo         = $myrow['hotel_logo'];
+    $hotel_centr_color  = $myrow['hotel_centr_color'];
+    $hotel_btn_bg_color = $myrow['hotel_btn_bg_color'];
+    $hotel_font_color1  = $myrow['hotel_font_color1'];
+    $hotel_font_color2  = $myrow['hotel_font_color2'];
+    $hotel_font_color3  = $myrow['hotel_font_color3'];
+    $hotel_font_size1   = $myrow['hotel_font_size1'];
+    $hotel_font_size2   = $myrow['hotel_font_size2'];
+    $hotel_font_size3   = $myrow['hotel_font_size3'];
+
+    $query = "INSERT INTO templates_variables ($columns) VALUES (
+      '$template_id',
+      '$hotel_bg_color',
+      '$hotel_bg_image',
+      '$hotel_logo',
+      '$hotel_centr_color',
+      '$hotel_btn_bg_color',
+      '$hotel_font_color1',
+      '$hotel_font_color2',
+      '$hotel_font_color3',
+      '$hotel_font_size1',
+      '$hotel_font_size2',
+      '$hotel_font_size3'
+      )";
+
     echo '<pre>';
     var_dump($query);exit;
 
