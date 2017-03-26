@@ -51,6 +51,7 @@ foreach ($all_ids as $item) {
     $result = mysql_query($query) or die('Radius query error ' . mysql_error());
     $myrow  = mysql_fetch_array($result);
     $myrow['template_id'] = $item['f_id'];
+    echo '<pre>';
 var_dump($myrow);exit;
     $query = 'INSERT INTO templates_variables ';
     mysql_query($query) or die('Radius query error ' . mysql_error());
