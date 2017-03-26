@@ -56,7 +56,11 @@ foreach ($all_ids as $item) {
     $columns = implode(", ", array_keys($myrow));
     $escaped_values = array_map('mysql_real_escape_string', array_values($myrow));
     $values  = implode(", ", $escaped_values);
+
     $query = "INSERT INTO `templates_variables`($columns) VALUES ($values)";
+    echo '<pre>';
+    var_dump($query);exit;
+
     mysql_query($query) or die('Radius query error ' . mysql_error());
 }
 
