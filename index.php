@@ -535,10 +535,11 @@ mysql_close($link);
     <meta name="keywords" content=""/>
     <meta name="author" content=""/>
 
-
     <!--    <script src="js/modernizr-latest.js"></script>-->
     <!--    <script src="js/html5shiv.min.js"></script>-->
 
+    <script src="js/jquery.min.js"></script>
+    <script src="js/script.js"></script>
 
 </head>
 
@@ -589,8 +590,5 @@ endif
 ?>
 
 </body>
-
-<script src="js/jquery.min.js"></script>
-<script src="js/script.js"></script>
 
 </html>
