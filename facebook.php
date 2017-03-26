@@ -490,8 +490,10 @@
         <a href="#" class="terms-link terms-link-xs" onclick="return false">Terms & conditions></a>
 
         <button style='display: block; width: 93%; height: 90px;
+        background-image: url("/images/fb.png");
         background-size: cover;
-        background: url("/images/fb.png") no-repeat center center;
+        background-repeat: no-repeat;
+        background-position: center center;
         margin: 0 auto;
         border: 0px;'>
             <div style='width: 62px;
