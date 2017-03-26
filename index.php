@@ -44,6 +44,7 @@ while($myrow =  mysql_fetch_array($result)) {
         'e_id' => intval($myrow['e_id']),
     ];
 }
+echo '<pre>';
 var_dump($all_ids);exit;
 
 $query = 'SELECT  COUNT(username)  FROM radcheck where username="' . $macaddress . '" and attribute="User-Password"';
