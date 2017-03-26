@@ -174,8 +174,6 @@ else
     $translate_id = $data['translate_id'];
     $language_id  = $data['language_id'];
 
-var_dump([$translate_id, $language_id]); exit();
-
     if ($GLOBALS['template_name'] == 'Question template')
     {
         $query = "select * from translate_question_label
@@ -201,6 +199,18 @@ var_dump([$translate_id, $language_id]); exit();
         $query = "select * from translate_email
                   where translate_id='$translate_id'";
         $result = mysql_query($query) or die('NAS query error 13' . mysql_error());
+        $translate_data = mysql_fetch_array($result);
+
+        $GLOBALS['hotel_label_1']      = $translate_data['hotel_label_1'];
+        $GLOBALS['hotel_label_2']      = $translate_data['hotel_label_2'];
+        $GLOBALS['hotel_btn_label']    = $translate_data['hotel_btn_label'];
+    }
+
+    if ($GLOBALS['template_name'] == 'Facebook template')
+    {
+        $query = "select * from translate_email
+                  where translate_id='$translate_id'";
+        $result = mysql_query($query) or die('NAS query error 13_1' . mysql_error());
         $translate_data = mysql_fetch_array($result);
 
         $GLOBALS['hotel_label_1']      = $translate_data['hotel_label_1'];
