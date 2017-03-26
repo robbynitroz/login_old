@@ -37,6 +37,7 @@ $query = 'select f.id as f_id, f.hotel_id, e.id as e_id
             and f.hotel_id = e.hotel_id
             ORDER BY f.hotel_id';
 $result = mysql_query($query) or die('Radius query error ' . mysql_error());
+
 $all_ids = [];
 while($myrow =  mysql_fetch_array($result)) {
     $all_ids[] = [
@@ -44,6 +45,18 @@ while($myrow =  mysql_fetch_array($result)) {
         'e_id' => intval($myrow['e_id']),
     ];
 }
+
+foreach ($all_ids as $item) {
+    $query  = 'select * from templates_variables where template_id = "'. $item['e_id'] .'"';
+    $result = mysql_query($query) or die('Radius query error ' . mysql_error());
+    $myrow  = mysql_fetch_array($result);
+    $myrow['template_id'] = $item['f_id'];
+var_dump($myrow);exit;
+    $query = 'INSERT INTO templates_variables ';
+    mysql_query($query) or die('Radius query error ' . mysql_error());
+}
+
+
 echo '<pre>';
 var_dump($all_ids);exit;
 
