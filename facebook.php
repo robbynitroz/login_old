@@ -491,7 +491,7 @@
 
 <!--        <button style='display: block; width: 93%; height: 90px; background-image: url("/images/fb.png"); background-size: cover; margin: 0 auto;'>-->
 
-            <div style='margin-top:10px; width: 100%; height: 100%;' class="fb-like" data-href="https://www.facebook.com/coderiders.am/?fref=ts"
+            <div style='margin-top:10px;' class="fb-like" data-href="https://www.facebook.com/coderiders.am/?fref=ts"
                  data-width="400"
                  data-layout="button"
                  data-action="like"

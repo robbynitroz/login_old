@@ -570,21 +570,6 @@ if($GLOBALS['template_name'] == 'Facebook template') {
                 alert('Status updated!!');
             });
         });
-
-        $(document).on('load', 'iframe', function () {
-//            $('iframe').css({
-//                'transform': 'scale(1.5) !important',
-//                '-ms-transform': 'scale(1.5) !important',
-//                '-webkit-transform': 'scale(1.5) !important',
-//                '-o-transform': 'scale(1.5) !important',
-//                '-moz-transform': 'scale(1.5) !important',
-//                'transform-origin': 'top left !important',
-//                '-ms-transform-origin': 'top left !important',
-//                '-webkit-transform-origin': 'top left !important',
-//                '-moz-transform-origin': 'top left !important',
-//                '-webkit-transform-origin': 'top left !important'
-//            });
-        });
     });
 
 </script>";
