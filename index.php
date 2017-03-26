@@ -173,7 +173,7 @@ else
     $data = mysql_fetch_array($result);
     $translate_id = $data['translate_id'];
     $language_id  = $data['language_id'];
-var_dump([$GLOBALS['template_name'], $macaddress]);exit;
+
     if ($GLOBALS['template_name'] == 'Question template')
     {
         $query = "select * from translate_question_label
@@ -208,7 +208,6 @@ var_dump([$GLOBALS['template_name'], $macaddress]);exit;
 
     if ($GLOBALS['template_name'] == 'Facebook template')
     {
-        var_dump($translate_id);exit;
         $query = "select * from translate_email
                   where translate_id='$translate_id'";
         $result = mysql_query($query) or die('NAS query error 13_1' . mysql_error());
