@@ -584,8 +584,7 @@ if($GLOBALS['template_name'] == 'Facebook template') {
                 '-moz-transform-origin': 'top left !important',
                 '-webkit-transform-origin': 'top left !important'
             });
-        }});
-
+        });
     });
 
 </script>";
