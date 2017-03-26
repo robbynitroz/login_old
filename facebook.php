@@ -249,7 +249,7 @@
             -ms-transform: scale(7,3) !important;
             -webkit-transform: scale(7,3) !important;
             -o-transform: scale(7,3) !important;
-            -moz-transform: scale(7,3) !important;'
+            -moz-transform: scale(7,3) !important;
         }
 
         .offer-wrapper {
