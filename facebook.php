@@ -489,7 +489,11 @@
     <div class="offer-wrapper offer-wrapper-xs">
         <a href="#" class="terms-link terms-link-xs" onclick="return false">Terms & conditions></a>
 
-        <button style='display: block; width: 93%; height: 90px; background-image: url("/images/fb.png"); background-size: cover; margin: 0 auto; border: 0px;'>
+        <button style='display: block; width: 93%; height: 90px;
+        background-size: cover;
+        background: url("/images/fb.png") no-repeat center center;
+        margin: 0 auto;
+        border: 0px;'>
             <div style='width: 62px;
                 opacity: 0;
                 transform: scale(9,3);
