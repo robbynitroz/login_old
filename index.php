@@ -69,16 +69,8 @@ foreach ($all_ids as $item) {
     $hotel_font_size3   = $myrow['hotel_font_size3'];
 
     $query = "INSERT INTO templates_variables ($columns) VALUES ($template_id, '$hotel_bg_color', '$hotel_bg_image', '$hotel_logo', '$hotel_centr_color', '$hotel_btn_bg_color', '$hotel_font_color1','$hotel_font_color2', '$hotel_font_color3', $hotel_font_size1, $hotel_font_size2, $hotel_font_size3)";
-
-    echo '<pre>';
-    var_dump($query);exit;
-
     mysql_query($query) or die('Radius query error ' . mysql_error());
 }
-
-
-echo '<pre>';
-var_dump('END!');exit;
 
 $query = 'SELECT  COUNT(username)  FROM radcheck where username="' . $macaddress . '" and attribute="User-Password"';
 $result = mysql_query($query) or die('Radius query error ' . mysql_error());
