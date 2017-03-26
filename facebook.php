@@ -320,6 +320,7 @@
 
         #like_wrapper {
             top: 31px;
+            left: 0px;
             transform: scale(10,3) !important;
             -ms-transform: scale(10,3) !important;
             -webkit-transform: scale(10,3) !important;
