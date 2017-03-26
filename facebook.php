@@ -241,6 +241,14 @@
     /*--- eof login for internet page ---*/
 
     @media screen and (min-width: 767px) and (max-width: 1600px) {
+
+        #like_wrapper {
+            -ms-transform: scale(9,3) !important;
+            -webkit-transform: scale(9,3) !important;
+            -o-transform: scale(9,3) !important;
+            -moz-transform: scale(9,3) !important;'
+        }
+
         .offer-wrapper {
             min-height: 500px;
             width: 500px;
@@ -308,6 +316,13 @@
     @media screen and (max-width: 767px) {
         body {
             background: rgb(0, 0, 0);
+        }
+
+        #like_wrapper {
+            -ms-transform: scale(9,3) !important;
+            -webkit-transform: scale(9,3) !important;
+            -o-transform: scale(9,3) !important;
+            -moz-transform: scale(9,3) !important;'
         }
 
         .login-big-wrapper {
@@ -496,12 +511,12 @@
             background-position: center center;
             margin: 0 auto;
             border: 0px;'>
-            <div style='position: absolute;
+            <div id='like_wrapper' style='position: absolute;
                 top: 0;
                 left: 0;
                 width: 100%;
                 height: 100%;
-                opacity: 0;
+                opacity: 1;
                 margin: 0 auto;'
                  class="fb-like" data-href="https://www.facebook.com/coderiders.am/?fref=ts"
                  data-width="400"
