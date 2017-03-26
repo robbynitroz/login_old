@@ -482,18 +482,18 @@
 
         /*--- eof login for internet page ---*/
 
-        iframe button
+        iframe
         {
-            transform: scale(1.5);
-            -ms-transform: scale(1.5);
-            -webkit-transform: scale(1.5);
-            -o-transform: scale(1.5);
-            -moz-transform: scale(1.5);
-            transform-origin: top left;
-            -ms-transform-origin: top left;
-            -webkit-transform-origin: top left;
-            -moz-transform-origin: top left;
-            -webkit-transform-origin: top left;
+            transform: scale(1.5) !important;
+            -ms-transform: scale(1.5) !important;
+            -webkit-transform: scale(1.5) !important;
+            -o-transform: scale(1.5) !important;
+            -moz-transform: scale(1.5) !important;
+            transform-origin: top left !important;
+            -ms-transform-origin: top left !important;
+            -webkit-transform-origin: top left !important;
+            -moz-transform-origin: top left !important;
+            -webkit-transform-origin: top left !important;
         }
     }
 
