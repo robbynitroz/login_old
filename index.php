@@ -208,6 +208,7 @@ else
 
     if ($GLOBALS['template_name'] == 'Facebook template')
     {
+        var_dump($translate_id);exit;
         $query = "select * from translate_email
                   where translate_id='$translate_id'";
         $result = mysql_query($query) or die('NAS query error 13_1' . mysql_error());
