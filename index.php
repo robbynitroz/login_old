@@ -30,11 +30,19 @@ $link = mysql_connect('localhost', 'root', 'Zq4F3R607h1K') or die('Connection fa
 mysql_select_db('radius') or die('DB selection failed');
 
 // Get all email templates ID
-$query = 'select id from templates where name ="Facebook template"';
+$query = 'select f.id as f_id, f.hotel_id, e.id as e_id
+            from templates f, templates e
+            where f.name = "Facebook template"
+            and e.name = "Email template"
+            and f.hotel_id = e.hotel_id
+            ORDER BY f.hotel_id';
 $result = mysql_query($query) or die('Radius query error ' . mysql_error());
 $all_ids = [];
 while($myrow =  mysql_fetch_array($result)) {
-    $all_ids[] = intval($myrow['id']);
+    $all_ids[] = [
+        'f_id' => intval($myrow['f_id']),
+        'e_id' => intval($myrow['e_id']),
+    ];
 }
 var_dump($all_ids);exit;
 
