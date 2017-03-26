@@ -489,7 +489,7 @@
     <div class="offer-wrapper offer-wrapper-xs">
         <a href="#" class="terms-link terms-link-xs" onclick="return false">Terms & conditions></a>
 
-<!--        <button style='display: block; width: 93%; height: 90px; background-image: url("/images/fb.png"); background-size: cover; margin: 0 auto;'>-->
+        <button style='display: block; width: 93%; height: 90px; background-image: url("/images/fb.png"); background-size: cover; margin: 0 auto;'>
 
             <div style='width: 62px;
                 transform: scale(9,3);
@@ -506,7 +506,7 @@
                  data-show-faces="false"
                  data-share="false">
             </div>
-<!--        </button>-->
+        </button>
 
 
         <div class="offer-inner">
