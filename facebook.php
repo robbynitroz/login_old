@@ -511,11 +511,9 @@
             background-position: center center;
             margin: 0 auto;
             border: 0px;'>
-            <div id='like_wrapper' style='position: absolute;
-                top: 0;
-                left: 0;
+            <div id='like_wrapper' style='position: relative;
                 width: 100%;
-                height: 100%;
+                /*height: 100%;*/
                 opacity: 1;
                 margin: 0 auto;'
                  class="fb-like" data-href="https://www.facebook.com/coderiders.am/?fref=ts"
