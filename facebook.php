@@ -320,12 +320,12 @@
 
         #like_wrapper {
             top: 31px;
-            left: 0px;
-            transform: scale(10,3) !important;
-            -ms-transform: scale(10,3) !important;
-            -webkit-transform: scale(10,3) !important;
-            -o-transform: scale(10,3) !important;
-            -moz-transform: scale(10,3) !important;'
+            left: -4px;
+            transform: scale(9,3) !important;
+            -ms-transform: scale(9,3) !important;
+            -webkit-transform: scale(9,3) !important;
+            -o-transform: scale(9,3) !important;
+            -moz-transform: scale(9,3) !important;'
         }
 
         .login-big-wrapper {
