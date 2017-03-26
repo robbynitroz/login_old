@@ -498,9 +498,8 @@
                  data-size="large"
                  data-show-faces="false"
                  data-share="false">
-
-            </button>
-        </div>
+            </div>
+        </button>
 
 
         <div class="offer-inner">
