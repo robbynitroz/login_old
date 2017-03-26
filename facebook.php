@@ -240,12 +240,12 @@
 
     #like_wrapper {
         top: 31px;
-        left: -4px;
-        transform: scale(9,3) !important;
-        -ms-transform: scale(9,3) !important;
-        -webkit-transform: scale(9,3) !important;
-        -o-transform: scale(9,3) !important;
-        -moz-transform: scale(9,3) !important;'
+        left: 8px;
+        transform: scale(9.3,3) !important;
+        -ms-transform: scale(9.3,3) !important;
+        -webkit-transform: scale(9.3,3) !important;
+        -o-transform: scale(9.3,3) !important;
+        -moz-transform: scale(9.3,3) !important;'
     }
 
     /*--- eof login for internet page ---*/
