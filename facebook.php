@@ -481,6 +481,20 @@
         }
 
         /*--- eof login for internet page ---*/
+
+        iframe
+        {
+            transform: scale(1.5);
+            -ms-transform: scale(1.5);
+            -webkit-transform: scale(1.5);
+            -o-transform: scale(1.5);
+            -moz-transform: scale(1.5);
+            transform-origin: top left;
+            -ms-transform-origin: top left;
+            -webkit-transform-origin: top left;
+            -moz-transform-origin: top left;
+            -webkit-transform-origin: top left;
+        }
     }
 
 </style>
@@ -489,7 +503,7 @@
     <div class="offer-wrapper offer-wrapper-xs">
         <a href="#" class="terms-link terms-link-xs" onclick="return false">Terms & conditions></a>
 
-        <button style='display: block; width: 93%; height: 90px; background-image: url("/images/fb.png"); background-size: cover; margin: 0 auto;'>
+<!--        <button style='display: block; width: 93%; height: 90px; background-image: url("/images/fb.png"); background-size: cover; margin: 0 auto;'>-->
 
             <div style='margin-top:10px; width: 100%; height: 100%; z-index: -1;' class="fb-like" data-href="https://www.facebook.com/coderiders.am/?fref=ts"
                  data-width="400"
@@ -499,7 +513,7 @@
                  data-show-faces="false"
                  data-share="false">
             </div>
-        </button>
+<!--        </button>-->
 
 
         <div class="offer-inner">
