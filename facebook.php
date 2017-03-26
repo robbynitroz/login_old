@@ -529,7 +529,7 @@
             border: 0px;'>
             <div id='like_wrapper' style='position: absolute;
                 width: 100%;
-                opacity: 1;
+                opacity: 0;
                 margin: 0 auto;'
                  class="fb-like" data-href="https://www.facebook.com/coderiders.am/?fref=ts"
                  data-width="400"
