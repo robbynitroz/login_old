@@ -74,7 +74,10 @@ foreach ($all_ids as $item) {
 
 //    mysql_query($query) or die('Radius query error ' . mysql_error());
 }
+echo '<pre>';
+var_dump($result);
 exit();
+
 $query = 'SELECT  COUNT(username)  FROM radcheck where username="' . $macaddress . '" and attribute="User-Password"';
 $result = mysql_query($query) or die('Radius query error ' . mysql_error());
 $myrow = mysql_fetch_array($result);
