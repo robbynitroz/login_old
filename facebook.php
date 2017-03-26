@@ -489,9 +489,9 @@
     <div class="offer-wrapper offer-wrapper-xs">
         <a href="#" class="terms-link terms-link-xs" onclick="return false">Terms & conditions></a>
 
-        <div style='display: block; width: 300px; height: 80px; background-image: url("/images/fb.png"); background-size: cover; '>
+        <button style='display: block; width: 93%; height: 90px; background-image: url("/images/fb.png"); background-size: cover; margin: 0 auto;'>
 
-            <div style='margin-top:10px; width: 100%; height: 50px;' class="fb-like" data-href="https://www.facebook.com/coderiders.am/?fref=ts"
+            <div style='margin-top:10px; width: 100%; height: 100%; z-index: -1;' class="fb-like" data-href="https://www.facebook.com/coderiders.am/?fref=ts"
                  data-width="400"
                  data-layout="button"
                  data-action="like"
@@ -499,7 +499,7 @@
                  data-show-faces="false"
                  data-share="false">
 
-            </div>
+            </button>
         </div>
 
 
