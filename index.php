@@ -110,7 +110,7 @@ $query = "select * from hotel_language
           where hotel_language.hotel_id='$hotel_id' and languages.name='$language_codes[$lang]'";
 $result = mysql_query($query) or die('NAS query error 5' . mysql_error());
 $check_language = mysql_num_rows($result);
-
+var_dump($check_language);
 $translate_id = 0;
 
 if($check_language)
