@@ -75,7 +75,7 @@ else
 {
     $template_id = $myrow['active_template_id'];
 }
-var_dump($template_id);exit;
+
 // Find Active template's name
 $query = "select name from templates where id='$template_id'";
 $result = mysql_query($query) or die('Find Active template name ' . mysql_error());
@@ -452,7 +452,7 @@ function checkEmailLogin($mac_address, $translate_id, $hotel_id)
         $GLOBALS['hotel_btn_label']    = $translate_data['hotel_btn_label'];
 
     }
-
+var_dump($GLOBALS['template_name']);exit;
 }
 
 
