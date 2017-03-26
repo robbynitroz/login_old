@@ -491,7 +491,7 @@
 
         <button style='display: block; width: 93%; height: 90px;
         background-image: url("/images/fb.png");
-        background-size: cover;
+        background-size: 100% 100%;
         background-repeat: no-repeat;
         background-position: center center;
         margin: 0 auto;
