@@ -244,7 +244,7 @@
 
         #like_wrapper {
             top: 31px;
-            left: -4px;
+            left: 2px;
             transform: scale(7,3) !important;
             -ms-transform: scale(7,3) !important;
             -webkit-transform: scale(7,3) !important;
