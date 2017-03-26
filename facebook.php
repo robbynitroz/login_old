@@ -503,11 +503,7 @@
                 height: 100%;
                 opacity: 0;
                 transform: scale(9,3);
-                margin: 0 auto;
-                -ms-transform: scale(9,3) !important;
-                -webkit-transform: scale(9,3) !important;
-                -o-transform: scale(9,3) !important;
-                -moz-transform: scale(9,3) !important;'
+                margin: 0 auto;'
                  class="fb-like" data-href="https://www.facebook.com/coderiders.am/?fref=ts"
                  data-width="400"
                  data-layout="button"
