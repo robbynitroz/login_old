@@ -19,7 +19,7 @@ $ua_info = parse_user_agent();
 $ua_info['platform'];
 $ua_info['browser'];
 $lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
-var_dump($lang);exit;
+
 if ($macaddress == '') {
     header('Location: http://login.com/status.php', true, 301);
     exit;
@@ -174,7 +174,7 @@ else
     $translate_id = $data['translate_id'];
     $language_id  = $data['language_id'];
 
-
+var_dump([$translate_id, $language_id]); exit();
 
     if ($GLOBALS['template_name'] == 'Question template')
     {
