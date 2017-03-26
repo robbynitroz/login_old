@@ -497,12 +497,7 @@
                 -ms-transform: scale(9,3) !important;
                 -webkit-transform: scale(9,3) !important;
                 -o-transform: scale(9,3) !important;
-                -moz-transform: scale(9,3) !important;
-                transform-origin: top left !important;
-                -ms-transform-origin: top left !important;
-                -webkit-transform-origin: top left !important;
-                -moz-transform-origin: top left !important;
-                -webkit-transform-origin: top left !important;'
+                -moz-transform: scale(9,3) !important;'
                  class="fb-like" data-href="https://www.facebook.com/coderiders.am/?fref=ts"
                  data-width="400"
                  data-layout="button"
