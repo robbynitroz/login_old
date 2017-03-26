@@ -452,7 +452,7 @@ function checkEmailLogin($mac_address, $translate_id, $hotel_id)
         $GLOBALS['hotel_btn_label']    = $translate_data['hotel_btn_label'];
 
     }
-var_dump($GLOBALS['template_name']);exit;
+
 }
 
 
