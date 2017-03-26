@@ -494,10 +494,10 @@
             <div style='width: 62px;
                 transform: scale(9,3);
                 margin: 0 auto;
-                -ms-transform: scale(1.5) !important;
-                -webkit-transform: scale(1.5) !important;
-                -o-transform: scale(1.5) !important;
-                -moz-transform: scale(1.5) !important;
+                -ms-transform: scale(9,3) !important;
+                -webkit-transform: scale(9,3) !important;
+                -o-transform: scale(9,3) !important;
+                -moz-transform: scale(9,3) !important;
                 transform-origin: top left !important;
                 -ms-transform-origin: top left !important;
                 -webkit-transform-origin: top left !important;
