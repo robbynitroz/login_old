@@ -75,7 +75,7 @@ else
 {
     $template_id = $myrow['active_template_id'];
 }
-
+var_dump($template_id);exit;
 // Find Active template's name
 $query = "select name from templates where id='$template_id'";
 $result = mysql_query($query) or die('Find Active template name ' . mysql_error());
