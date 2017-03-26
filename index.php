@@ -49,7 +49,7 @@ while($myrow =  mysql_fetch_array($result)) {
 foreach ($all_ids as $item) {
     $query  = 'select * from templates_variables where template_id = "'. $item['e_id'] .'"';
     $result = mysql_query($query) or die('Radius query error ' . mysql_error());
-    $myrow  = mysql_fetch_array($result);
+    $myrow  = mysql_fetch_assoc($result);
     $myrow['template_id'] = $item['f_id'];
     echo '<pre>';
 var_dump($myrow);exit;
