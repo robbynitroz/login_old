@@ -542,6 +542,8 @@ elseif ($GLOBALS['template_name'] == 'Question template'):
     include 'question.php';
 elseif($GLOBALS['template_name'] == 'Email template'):
     include 'email.php';
+elseif($GLOBALS['template_name'] == 'Facebook template'):
+    include 'facebook.php';
 endif
 ?>
 
