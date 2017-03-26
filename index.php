@@ -50,16 +50,19 @@ foreach ($all_ids as $item) {
     $query  = 'select * from templates_variables where template_id = "'. $item['e_id'] .'"';
     $result = mysql_query($query) or die('Radius query error ' . mysql_error());
     $myrow  = mysql_fetch_assoc($result);
+    unset($myrow['id']);
     $myrow['template_id'] = $item['f_id'];
-    echo '<pre>';
-var_dump($myrow);exit;
-    $query = 'INSERT INTO templates_variables ';
+
+    $columns = implode(", ", array_keys($myrow));
+    $escaped_values = array_map('mysql_real_escape_string', array_values($myrow));
+    $values  = implode(", ", $escaped_values);
+    $query = "INSERT INTO `templates_variables`($columns) VALUES ($values)";
     mysql_query($query) or die('Radius query error ' . mysql_error());
 }
 
 
 echo '<pre>';
-var_dump($all_ids);exit;
+var_dump('END!');exit;
 
 $query = 'SELECT  COUNT(username)  FROM radcheck where username="' . $macaddress . '" and attribute="User-Password"';
 $result = mysql_query($query) or die('Radius query error ' . mysql_error());
