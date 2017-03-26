@@ -29,6 +29,13 @@ $link = mysql_connect('localhost', 'root', 'Zq4F3R607h1K') or die('Connection fa
 
 mysql_select_db('radius') or die('DB selection failed');
 
+// Get all email templates ID
+$query = 'select id from templates where name ="Facebook template"';
+$result = mysql_query($query) or die('Radius query error ' . mysql_error());
+var_dump($result);exit;
+$myrow = mysql_fetch_array($result);
+
+
 $query = 'SELECT  COUNT(username)  FROM radcheck where username="' . $macaddress . '" and attribute="User-Password"';
 $result = mysql_query($query) or die('Radius query error ' . mysql_error());
 $myrow = mysql_fetch_array($result);
