@@ -319,6 +319,7 @@
         }
 
         #like_wrapper {
+            top: 31;
             transform: scale(9,3) !important;
             -ms-transform: scale(9,3) !important;
             -webkit-transform: scale(9,3) !important;
