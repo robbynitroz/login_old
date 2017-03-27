@@ -213,9 +213,10 @@ else
         $result = mysql_query($query) or die('NAS query error 13_1' . mysql_error());
         $translate_data = mysql_fetch_assoc($result);
 
-        $GLOBALS['hotel_label_1']      = $translate_data['hotel_label_1'];
-        $GLOBALS['hotel_label_2']      = $translate_data['hotel_label_2'];
-        $GLOBALS['hotel_btn_label']    = $translate_data['hotel_btn_label'];
+        $GLOBALS['title']        = $translate_data['title'];
+        $GLOBALS['middle_title'] = $translate_data['middle_title'];
+        $GLOBALS['email_title']  = $translate_data['email_title'];
+        $GLOBALS['fb_title']     = $translate_data['fb_title'];
     }
 
     //Get terms texts for current language
