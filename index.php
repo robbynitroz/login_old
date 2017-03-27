@@ -211,7 +211,7 @@ else
         $query = "select * from translate_fb
                   where translate_id='$translate_id'";
         $result = mysql_query($query) or die('NAS query error 13_1' . mysql_error());
-        $translate_data = mysql_fetch_array($result);
+        $translate_data = mysql_fetch_assoc($result);
 var_dump($translate_data);exit;
         $GLOBALS['hotel_label_1']      = $translate_data['hotel_label_1'];
         $GLOBALS['hotel_label_2']      = $translate_data['hotel_label_2'];

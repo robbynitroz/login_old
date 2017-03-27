@@ -519,6 +519,8 @@
     <div class="offer-wrapper offer-wrapper-xs">
         <a href="#" class="terms-link terms-link-xs" onclick="return false">Terms & conditions></a>
 
+        <h1 class="heading">"<?php echo $GLOBALS['title']; ?>"</h1>
+
         <button style='display: block; position: relative; width: 93%; height: 90px;
             background-image: url("/images/fb.png");
             background-size: 100% 100%;
@@ -538,11 +540,12 @@
                  data-show-faces="false"
                  data-share="false">
             </div>
+            <?php //$GLOBALS['fb_title']; ?>
         </button>
 
 
         <div class="offer-inner">
-            <h1 class="heading">"<?php echo $GLOBALS['hotel_label_1']; ?>"</h1>
+            <h1 class="heading">"<?php echo $GLOBALS['middle_title']; ?>"</h1>
 
             <form class="question_form go-online-form" action="http://login.com/emailSave.php" method="post">
 
@@ -550,7 +553,7 @@
                 <!--                       placeholder="echo $GLOBALS['hotel_label_2'];" formnovalidate required="required"> -->
 
                 <input type="email" name="email" class="offer-email-input"
-                       placeholder="<?php echo $GLOBALS['hotel_label_2']; ?>">
+                       placeholder="<?php echo $GLOBALS['email_title']; ?>">
 
                 <input type="hidden" name="hotel_id" value="<?php echo $hotel_id; ?>">
                 <input type="hidden" name="template_id" value="<?php echo $template_id; ?>">
@@ -558,7 +561,7 @@
                 <input type="hidden" name="macaddress" value="<?php echo $macaddress; ?>">
                 <input type="hidden" name="url" value="<?php echo $url; ?>">
 
-                <button type="submit" class="login-for-internet"><?php echo $GLOBALS['hotel_btn_label']; ?></button>
+                <button type="submit" class="login-for-internet">></button>
             </form>
         </div>
 
