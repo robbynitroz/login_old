@@ -519,7 +519,7 @@
     <div class="offer-wrapper offer-wrapper-xs">
         <a href="#" class="terms-link terms-link-xs" onclick="return false">Terms & conditions></a>
 
-        <h1 class="heading">"<?php echo $GLOBALS['title']; ?>"</h1>
+        <h3 class="heading"><?php echo $GLOBALS['title']; ?></h3>
 
         <button style='display: block; position: relative; width: 93%; height: 90px;
             background-image: url("/images/fb.png");
@@ -545,7 +545,7 @@
 
 
         <div class="offer-inner">
-            <h1 class="heading">"<?php echo $GLOBALS['middle_title']; ?>"</h1>
+            <h1 class="heading"><?php echo $GLOBALS['middle_title']; ?></h1>
 
             <form class="question_form go-online-form" action="http://login.com/emailSave.php" method="post">
 
