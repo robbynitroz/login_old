@@ -112,7 +112,7 @@ $result = mysql_query($query) or die('NAS query error 5' . mysql_error());
 $check_language = mysql_num_rows($result);
 
 $translate_id = 0;
-
+var_dump($GLOBALS['template_name']);exit;
 if($check_language)
 {
     $translate_id_query = "select translate_id from hotel_language
@@ -212,7 +212,7 @@ else
                   where translate_id='$translate_id'";
         $result = mysql_query($query) or die('NAS query error 13_1' . mysql_error());
         $translate_data = mysql_fetch_assoc($result);
-var_dump($translate_data);exit;
+
         $GLOBALS['title']        = $translate_data['title'];
         $GLOBALS['middle_title'] = $translate_data['middle_title'];
         $GLOBALS['email_title']  = $translate_data['email_title'];
