@@ -249,20 +249,6 @@
     }
 
     /*--- eof login for internet page ---*/
-
-    /*@media screen and (min-width: 767px) and (max-width: 1600px) {*/
-        /*#like_wrapper {*/
-            /*left: 190px;*/
-            /*top: 31px;*/
-            /*left: 2px;*/
-            /*transform: scale(7,3) !important;*/
-            /*-ms-transform: scale(7,3) !important;*/
-            /*-webkit-transform: scale(7,3) !important;*/
-            /*-o-transform: scale(7,3) !important;*/
-            /*-moz-transform: scale(7,3) !important;*/
-        /*}*/
-    /*}*/
-
     @media screen and (min-width: 767px) and (max-width: 1600px) {
 
         #like_wrapper {
@@ -346,12 +332,12 @@
 
         #like_wrapper {
             top: 31px;
-            left: -4px;
-            transform: scale(9,3) !important;
-            -ms-transform: scale(9,3) !important;
-            -webkit-transform: scale(9,3) !important;
-            -o-transform: scale(9,3) !important;
-            -moz-transform: scale(9,3) !important;'
+            left:286px;
+            transform: scale(10,3) !important;
+            -ms-transform: scale(10,3) !important;
+            -webkit-transform: scale(10,3) !important;
+            -o-transform: scale(10,3) !important;
+            -moz-transform: scale(10,3) !important;'
         }
 
         .login-big-wrapper {
