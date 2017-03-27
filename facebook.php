@@ -239,6 +239,7 @@
     }
 
     #like_wrapper {
+        left: 261px;
         top: 31px;
         left: -1px;
         transform: scale(9.3,3) !important;
@@ -249,6 +250,19 @@
     }
 
     /*--- eof login for internet page ---*/
+
+    @media screen and (min-width: 767px) and (max-width: 1600px) {
+        #like_wrapper {
+            left: 190px;
+            top: 31px;
+            left: 2px;
+            transform: scale(7,3) !important;
+            -ms-transform: scale(7,3) !important;
+            -webkit-transform: scale(7,3) !important;
+            -o-transform: scale(7,3) !important;
+            -moz-transform: scale(7,3) !important;
+        }
+    }
 
     @media screen and (min-width: 767px) and (max-width: 1600px) {
 
