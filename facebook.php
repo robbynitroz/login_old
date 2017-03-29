@@ -555,8 +555,9 @@
                 <div style='position: relative;'>
                     <input type="email" name="email" class="offer-email-input"
                            placeholder="<?php echo $GLOBALS['email_title']; ?>">
-                    
-                    <button type="submit" class="login-for-internet">></button>
+                    <div style='width: 90%; position: relative'>
+                        <button type="submit" class="login-for-internet">></button>
+                    </div>
                 </div>
 
                 <input type="hidden" name="hotel_id" value="<?php echo $hotel_id; ?>">
