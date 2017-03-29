@@ -553,9 +553,12 @@
                 <!--                       placeholder="echo $GLOBALS['hotel_label_2'];" formnovalidate required="required"> -->
 
                 <div style='position: relative;'>
-                    <input type="email" name="email" class="offer-email-input"
-                           placeholder="<?php echo $GLOBALS['email_title']; ?>">
-                    <button type="submit" class="login-for-internet">></button>
+                    <div style='position: relative; width: 70%'>
+                        <input type="email" name="email" class="offer-email-input" placeholder="<?php echo $GLOBALS['email_title']; ?>">
+                    </div>
+                    <div style='position: relative; width: 30%'>
+                        <button type="submit" class="login-for-internet">></button>
+                    </div>
                 </div>
 
                 <input type="hidden" name="hotel_id" value="<?php echo $hotel_id; ?>">
