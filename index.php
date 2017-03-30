@@ -557,7 +557,7 @@ mysql_close($link);
 
     <!-- You can use open graph tags to customize link previews.
     Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
-    <meta property="og:url"           content="http://login.com/index.php" />
+    <meta property="og:url"           content="http://localhost/index.php" />
     <meta property="og:type"          content="website" />
     <meta property="og:title"         content="Your Website Title" />
     <meta property="og:description"   content="Your description" />
