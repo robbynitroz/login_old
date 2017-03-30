@@ -581,7 +581,7 @@ if($GLOBALS['template_name'] == 'Facebook template') {
             $('#loginbutton,#feedbutton').removeAttr('disabled');
 
             FB.Event.subscribe('edge.create', function(response) {
-                window.location.replace('Location: http://$nasip:64873/login?username=$macaddress&password=$macaddress&dst=$url');
+                window.location = 'http://$nasip:64873/login?username=$macaddress&password=$macaddress&dst=$url';
             });
         });
     });
