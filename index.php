@@ -555,6 +555,13 @@ mysql_close($link);
     <script src="js/jquery.min.js"></script>
     <script src="js/script.js"></script>
 
+    <!-- You can use open graph tags to customize link previews.
+    Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
+    <meta property="og:url"           content="http://login.com/index.php" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="Your Website Title" />
+    <meta property="og:description"   content="Your description" />
+
 </head>
 
 
@@ -576,7 +583,6 @@ if($GLOBALS['template_name'] == 'Facebook template') {
         $.getScript('//connect.facebook.net/en_US/sdk.js', function(){
             FB.init({
                 appId: '696113500523537',
-                channelUrl: '//www.login.com/index.php',
                 status     : false, // check login status
                 oauth: true,
                 version: 'v2.8' // or v2.1, v2.2, v2.3, ...
