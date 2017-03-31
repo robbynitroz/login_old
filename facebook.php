@@ -564,8 +564,10 @@
 
 
         <div class="offer-inner">
+            <div class="form-grup">
             <h1 class="heading"><?php echo $GLOBALS['middle_title']; ?></h1>
             <hr>
+                </div>
             <form class="question_form go-online-form" action="http://login.com/emailSave.php" method="post">
 
                 <!--                <input type="email" name="email" class="offer-email-input"-->
