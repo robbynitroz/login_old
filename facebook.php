@@ -506,19 +506,25 @@
             max-width: 380px;
         }
 
-        .form-grup{
-            position: relative;
-        }
-        .form-grup button{
-            position: absolute;
-            top: -20px;
-            right: 24px;
-        }
+
         .go-online:active {
             border-bottom: none;
         }
 
         /*--- eof login for internet page ---*/
+    }
+
+    .form-grup{
+        position: relative;
+    }
+    .form-grup button{
+        position: absolute;
+        top: -20px!important;
+        right: 24px!important;
+    }
+    .login-for-internet {
+        height: 81px!important;
+
     }
 
 </style>
