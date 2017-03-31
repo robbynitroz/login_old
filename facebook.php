@@ -528,6 +528,10 @@
         .form-grup{
             position: relative!important;
         }
+        h3{
+            margin: 0 0 50px 0!important;
+        }
+    }
     }
     .form-grup{
         position: relative!important;
