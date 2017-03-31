@@ -516,6 +516,22 @@
             border-bottom: none;
         }
 
+        h1:before{
+            width: 33%;
+        }
+    }
+  @media screen and (max-width: 640px)
+  {
+      h1:before{
+          width: 29%;
+      }
+  }
+    @media screen and (max-width: 500px)
+    {
+        h1:before{
+            width: 24%;
+        }
+    }
         /*--- eof login for internet page ---*/
     }
 
