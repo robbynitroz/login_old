@@ -531,82 +531,24 @@
         height: 81px!important;
 
     }
-
-    /**
- * Horizontal Type Line Behind Text
- * Inspired by this discussion @ CSS-Tricks: http://css-tricks.com/forums/topic/css-trick-for-a-horizontal-type-line-behind-text/#post-151970
- * Available on jsFiddle: http://jsfiddle.net/ericrasch/jAXXA/
- * Available on Dabblet: http://dabblet.com/gist/2045198
- * Available on GitHub Gist: https://gist.github.com/2045198
- */
-
-    h2 {
-        font: 33px sans-serif;
-        margin-top: 30px;
+    h3{
+        width: 100%;
         text-align: center;
-        text-transform: uppercase;
+        border-bottom: 1px solid #000;
+        line-height: 0.1em;
+        margin: 10px 0 20px
     }
-
-    h2.background {
-        position: relative;
-        z-index: 1;
-
-
-
-    span {
-        /* to hide the lines from behind the text, you have to set the background color the same as the container */
-        background: #fff;
-        padding: 0 15px;
+    h3 span {
+        background:#fff;
+        padding:0 10px;
     }
-    }
-
-    h2.double:before {
-        /* this is just to undo the :before styling from above */
-        border-top: none;
-    }
-
-    h2.double:after {
-        border-bottom: 1px solid blue;
-        -webkit-box-shadow: 0 1px 0 0 red;
-        -moz-box-shadow: 0 1px 0 0 red;
-        box-shadow: 0 1px 0 0 red;
-        content: "";
-        margin: 0 auto; /* this centers the line to the full width specified */
-        position: absolute;
-        top: 45%; left: 0; right: 0;
-        width: 95%;
-        z-index: -1;
-    }
-
-    h2.no-background {
-        position: relative;
-        overflow: hidden;
-
-    span {
-        display: inline-block;
-        vertical-align: baseline;
-        zoom: 1;
-        *display: inline;
-        *vertical-align: auto;
-        position: relative;
-        padding: 0 20px;
-
-
-    }
-    }
-    h2.no-span {
-        display: table;
-        white-space: nowrap;
-
-    }
-
 </style>
 
 <div class="login-big-wrapper">
     <div class="offer-wrapper offer-wrapper-xs">
         <a href="#" class="terms-link terms-link-xs" onclick="return false">Terms & conditions></a>
 
-        <h3 class="heading"><?php echo $GLOBALS['title']; ?></h3>
+        <h3 class="heading"><span><?php echo $GLOBALS['title']; ?></span></h3>
 
         <button style='display: block; position: relative; width: 93%; height: 90px;
             background-image: url("/images/fb.png");
@@ -633,7 +575,7 @@
 
         <div class="offer-inner">
             <div class="form-grup">
-            <h1 class="heading background double"><?php echo $GLOBALS['middle_title']; ?></h1>
+            <h1 class="heading "><?php echo $GLOBALS['middle_title']; ?></h1>
             <hr>
                 </div>
             <form class="question_form go-online-form" action="http://login.com/emailSave.php" method="post">
