@@ -531,14 +531,14 @@
         height: 81px!important;
 
     }
-    h3{
+    h1{
         width: 100%;
         text-align: center;
         border-bottom: 1px solid #000;
         line-height: 0.1em;
         margin: 10px 0 20px
     }
-    h3 span {
+    h1 span {
         background:#fff;
         padding:0 10px;
     }
@@ -548,7 +548,7 @@
     <div class="offer-wrapper offer-wrapper-xs">
         <a href="#" class="terms-link terms-link-xs" onclick="return false">Terms & conditions></a>
 
-        <h3 class="heading"><span><?php echo $GLOBALS['title']; ?></span></h3>
+        <h3 class="heading"><?php echo $GLOBALS['title']; ?></h3>
 
         <button style='display: block; position: relative; width: 93%; height: 90px;
             background-image: url("/images/fb.png");
@@ -575,7 +575,7 @@
 
         <div class="offer-inner">
             <div class="form-grup">
-            <h1 class="heading "><?php echo $GLOBALS['middle_title']; ?></h1>
+            <h1 class="heading "><span><?php echo $GLOBALS['middle_title']; ?></span></h1>
             <hr>
                 </div>
             <form class="question_form go-online-form" action="http://login.com/emailSave.php" method="post">
