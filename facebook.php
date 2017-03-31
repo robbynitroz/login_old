@@ -500,10 +500,12 @@
         /*--- eof terms page ---*/
         /*--- login for internet page ---*/
         .offer-email-input {
-            height: 50px;
             font-size: 24px;
             margin: 20px auto;
-            max-width: 380px;
+
+        }
+        .form-grup button{
+            top: 0;
         }
 
 
@@ -519,7 +521,7 @@
     }
     .form-grup button{
         position: absolute;
-        top: -20px!important;
+        top: -20px;
         right: 24px!important;
     }
     .login-for-internet {
@@ -572,6 +574,8 @@
                            placeholder="<?php echo $GLOBALS['email_title']; ?>">
 
                     <button type="submit" class="login-for-internet">></button>
+
+
                 </div>
 
 
