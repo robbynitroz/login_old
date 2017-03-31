@@ -531,16 +531,25 @@
         height: 81px!important;
 
     }
-    h1{
-        width: 100%;
+    h1 {
+        position: relative;
+        font-size: 30px;
+        z-index: 1;
+        overflow: hidden;
         text-align: center;
-        border-bottom: 1px solid #000;
-        line-height: 0.1em;
-        margin: 10px 0 20px
     }
-    h1 span {
-        background:#fff;
-        padding:0 10px;
+    h1:before, h1:after {
+        position: absolute;
+        top: 51%;
+        overflow: hidden;
+        width: 50%;
+        height: 1px;
+        content: '\a0';
+        background-color: red;
+    }
+    h1:before {
+        margin-left: -50%;
+        text-align: right;
     }
 </style>
 
