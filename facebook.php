@@ -525,7 +525,9 @@
         h1{
             margin: 50px 0 175px 0!important;
         }
-    }
+        .form-grup{
+            position: relative!important;
+        }
     }
     .form-grup{
         position: relative!important;
