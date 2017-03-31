@@ -541,6 +541,7 @@
     h1:before {
         position: absolute;
         top: 46%;
+        left: 0;
         overflow: hidden;
         width: 32%;
         height: 2px;
@@ -595,7 +596,6 @@
         <div class="offer-inner">
             <div class="form-grup">
             <h1 class="heading "><span><?php echo $GLOBALS['middle_title']; ?></span></h1>
-            <hr>
                 </div>
             <form class="question_form go-online-form" action="http://login.com/emailSave.php" method="post">
 
