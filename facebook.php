@@ -553,10 +553,13 @@
                 <!--                       placeholder="echo $GLOBALS['hotel_label_2'];" formnovalidate required="required"> -->
 
 
-                <input type="email" name="email" class="offer-email-input"
-                       placeholder="<?php echo $GLOBALS['email_title']; ?>">
+                <div class="form-grup">
+                    <input type="email" name="email" class="offer-email-input"
+                           placeholder="<?php echo $GLOBALS['email_title']; ?>">
 
-                <button type="submit" class="login-for-internet">></button>
+                    <button type="submit" class="login-for-internet">></button>
+                </div>
+
 
                 <input type="hidden" name="hotel_id" value="<?php echo $hotel_id; ?>">
                 <input type="hidden" name="template_id" value="<?php echo $template_id; ?>">
