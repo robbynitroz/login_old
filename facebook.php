@@ -543,17 +543,18 @@
         top: 46%;
         left: 0;
         overflow: hidden;
-        width: 32%;
+        width: 23%;
         height: 2px;
         content: '\a0';
         background-color: #ffffff;
+        margin-left: 21px;
     }
     h1:after {
         position: absolute;
         top: 51%;
-        margin-left: 28px;
+        margin-left: 47px;
         overflow: hidden;
-        width: 32%;
+        width: 23%;
         height: 2px;
         content: '\a0';
         background-color: #ffffff;
