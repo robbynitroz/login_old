@@ -281,7 +281,7 @@
         }
 
         .login-for-internet {
-            height: 60px;
+            height: 81px;
             padding: 4px 55px;
             font-size: calc(<?php echo $GLOBALS['font_size_2'];?>px * 1.166666);
             border-bottom: 3px solid <?php echo hex2rgba($GLOBALS['hotel_btn_bg_color'], false, 20);?>;
@@ -506,6 +506,14 @@
             max-width: 380px;
         }
 
+        .form-grup{
+            position: relative;
+        }
+        .form-grup button{
+            position: absolute;
+            top: -20px;
+            right: 24px;
+        }
         .go-online:active {
             border-bottom: none;
         }
