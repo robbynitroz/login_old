@@ -519,6 +519,9 @@
         h1:before{
             width: 33%!important;
         }
+        h1:after{
+            width: 33%!important;
+        }
     }
     .form-grup{
         position: relative!important;
@@ -537,10 +540,16 @@
       h1:before{
           width: 29%!important;
       }
+      h1:after{
+          width: 29%!important;
+      }
   }
     @media screen and (max-width: 500px)
     {
         h1:before{
+            width: 24%!important;
+        }
+        h1:after{
             width: 24%!important;
         }
     }
