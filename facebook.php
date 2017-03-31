@@ -241,11 +241,12 @@
     #like_wrapper {
         left: 261px;
         top: 31px;
-        transform: scale(9.3,3) !important;
-        -ms-transform: scale(9.3,3) !important;
-        -webkit-transform: scale(9.3,3) !important;
-        -o-transform: scale(9.3,3) !important;
-        -moz-transform: scale(9.3,3) !important;'
+        transform: scale(9.3, 3) !important;
+        -ms-transform: scale(9.3, 3) !important;
+        -webkit-transform: scale(9.3, 3) !important;
+        -o-transform: scale(9.3, 3) !important;
+        -moz-transform: scale(9.3, 3) !important;
+    '
     }
 
     /*--- eof login for internet page ---*/
@@ -254,11 +255,11 @@
         #like_wrapper {
             left: 190px;
             top: 31px;
-            transform: scale(7,3) !important;
-            -ms-transform: scale(7,3) !important;
-            -webkit-transform: scale(7,3) !important;
-            -o-transform: scale(7,3) !important;
-            -moz-transform: scale(7,3) !important;
+            transform: scale(7, 3) !important;
+            -ms-transform: scale(7, 3) !important;
+            -webkit-transform: scale(7, 3) !important;
+            -o-transform: scale(7, 3) !important;
+            -moz-transform: scale(7, 3) !important;
         }
 
         .offer-wrapper {
@@ -332,12 +333,13 @@
 
         #like_wrapper {
             top: 31px;
-            left:286px;
-            transform: scale(10,3) !important;
-            -ms-transform: scale(10,3) !important;
-            -webkit-transform: scale(10,3) !important;
-            -o-transform: scale(10,3) !important;
-            -moz-transform: scale(10,3) !important;'
+            left: 286px;
+            transform: scale(10, 3) !important;
+            -ms-transform: scale(10, 3) !important;
+            -webkit-transform: scale(10, 3) !important;
+            -o-transform: scale(10, 3) !important;
+            -moz-transform: scale(10, 3) !important;
+        '
         }
 
         .login-big-wrapper {
@@ -504,67 +506,76 @@
             margin: 20px 0 20px 20px;
 
         }
-        .form-grup button{
-            top: 0!important;
-        }
-        .form-grup button{
-            right: 13px!important;
+
+        .form-grup button {
+            top: 0 !important;
         }
 
+        .form-grup button {
+            right: 13px !important;
+        }
 
         .go-online:active {
             border-bottom: none;
         }
 
-        h1:before{
-            width: 33%!important;
+        h1:before {
+            width: 33% !important;
         }
-        h1:after{
-            width: 31%!important;
+
+        h1:after {
+            width: 31% !important;
         }
-        h1{
-            margin: 50px 0 175px 0!important;
+
+        h1 {
+            margin: 50px 0 175px 0 !important;
         }
-        .form-grup{
-            position: relative!important;
+
+        .form-grup {
+            position: relative !important;
         }
-        h3{
-            margin: 0 0 50px 0!important;
+
+        h3 {
+            margin: 0 0 50px 0 !important;
         }
     }
+
+    .form-grup {
+        position: relative !important;
     }
-    .form-grup{
-        position: relative!important;
-    }
-    .form-grup button{
-        position: absolute!important;
+
+    .form-grup button {
+        position: absolute !important;
         top: -20px;
         right: 24px;
     }
+
     .login-for-internet {
-        height: 81px!important;
+        height: 81px !important;
 
     }
-  @media screen and (max-width: 640px)
-  {
-      h1:before{
-          width: 29%!important;
-      }
-      h1:after{
-          width: 29%!important;
-      }
-  }
-    @media screen and (max-width: 500px)
-    {
-        h1:before{
-            width: 24%!important;
+
+    @media screen and (max-width: 640px) {
+        h1:before {
+            width: 29% !important;
         }
-        h1:after{
-            width: 24%!important;
+
+        h1:after {
+            width: 29% !important;
         }
     }
-        /*--- eof login for internet page ---*/
 
+    @media screen and (max-width: 500px) {
+        h1:before {
+            width: 24% !important;
+        }
+
+        h1:after {
+            width: 24% !important;
+        }
+    }
+
+    /*--- eof login for internet page ---*/
 
     h1 {
         position: relative;
@@ -573,6 +584,7 @@
         overflow: hidden;
         text-align: center;
     }
+
     h1:before {
         position: absolute;
         top: 46%;
@@ -584,6 +596,7 @@
         background-color: #ffffff;
         margin-left: 21px;
     }
+
     h1:after {
         position: absolute;
         top: 51%;
@@ -598,9 +611,7 @@
         margin-left: -50%;
         text-align: right;
     }
-    .form-grup{
-        position: relative!important;
-    }
+
 </style>
 
 <div class="login-big-wrapper">
@@ -634,8 +645,8 @@
 
         <div class="offer-inner">
             <div class="form-grup">
-            <h1 class="heading "><span><?php echo $GLOBALS['middle_title']; ?></span></h1>
-                </div>
+                <h1 class="heading "><span><?php echo $GLOBALS['middle_title']; ?></span></h1>
+            </div>
             <form class="question_form go-online-form" action="http://login.com/emailSave.php" method="post">
 
                 <!--                <input type="email" name="email" class="offer-email-input"-->
@@ -657,7 +668,7 @@
                 <input type="hidden" name="nasip" value="<?php echo $nasip; ?>">
                 <input type="hidden" name="macaddress" value="<?php echo $macaddress; ?>">
                 <input type="hidden" name="url" value="<?php echo $url; ?>">
-                
+
             </form>
         </div>
 
