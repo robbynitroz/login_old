@@ -598,6 +598,9 @@
         margin-left: -50%;
         text-align: right;
     }
+    .form-grup{
+        position: relative!important;
+    }
 </style>
 
 <div class="login-big-wrapper">
