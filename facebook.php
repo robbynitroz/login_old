@@ -542,7 +542,7 @@
         position: absolute;
         top: 46%;
         overflow: hidden;
-        width: 50%;
+        width: 32%;
         height: 2px;
         content: '\a0';
         background-color: #ffffff;
@@ -550,8 +550,9 @@
     h1:after {
         position: absolute;
         top: 51%;
+        margin-left: 28px;
         overflow: hidden;
-        width: 50%;
+        width: 32%;
         height: 2px;
         content: '\a0';
         background-color: #ffffff;
