@@ -501,7 +501,7 @@
         /*--- login for internet page ---*/
         .offer-email-input {
             font-size: 24px;
-            margin: 20px auto;
+            margin: 20px 0 20px 20px;
 
         }
         .form-grup button{
