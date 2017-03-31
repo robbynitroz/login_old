@@ -538,15 +538,24 @@
         overflow: hidden;
         text-align: center;
     }
-    h1:before, h1:after {
+    h1:before {
+        position: absolute;
+        top: 46%;
+        overflow: hidden;
+        width: 50%;
+        height: 2px;
+        content: '\a0';
+        background-color: #ffffff;
+    }
+    h1:after {
         position: absolute;
         top: 51%;
         overflow: hidden;
         width: 50%;
-        height: 1px;
+        height: 2px;
         content: '\a0';
-        background-color: red;
-    }
+        background-color: #ffffff;
+
     h1:before {
         margin-left: -50%;
         text-align: right;
