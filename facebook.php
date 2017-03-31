@@ -520,7 +520,7 @@
             width: 33%!important;
         }
         h1:after{
-            width: 33%!important;
+            width: 31%!important;
         }
     }
     .form-grup{
