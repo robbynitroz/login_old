@@ -517,19 +517,19 @@
         }
 
         h1:before{
-            width: 33%;
+            width: 33%!important;
         }
     }
   @media screen and (max-width: 640px)
   {
       h1:before{
-          width: 29%;
+          width: 29%!important;
       }
   }
     @media screen and (max-width: 500px)
     {
         h1:before{
-            width: 24%;
+            width: 24%!important;
         }
     }
         /*--- eof login for internet page ---*/
