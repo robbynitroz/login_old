@@ -507,6 +507,9 @@
         .form-grup button{
             top: 0!important;
         }
+        .form-grup button{
+            right: 13pz;
+        }
 
 
         .go-online:active {
@@ -522,7 +525,7 @@
     .form-grup button{
         position: absolute;
         top: -20px;
-        right: 24px!important;
+        right: 24px;
     }
     .login-for-internet {
         height: 81px!important;
