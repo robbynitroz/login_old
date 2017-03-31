@@ -523,6 +523,15 @@
     .form-grup{
         position: relative!important;
     }
+    .form-grup button{
+        position: absolute!important;
+        top: -20px;
+        right: 24px;
+    }
+    .login-for-internet {
+        height: 81px!important;
+
+    }
   @media screen and (max-width: 640px)
   {
       h1:before{
@@ -536,18 +545,8 @@
         }
     }
         /*--- eof login for internet page ---*/
-    }
 
 
-    .form-grup button{
-        position: absolute;
-        top: -20px;
-        right: 24px;
-    }
-    .login-for-internet {
-        height: 81px!important;
-
-    }
     h1 {
         position: relative;
         font-size: 30px;
