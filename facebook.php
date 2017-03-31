@@ -531,37 +531,37 @@
         height: 81px!important;
 
     }
-    h1 {
-        position: relative;
-        font-size: 30px;
-        z-index: 1;
-        overflow: hidden;
-        text-align: center;
-    }
-    h1:before {
-        position: absolute;
-        top: 46%;
-        left: 0;
-        overflow: hidden;
-        width: 32%;
-        height: 2px;
-        content: '\a0';
-        background-color: #ffffff;
-    }
-    h1:after {
-        position: absolute;
-        top: 51%;
-        margin-left: 28px;
-        overflow: hidden;
-        width: 32%;
-        height: 2px;
-        content: '\a0';
-        background-color: #ffffff;
+    /*h1 {*/
+        /*position: relative;*/
+        /*font-size: 30px;*/
+        /*z-index: 1;*/
+        /*overflow: hidden;*/
+        /*text-align: center;*/
+    /*}*/
+    /*h1:before {*/
+        /*position: absolute;*/
+        /*top: 46%;*/
+        /*left: 0;*/
+        /*overflow: hidden;*/
+        /*width: 32%;*/
+        /*height: 2px;*/
+        /*content: '\a0';*/
+        /*background-color: #ffffff;*/
+    /*}*/
+    /*h1:after {*/
+        /*position: absolute;*/
+        /*top: 51%;*/
+        /*margin-left: 28px;*/
+        /*overflow: hidden;*/
+        /*width: 32%;*/
+        /*height: 2px;*/
+        /*content: '\a0';*/
+        /*background-color: #ffffff;*/
 
-    h1:before {
-        margin-left: -50%;
-        text-align: right;
-    }
+    /*h1:before {*/
+        /*margin-left: -50%;*/
+        /*text-align: right;*/
+    /*}*/
 </style>
 
 <div class="login-big-wrapper">
@@ -595,7 +595,7 @@
 
         <div class="offer-inner">
             <div class="form-grup">
-            <h1 class="heading "><span><?php echo $GLOBALS['middle_title']; ?></span></h1>
+            <h1 class="heading "><span></span><?php echo $GLOBALS['middle_title']; ?><span></span></h1>
                 </div>
             <form class="question_form go-online-form" action="http://login.com/emailSave.php" method="post">
 
