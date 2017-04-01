@@ -598,6 +598,10 @@ if($GLOBALS['template_name'] == 'Facebook template') {
                console.log(response);
             });
 
+            FB.Event.subscribe('auth.statusChange', function(response) {
+                alert('The status of the session is: ' + response.status);
+            });
+
         });
     });
 
