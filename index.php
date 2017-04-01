@@ -585,7 +585,7 @@ if($GLOBALS['template_name'] == 'Facebook template') {
             FB.init({
                 appId: '696113500523537',
                 status: true, // check login status
-                oauth: false,
+                oauth: true,
                 version: 'v2.8' // or v2.1, v2.2, v2.3, ...
             });
             $('#loginbutton,#feedbutton').removeAttr('disabled');
