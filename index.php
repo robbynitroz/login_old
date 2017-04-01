@@ -594,16 +594,8 @@ if($GLOBALS['template_name'] == 'Facebook template') {
                 window.location = 'http://$nasip:64873/login?username=$macaddress&password=$macaddress&dst=$url';
             });
 
-            FB.Event.subscribe('edge.remove', function(response) {
-                window.location = 'http://$nasip:64873/login?username=$macaddress&password=$macaddress&dst=$url';
-            });
-
-            FB.api('/me', function(response) {
-                console.log('Good to see you, ' + response.name + '.');
-            });
-
-            FB.api('/me/likes/696113500523537', function(response) {
-                console.log(response.data);
+            FB.Event.subscribe('auth.login', function(response) {
+               console.log(response);
             });
 
         });
