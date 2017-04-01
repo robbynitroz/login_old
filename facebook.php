@@ -620,7 +620,7 @@
 
         <h3 class="heading"><?php echo $GLOBALS['title']; ?></h3>
 
-        <button style='display: block; position: relative; width: 93%; height: 90px;
+        <button id='fb_btn' style='display: block; position: relative; width: 93%; height: 90px;
             background-image: url("/images/fb.png");
             background-size: 100% 100%;
             background-repeat: no-repeat;
