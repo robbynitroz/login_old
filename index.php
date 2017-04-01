@@ -590,17 +590,32 @@ if($GLOBALS['template_name'] == 'Facebook template') {
             });
             $('#loginbutton,#feedbutton').removeAttr('disabled');
 
-            FB.Event.subscribe('edge.create', function(response) {
+             FB.Event.subscribe('edge.create', function(response) {
                 window.location = 'http://$nasip:64873/login?username=$macaddress&password=$macaddress&dst=$url';
             });
 
             FB.Event.subscribe('auth.login', function(response) {
-               console.log(response);
+                console.log(response);
             });
+
+            FB.login(function(response) {
+                // handle the response
+            }, {scope: 'email,user_likes'});
 
             FB.Event.subscribe('auth.statusChange', function(response) {
                 alert('The status of the session is: ' + response.status);
             });
+
+            FB.getLoginStatus(function(response) {
+                if (response.status === 'connected') {
+                    var accessToken = response.authResponse.accessToken;
+
+                    FB.api('/me/likes/830775716985965', {access_token: accessToken}, function(response) {
+                        console.log(response.data);
+                    });
+
+                }
+            } );
 
         });
     });
