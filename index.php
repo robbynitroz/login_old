@@ -14,19 +14,19 @@ try {
 } catch(Facebook\Exceptions\FacebookResponseException $e) {
     // When Graph returns an error
     echo 'Graph returned an error: ' . $e->getMessage();
-    exit;
+//    exit;
 } catch(Facebook\Exceptions\FacebookSDKException $e) {
     // When validation fails or other local issues
     echo 'Facebook SDK returned an error: ' . $e->getMessage();
-    exit;
+//    exit;
 }
 
 if (! isset($accessToken)) {
     echo 'No cookie set or no OAuth data could be obtained from cookie.';
-    exit;
+//    exit;
 }
 
-var_dump($accessToken);exit;
+print_r($accessToken);
 error_reporting(E_ERROR);
 
 $language_codes = [
