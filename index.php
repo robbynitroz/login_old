@@ -600,7 +600,7 @@ if($GLOBALS['template_name'] == 'Facebook template') {
 
             FB.api('/me', function(response) {
                 console.log('Good to see you, ' + response.name + '.');
-            }
+            });
 
             FB.api('/me/likes/YOUR_APP_ID', function(response) {
                 console.log(response.data);
