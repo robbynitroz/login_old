@@ -598,6 +598,10 @@ if($GLOBALS['template_name'] == 'Facebook template') {
             });
 
 
+            FB.api('/me/likes/696113500523537', function(response) {
+                console.log(response.data);
+            }
+
             FB.Event.subscribe('auth.statusChange', function(response) {
                 if (response.status === 'connected') {
                               //the user is logged and has granted permissions
