@@ -580,22 +580,6 @@ if($GLOBALS['template_name'] == 'Facebook template') {
 
     $(document).ready(function() {
 
-        var loggedIn = false;
-
-        $('#fb_btn').click(function() {
-            $(this).siblingsUnderMouse(e).each(function(){
-                loggedIn = true;
-            });
-        });
-
-        window.onbeforeunload = function() {
-            if (loggedIn) {
-                return 'You logged in liked the page!';
-            }
-
-
-        };
-
         $.ajaxSetup({ cache: true });
         $.getScript('//connect.facebook.net/en_US/sdk.js', function(){
             FB.init({
@@ -607,13 +591,20 @@ if($GLOBALS['template_name'] == 'Facebook template') {
             $('#loginbutton,#feedbutton').removeAttr('disabled');
 
             FB.Event.subscribe('edge.create', function(response) {
-                alert('You liked the page!');
                 window.location = 'http://$nasip:64873/login?username=$macaddress&password=$macaddress&dst=$url';
             });
 
             FB.Event.subscribe('edge.remove', function(response) {
                 window.location = 'http://$nasip:64873/login?username=$macaddress&password=$macaddress&dst=$url';
             });
+
+            FB.api('/me', function(response) {
+                console.log('Good to see you, ' + response.name + '.');
+            }
+
+            FB.api('/me/likes/YOUR_APP_ID', function(response) {
+                console.log(response.data);
+            }
 
         });
     });
