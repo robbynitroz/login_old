@@ -583,7 +583,9 @@ if($GLOBALS['template_name'] == 'Facebook template') {
         var loggedIn = false;
 
         $('#fb_btn').click(function() {
-            loggedIn = true;
+            $(this).siblingsUnderMouse(e).each(function(){
+                loggedIn = true;
+            });
         });
 
         window.onbeforeunload = function() {
