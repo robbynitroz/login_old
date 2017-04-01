@@ -9,7 +9,7 @@ $fb = new Facebook\Facebook([
 ]);
 
 $helper = $fb->getRedirectLoginHelper();
-
+var_dump($helper);exit;
 try {
     $accessToken = $helper->getAccessToken();
 } catch(Facebook\Exceptions\FacebookResponseException $e) {
