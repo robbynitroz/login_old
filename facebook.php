@@ -613,7 +613,11 @@
     }
 
 </style>
+<?php
 
+var_dump($_SESSION); eixt;
+
+?>
 <div class="login-big-wrapper">
     <div class="offer-wrapper offer-wrapper-xs">
         <a href="#" class="terms-link terms-link-xs" onclick="return false">Terms & conditions></a>
