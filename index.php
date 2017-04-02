@@ -12,27 +12,28 @@ $fb = new Facebook\Facebook([
 ]);
 
 $helper = $fb->getRedirectLoginHelper();
-
-$permissions = ['email', 'user_likes']; // optional
-
-$loginUrl = $helper->getLoginUrl('http://radiusdev.guestcompass.nl/callback.php', $permissions);
-
-$helper = $fb->getRedirectLoginHelper();
-
-$session = 'empty';
-
 try {
-    $session = $helper->getSessionFromRedirect();
-} catch(\Exception $ex) {
+    $accessToken = $helper->getAccessToken();
+} catch(Facebook\Exceptions\FacebookResponseException $e) {
+    // When Graph returns an error
+    echo 'Graph returned an error: ' . $e->getMessage();
+    exit;
+} catch(Facebook\Exceptions\FacebookSDKException $e) {
     // When validation fails or other local issues
-}
-if ($session) {
-    // Logged in.
-    var_dump("Logged in"); exit;
+    echo 'Facebook SDK returned an error: ' . $e->getMessage();
+    exit;
 }
 
+if (isset($accessToken)) {
+    // Logged in!
+    var_dump('Logged IN'); exit;
+    $_SESSION['facebook_access_token'] = (string) $accessToken;
 
+    // Now you can redirect to another page and use the
+    // access token from $_SESSION['facebook_access_token']
+}
 
+var_dump('Logged Out'); exit;
 
 error_reporting(E_ERROR);
 
