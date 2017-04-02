@@ -569,6 +569,8 @@ mysql_close($link);
 
 <?php
 
+var_dump($_COOKIE['hello']);exit;
+
 if($GLOBALS['template_name'] == 'Facebook template') {
     echo "<script>(function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
@@ -592,10 +594,6 @@ if($GLOBALS['template_name'] == 'Facebook template') {
 
              FB.Event.subscribe('edge.create', function(response) {
                 window.location = 'http://$nasip:64873/login?username=$macaddress&password=$macaddress&dst=$url';
-            });
-
-            FB.Event.subscribe('auth.login', function(response) {
-                console.log(response);
             });
 
             FB.api('/me', function(response) {
