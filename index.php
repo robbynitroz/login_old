@@ -26,14 +26,26 @@ try {
 
 if (isset($accessToken)) {
     // Logged in!
-    var_dump('Logged IN'); exit;
     $_SESSION['facebook_access_token'] = (string) $accessToken;
+
+    $result = $fb->get('me/likes/830775716985965', $accessToken);
+
+    $res = $result->getGraphEdge()->asArray();
+
+    $pages = array();
+
+    foreach($res as $page){
+        $pages[] = $page['id'];
+    }
+
+    var_dump($pages);
 
     // Now you can redirect to another page and use the
     // access token from $_SESSION['facebook_access_token']
+} else {
+    var_dump('Logged Out');
 }
 
-var_dump('Logged Out'); exit;
 
 error_reporting(E_ERROR);
 
