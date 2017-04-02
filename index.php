@@ -569,8 +569,6 @@ mysql_close($link);
 
 <?php
 
-var_dump($_COOKIE['hello']);exit;
-
 if($GLOBALS['template_name'] == 'Facebook template') {
     echo "<script>(function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
