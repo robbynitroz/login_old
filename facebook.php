@@ -615,7 +615,7 @@
 </style>
 <?php
 
-var_dump($_SESSION); exit;
+var_dump($_SESSION);
 
 ?>
 <div class="login-big-wrapper">
