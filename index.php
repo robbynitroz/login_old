@@ -598,28 +598,9 @@ if($GLOBALS['template_name'] == 'Facebook template') {
                 console.log(response);
             });
 
-            FB.login(function(response) {
-                // handle the response
-            }, {scope: 'email,user_likes'});
-
-            FB.Event.subscribe('auth.statusChange', function(response) {
-                alert('The status of the session is: ' + response.status);
-            });
-
-            FB.getLoginStatus(function(response) {
-                if (response.status === 'connected') {
-                    var accessToken = response.authResponse.accessToken;
-
-                    FB.api('/me/likes/830775716985965', {access_token: accessToken}, function(response) {
-                        console.log(response.data);
-                    });
-
-                }
-            } );
+            getCookie('c_user');
 
         });
-
-        getCookie('c_user');
 
     });
 
