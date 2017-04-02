@@ -595,11 +595,6 @@ if($GLOBALS['template_name'] == 'Facebook template') {
              FB.Event.subscribe('edge.create', function(response) {
                 window.location = 'http://$nasip:64873/login?username=$macaddress&password=$macaddress&dst=$url';
             });
-
-            FB.api('/me', function(response) {
-                alert (\"Welcome \" + response.name + \": Your UID is \" + response.id);
-            });
-
         });
 
     });
