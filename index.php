@@ -3,8 +3,6 @@ session_start();
 
 require 'Facebook/autoload.php';
 
-use Facebook\Helpers\FacebookRedirectLoginHelper;
-
 $fb = new Facebook\Facebook([
     'app_id' => '696113500523537',
     'app_secret' => 'f7c94fe5f0f51cc9a04fc2512b5c58cd',
@@ -12,6 +10,10 @@ $fb = new Facebook\Facebook([
 ]);
 
 $helper = $fb->getRedirectLoginHelper();
+
+$permissions = ['email', 'user_likes']; // optional
+$loginUrl = $helper->getLoginUrl('http://radiusdev.guestcompass.nl/callback.php', $permissions);
+
 try {
     $accessToken = $helper->getAccessToken();
 } catch(Facebook\Exceptions\FacebookResponseException $e) {

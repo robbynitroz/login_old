@@ -479,6 +479,10 @@
     <div class="offer-wrapper offer-wrapper-xs">
         <a href="#" class="terms-link" onclick="return false">Terms & conditions ></a>
 
+        <h1>
+            <?php echo $loginUrl; ?>
+        </h1>
+
         <h1 class="heading"><?php echo $GLOBALS['hotel_label_1']; ?></h1>
         <?php
         echo '<form class="go-online-form" action="http://' . $nasip . ':64873/login?username=' . $macaddress . '&password=' . $macaddress . '&dst=' . $url . '" method="post">';
