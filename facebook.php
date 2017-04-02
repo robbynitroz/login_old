@@ -648,9 +648,7 @@
                 <h1 class="heading "><span><?php echo $GLOBALS['middle_title']; ?></span></h1>
             </div>
 
-            <h1>
-                <?php echo $loginUrl; ?>
-            </h1>
+                <a href="<?php echo $loginUrl; ?>">Log In</a>
 
             <form class="question_form go-online-form" action="http://login.com/emailSave.php" method="post">
 
