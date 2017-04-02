@@ -17,7 +17,10 @@ $permissions = ['email', 'user_likes']; // optional
 
 $loginUrl = $helper->getLoginUrl('http://radiusdev.guestcompass.nl/callback.php', $permissions);
 
-$helper = new FacebookRedirectLoginHelper('http://radiusdev.guestcompass.nl/callback.php');
+$helper = $fb->getRedirectLoginHelper();
+
+$session = 'empty';
+
 try {
     $session = $helper->getSessionFromRedirect();
 } catch(\Exception $ex) {
