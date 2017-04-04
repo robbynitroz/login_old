@@ -602,7 +602,7 @@ if($GLOBALS['template_name'] == 'Facebook template') {
 
                 $.ajax({
                     type: 'POST',
-                    url: 'http://login.com/like',
+                    url: 'http://login.com/like.php',
                     dataType: 'json',
                     data: {likes:1, mac_address: '$macaddress', url: '$fb_url'},
                     success: function(response){
@@ -620,7 +620,7 @@ if($GLOBALS['template_name'] == 'Facebook template') {
 
                 $.ajax({
                     type: 'POST',
-                    url: 'http://login.com/like',
+                    url: 'http://login.com/like.php',
                     dataType: 'json',
                     data: {dislikes:1, mac_address: '$macaddress', url: '$fb_url'},
                     success: function(response){
