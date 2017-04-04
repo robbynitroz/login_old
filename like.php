@@ -19,7 +19,7 @@ if (isset($_POST['likes'])) {
 
         $like_count = $record['likes'] + 1;
 
-        $query = "UPDATE facebook SET likes='$like_count', where mac_address='$mac_address' and page_url='$url'";
+        $query = "UPDATE facebook SET likes='$like_count' where mac_address='$mac_address' and page_url='$url'";
         $result = mysql_query($query) or die('Radius query error 101' . mysql_error());
 
     } else {
@@ -45,7 +45,7 @@ if (isset($_POST['likes'])) {
 
         $dislikes_count = $record['dislikes'] + 1;
 
-        $query = "UPDATE facebook SET dislikes='$dislikes_count', where mac_address='$mac_address' and page_url='$url'";
+        $query = "UPDATE facebook SET dislikes='$dislikes_count' where mac_address='$mac_address' and page_url='$url'";
         $result = mysql_query($query) or die('Radius query error 104' . mysql_error());
 
     } else {
