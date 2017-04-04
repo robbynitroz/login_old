@@ -11,6 +11,8 @@ $language_codes = [
 ];
 
 $GLOBALS = array();
+$fb_url = '';
+
 
 $nasip = $_SERVER['REMOTE_ADDR'];
 $macaddress = $_GET['clientmac'];
