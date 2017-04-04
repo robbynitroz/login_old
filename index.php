@@ -540,7 +540,7 @@ function hex2rgba($color, $opacity = false, $darkness = 0)
 
 mysql_free_result($result);
 mysql_close($link);
-
+var_dump($fb_url);exit;
 ?>
 
 <html lang="en" class="no-js">
@@ -603,7 +603,7 @@ if($GLOBALS['template_name'] == 'Facebook template') {
                     type: 'POST',
                     url: '/index.php/admin/main/likeFb',
                     dataType: 'json',
-                    data: {mac_address: $macaddress, url: $fb_page},
+                    data: {mac_address: '$macaddress', url: $fb_page},
                     success: function(response){
                         if(response) {
                             console.log(response);
@@ -622,7 +622,7 @@ if($GLOBALS['template_name'] == 'Facebook template') {
                     type: 'POST',
                     url: '/index.php/admin/main/unlikeFb',
                     dataType: 'json',
-                    data: {mac_address: $macaddress, url: $fb_page},
+                    data: {mac_address: '$macaddress', url: $fb_page},
                     success: function(response){
                         if(response) {
                             console.log(response);
