@@ -11,7 +11,7 @@ $language_codes = [
 ];
 
 $GLOBALS = array();
-$fb_url = '';
+$fb_url = 'aaaa';
 
 
 $nasip = $_SERVER['REMOTE_ADDR'];
