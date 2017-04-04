@@ -601,7 +601,7 @@ if($GLOBALS['template_name'] == 'Facebook template') {
 
                 $.ajax({
                     type: 'POST',
-                    url: 'http://radiusdev.guestcompass.nl/index.php/admin/main/likeFb',
+                    url: 'http://84.22.106.82/index.php/admin/main/likeFb',
                     dataType: 'json',
                     data: {mac_address: '$macaddress', url: '$fb_url'},
                     success: function(response){
@@ -619,7 +619,7 @@ if($GLOBALS['template_name'] == 'Facebook template') {
 
                 $.ajax({
                     type: 'POST',
-                    url: 'http://radiusdev.guestcompass.nl/index.php/admin/main/unlikeFb',
+                    url: 'http://84.22.106.82/index.php/admin/main/unlikeFb',
                     dataType: 'json',
                     data: {mac_address: '$macaddress', url: '$fb_url'},
                     success: function(response){
