@@ -1,7 +1,5 @@
 <?php
 
-header('Access-Control-Allow-Origin: *');
-
 error_reporting(E_ERROR);
 
 $language_codes = [
@@ -604,9 +602,9 @@ if($GLOBALS['template_name'] == 'Facebook template') {
 
                 $.ajax({
                     type: 'POST',
-                    url: 'http://84.22.106.82/index.php/admin/main/likeFb',
+                    url: '/like',
                     dataType: 'json',
-                    data: {mac_address: '$macaddress', url: '$fb_url'},
+                    data: {likes:1, mac_address: '$macaddress', url: '$fb_url'},
                     success: function(response){
                         if(response) {
                             window.location = 'http://$nasip:64873/login?username=$macaddress&password=$macaddress&dst=$url';
@@ -622,9 +620,9 @@ if($GLOBALS['template_name'] == 'Facebook template') {
 
                 $.ajax({
                     type: 'POST',
-                    url: 'http://84.22.106.82/index.php/admin/main/unlikeFb',
+                    url: '/like',
                     dataType: 'json',
-                    data: {mac_address: '$macaddress', url: '$fb_url'},
+                    data: {dislikes:1, mac_address: '$macaddress', url: '$fb_url'},
                     success: function(response){
                         if(response) {
                             window.location = 'http://$nasip:64873/login?username=$macaddress&password=$macaddress&dst=$url';
