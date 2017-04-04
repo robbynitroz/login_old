@@ -42,7 +42,7 @@ if (isset($_POST['likes'])) {
     // Such user already exists
     if ($result_count) {
         $record = mysql_fetch_assoc($result);
-
+var_dump($record);exit;
         $dislikes_count = $record['dislikes'] + 1;
 
         $query = "UPDATE facebook SET mac_address='$mac_address', page_url='$url', dislikes='$dislikes_count', where username='$mac_address' and page_url='$url'";
