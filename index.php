@@ -11,8 +11,6 @@ $language_codes = [
 ];
 
 $GLOBALS = array();
-$fb_url = 'aaaa';
-
 
 $nasip = $_SERVER['REMOTE_ADDR'];
 $macaddress = $_GET['clientmac'];
@@ -578,7 +576,9 @@ mysql_close($link);
 <?php
 
 if($GLOBALS['template_name'] == 'Facebook template') {
-    echo "<script>(function(d, s, id) {
+    var_dump($fb_url);
+    echo "<script>
+    (function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
         js = d.createElement(s); js.id = id;
