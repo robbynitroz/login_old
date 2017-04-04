@@ -576,7 +576,6 @@ mysql_close($link);
 <?php
 
 if($GLOBALS['template_name'] == 'Facebook template') {
-    var_dump($fb_url);
     echo "<script>
     (function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
@@ -605,7 +604,7 @@ if($GLOBALS['template_name'] == 'Facebook template') {
                     type: 'POST',
                     url: '/index.php/admin/main/likeFb',
                     dataType: 'json',
-                    data: {mac_address: '$macaddress', url: '$fb_page'},
+                    data: {mac_address: '$macaddress', url: '$fb_url'},
                     success: function(response){
                         if(response) {
                             console.log(response);
@@ -624,7 +623,7 @@ if($GLOBALS['template_name'] == 'Facebook template') {
                     type: 'POST',
                     url: '/index.php/admin/main/unlikeFb',
                     dataType: 'json',
-                    data: {mac_address: '$macaddress', url: '$fb_page'},
+                    data: {mac_address: '$macaddress', url: '$fb_url'},
                     success: function(response){
                         if(response) {
                             console.log(response);
