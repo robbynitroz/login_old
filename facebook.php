@@ -613,11 +613,7 @@
     }
 
 </style>
-<?php
 
-var_dump($_SESSION);
-
-?>
 <div class="login-big-wrapper">
     <div class="offer-wrapper offer-wrapper-xs">
         <a href="#" class="terms-link terms-link-xs" onclick="return false">Terms & conditions></a>
@@ -635,7 +631,7 @@ var_dump($_SESSION);
                 /*width: 100%;*/
                 opacity: 0;
                 margin: 0 auto;'
-                 class="fb-like" data-href="https://www.facebook.com/coderiders.am/?fref=ts"
+                 class="fb-like" data-href="<?php $fb_url; ?>"
                  data-width="400"
                  data-layout="button"
                  data-action="like"

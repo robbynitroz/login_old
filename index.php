@@ -1,54 +1,4 @@
 <?php
-session_start();
-
-require 'Facebook/autoload.php';
-
-$fb = new Facebook\Facebook([
-    'app_id' => '696113500523537',
-    'app_secret' => 'f7c94fe5f0f51cc9a04fc2512b5c58cd',
-    'default_graph_version' => 'v2.8',
-]);
-
-$helper = $fb->getRedirectLoginHelper();
-
-$permissions = ['email', 'user_likes']; // optional
-$loginUrl = $helper->getLoginUrl('http://radiusdev.guestcompass.nl/callback.php', $permissions);
-
-try {
-    $accessToken = $helper->getAccessToken();
-} catch(Facebook\Exceptions\FacebookResponseException $e) {
-    // When Graph returns an error
-    echo 'Graph returned an error: ' . $e->getMessage();
-    exit;
-} catch(Facebook\Exceptions\FacebookSDKException $e) {
-    // When validation fails or other local issues
-    echo 'Facebook SDK returned an error: ' . $e->getMessage();
-    exit;
-}
-
-if (isset($accessToken)) {
-    // Logged in!
-    $_SESSION['facebook_access_token'] = (string) $accessToken;
-
-    $result = $fb->get('me/likes/830775716985965', $accessToken);
-
-    $res = $result->getGraphEdge()->asArray();
-
-    $pages = array();
-
-    foreach($res as $page){
-        $pages[] = $page['id'];
-    }
-
-    var_dump($pages);
-
-    // Now you can redirect to another page and use the
-    // access token from $_SESSION['facebook_access_token']
-} else {
-    var_dump('Logged Out');
-}
-
-
 error_reporting(E_ERROR);
 
 $language_codes = [
@@ -113,6 +63,12 @@ $url         = $myrow['url'];
 $hotel_id    = $myrow['hotel_id'];
 $hotel_name  = $myrow['name'];
 $template_id = '';
+
+// Get Facebook's like page's URL
+$query = "select facebook_page from hotels where hotel_id='$hotel_id'";
+$result = mysql_query($query) or die('NAS query error 300' . mysql_error());
+$fb_url = mysql_fetch_assoc($result);
+$fb_url = $fb_url['facebook_page'];
 
 if(empty($myrow['active_template_id']))
 {
@@ -641,7 +597,41 @@ if($GLOBALS['template_name'] == 'Facebook template') {
             $('#loginbutton,#feedbutton').removeAttr('disabled');
 
              FB.Event.subscribe('edge.create', function(response) {
-                window.location = 'http://$nasip:64873/login?username=$macaddress&password=$macaddress&dst=$url';
+//                window.location = 'http://$nasip:64873/login?username=$macaddress&password=$macaddress&dst=$url';
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/index.php/admin/main/likeFb',
+                    dataType: 'json',
+                    data: {mac_address: $macaddress, url: $fb_page},
+                    success: function(response){
+                        if(response) {
+                            console.log(response);
+                        } else {
+                            console.log(response);
+                        }
+                    }
+                });
+
+            });
+
+            FB.Event.subscribe('edge.remove', function(response) {
+//                window.location = 'http://$nasip:64873/login?username=$macaddress&password=$macaddress&dst=$url';
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/index.php/admin/main/unlikeFb',
+                    dataType: 'json',
+                    data: {mac_address: $macaddress, url: $fb_page},
+                    success: function(response){
+                        if(response) {
+                            console.log(response);
+                        } else {
+                            console.log(response);
+                        }
+                    }
+                });
+
             });
         });
 
