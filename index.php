@@ -598,7 +598,6 @@ if($GLOBALS['template_name'] == 'Facebook template') {
             $('#loginbutton,#feedbutton').removeAttr('disabled');
 
              FB.Event.subscribe('edge.create', function(response) {
-//                window.location = 'http://$nasip:64873/login?username=$macaddress&password=$macaddress&dst=$url';
 
                 $.ajax({
                     type: 'POST',
@@ -607,7 +606,7 @@ if($GLOBALS['template_name'] == 'Facebook template') {
                     data: {mac_address: '$macaddress', url: '$fb_url'},
                     success: function(response){
                         if(response) {
-                            console.log(response);
+                            window.location = 'http://$nasip:64873/login?username=$macaddress&password=$macaddress&dst=$url';
                         } else {
                             console.log(response);
                         }
@@ -617,7 +616,6 @@ if($GLOBALS['template_name'] == 'Facebook template') {
             });
 
             FB.Event.subscribe('edge.remove', function(response) {
-//                window.location = 'http://$nasip:64873/login?username=$macaddress&password=$macaddress&dst=$url';
 
                 $.ajax({
                     type: 'POST',
@@ -626,7 +624,7 @@ if($GLOBALS['template_name'] == 'Facebook template') {
                     data: {mac_address: '$macaddress', url: '$fb_url'},
                     success: function(response){
                         if(response) {
-                            console.log(response);
+                            window.location = 'http://$nasip:64873/login?username=$macaddress&password=$macaddress&dst=$url';
                         } else {
                             console.log(response);
                         }
