@@ -1,8 +1,4 @@
 <?php
-
-$ipAddress=$_SERVER['REMOTE_ADDR'];
-
-var_dump($ipAddress); exit;
 error_reporting(E_ERROR);
 
 $language_codes = [
