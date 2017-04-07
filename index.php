@@ -14,7 +14,7 @@ $GLOBALS = array();
 
 $nasip = $_SERVER['REMOTE_ADDR'];
 $macaddress = $_GET['clientmac'];
-var_dump(mysql_real_escape_string($macaddress));exit;
+var_dump(mysqli_real_escape_string($macaddress));exit;
 include "UserAgentParser.php";
 $ua_info = parse_user_agent();
 $ua_info['platform'];
