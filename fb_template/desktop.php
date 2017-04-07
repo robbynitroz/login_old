@@ -13,6 +13,13 @@
 <link href="//fonts.googleapis.com/css?family=Old+Standard+TT:400,400i,700" rel="stylesheet">
 <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'><!--web font-->
 <!-- //web font -->
+
+<style>
+	body {
+		background: url("images/<?php echo $GLOBALS['hotel_bg_image']; ?>") no-repeat center center fixed;
+		background-color: <?php echo $GLOBALS['bg_color']; ?>;
+	}
+</style>
 </head>
 <body>
 
@@ -29,7 +36,7 @@
 			<div class="contact-wthree">
 				<a href="#"><p class="terms">terms & conditions ></p></a>
 				<form action="#" method="post">
-					<h1 class="heading">Go online with WiFi </h1>
+					<h1 class="heading"><?php echo $GLOBALS['title']; ?></h1>
 					<div class="form-w3step1">
 						<div class="social-wrap c">
 							<button class="facebook">Connect using Facebook</button>
@@ -37,16 +44,16 @@
 						</div>
 
 					</div>
-					<p class="subtitle fancy"><span>Or use your email</span></p>
+					<p class="subtitle fancy"><span><?php echo $GLOBALS['middle_title']; ?></span></p>
 					<div class="form-w3step1">
 
-						<input type="email" class="email agileits-btm" name="Email" placeholder="Your email address here">
+						<input type="email" class="email agileits-btm" name="Email" placeholder="<?php echo $GLOBALS['email_title']; ?>">
 						<button class="email agileits-btm butt"> > </button>
 					</div>
 
 					<div class="form-w3step1 logo-image">
 
-						<img src="images/logo.png">
+						<img src="images/<?php echo $GLOBALS['image']; ?>">
 					</div>
 
 
