@@ -541,6 +541,13 @@ function hex2rgba($color, $opacity = false, $darkness = 0)
 mysql_free_result($result);
 mysql_close($link);
 
+if ($GLOBALS['template_name'] == 'Facebook template') {
+
+    // Include and instantiate the class.
+    require_once 'lib/Mobile_Detect.php';
+    $detect = new Mobile_Detect;
+}
+
 ?>
 
 <html lang="en" class="no-js">
@@ -659,10 +666,6 @@ elseif ($GLOBALS['template_name'] == 'Email template'){
     include 'email.php';
 }
 elseif ($GLOBALS['template_name'] == 'Facebook template'){
-
-    // Include and instantiate the class.
-    require_once 'lib/Mobile_Detect.php';
-    $detect = new Mobile_Detect;
 
     // Any mobile device (phones or tablets).
     if ( $detect->isMobile() ) {
