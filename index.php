@@ -25,10 +25,13 @@ if ($macaddress == '') {
     exit;
 }
 
-$link = mysqli_connect('localhost', 'root', 'Zq4F3R607h1K', 'radius') or die('Connection failed ' . mysqli_error($link));
+$link = mysqli_connect('localhost', 'root', 'Zq4F3R607h1K', 'radius');
 
-//mysqli_select_db('radius') or die('DB selection failed');
-
+// Check connection
+if (mysqli_connect_errno()) {
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+}
+exit;
 $query = 'SELECT  COUNT(username)  FROM radcheck where username="' . $macaddress . '" and attribute="User-Password"';
 $result = mysql_query($query) or die('Radius query error ' . mysql_error());
 $myrow = mysql_fetch_array($result);
