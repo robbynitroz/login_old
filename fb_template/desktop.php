@@ -12,12 +12,7 @@
 <!--<link href="//fonts.googleapis.com/css?family=Old+Standard+TT:400,400i,700" rel="stylesheet">-->
 <!--<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>-->
 
-<style>
-	body {
-		background: url("images/<?php echo $GLOBALS['hotel_bg_image']; ?>") no-repeat center center fixed;
-		background-color: <?php echo $GLOBALS['bg_color']; ?>;
-	}
-</style>
+
 <!--</head>-->
 <!--<body>-->
 
