@@ -1,26 +1,18 @@
-<!--<!DOCTYPE html>-->
-<!--<html>-->
-<!--<head>-->
-<!--<title>Client Signup</title>-->
-<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
-<!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />-->
-<!--<meta name="keywords" content="Client Signup Form template Responsive, Login form web template,Flat Pricing tables,Flat Drop downs  Sign up Web Templates, Flat Web Templates, Login sign up Responsive web template, SmartPhone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />-->
-<!-- Custom Theme files -->
-<!--<link href="/css/fb/mob.css" rel="stylesheet" type="text/css" media="all" />-->
-<!-- //Custom Theme files -->
-<!-- web font -->
-<!-- //web font -->
-<!--</head>-->
-<!--<body>-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><?=$hotel_name?></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="keywords" content="Client Signup Form template Responsive, Login form web template,Flat Pricing tables,Flat Drop downs  Sign up Web Templates, Flat Web Templates, Login sign up Responsive web template, SmartPhone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+		 Custom Theme files
+		<link href="/css/fb/mob.css" rel="stylesheet" type="text/css" media="all" />
+
+	</head>
+<body>
 
 <!--FB SDK-->
-
-
-
-
 	<!-- main -->
-
-
 <style>
 	body {
 		background: url("images/<?php echo $GLOBALS['hotel_bg_image']; ?>") no-repeat center center fixed;
@@ -60,5 +52,5 @@
 
 	<!-- //main -->
 
-<!--</body>-->
-<!--</html>-->
+</body>
+</html>
