@@ -39,7 +39,7 @@ h1 {
 
 @font-face {
     font-family: NeoSansPro;
-    src: url(Neo-Sans-Pro-Bold.ttf);
+    src: url(../fonts/Neo-Sans-Pro-Bold.ttf);
 }
 
 .main {
