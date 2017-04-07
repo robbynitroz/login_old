@@ -561,12 +561,19 @@ mysql_close($link);
     <script src="js/jquery.min.js"></script>
     <script src="js/script.js"></script>
 
-    <!-- You can use open graph tags to customize link previews.
-    Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
-    <meta property="og:url"           content="http://login.com/index.php" />
-    <meta property="og:type"          content="website" />
-    <meta property="og:title"         content="Your Website Title" />
-    <meta property="og:description"   content="Your description" />
+    <?php
+        if($GLOBALS['template_name'] == 'Facebook template') {
+            // Any mobile device (phones or tablets).
+            if ( $detect->isMobile() || $detect->isTablet()) {
+                echo '<link href="/css/fb/mob.css" rel="stylesheet" type="text/css" media="all" />';
+            }
+
+            // Exclude tablets.
+            if( !$detect->isMobile() && !$detect->isTablet() ){
+                echo '<link href="/css/fb/style.css" rel="stylesheet" type="text/css" media="all" />';
+            }
+        }
+    ?>
 
 </head>
 
@@ -575,7 +582,7 @@ mysql_close($link);
 
 <?php
 
-if($GLOBALS['template_name'] == 'FFacebook template') {
+if($GLOBALS['template_name'] == 'Facebook template') {
     echo "<script>
     (function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
