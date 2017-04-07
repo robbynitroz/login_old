@@ -407,7 +407,7 @@ div.social-wrap.c {
 }
 
 div.social-wrap.c > .facebook {
-    background: url(../images/fb.png), -webkit-gradient(linear, left top, left bottom, color-stop(0%, #4c74c4), color-stop(100%, #3b5998));
+    background: url(../images/fb_icon.png), -webkit-gradient(linear, left top, left bottom, color-stop(0%, #4c74c4), color-stop(100%, #3b5998));
     background-size: 25px 25px, cover;
     background-position: 10px center, center center;
     background-repeat: no-repeat, repeat;
