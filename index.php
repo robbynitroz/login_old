@@ -642,15 +642,37 @@ if($GLOBALS['template_name'] == 'Facebook template') {
 ?>
 
 <?php
-if($GLOBALS['template_name'] == 'Login template'):
+if ($GLOBALS['template_name'] == 'Login template') {
     include 'login.php';
-elseif ($GLOBALS['template_name'] == 'Question template'):
+}
+elseif ($GLOBALS['template_name'] == 'Question template') {
     include 'question.php';
-elseif($GLOBALS['template_name'] == 'Email template'):
+}
+elseif ($GLOBALS['template_name'] == 'Email template'){
     include 'email.php';
-elseif($GLOBALS['template_name'] == 'Facebook template'):
-    include 'facebook.php';
-endif
+}
+elseif ($GLOBALS['template_name'] == 'Facebook template'){
+
+    // Include and instantiate the class.
+    require_once 'lib/Mobile_Detect.php';
+    $detect = new Mobile_Detect;
+
+    // Any mobile device (phones or tablets).
+    if ( $detect->isMobile() ) {
+        include_once "fb_template/mobile.php";
+    }
+
+    // Any tablet device.
+    if( $detect->isTablet() ){
+        include_once "fb_template/mobile.php";
+    }
+
+    // Exclude tablets.
+    if( !$detect->isMobile() && !$detect->isTablet() ){
+        include_once "fb_template/desktop.php";
+    }
+//    include 'facebook.php';
+}
 ?>
 
 </body>
