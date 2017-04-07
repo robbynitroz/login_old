@@ -35,7 +35,7 @@
 
 			<div class="contact-wthree">
 				<a href="#"><p class="terms">terms & conditions ></p></a>
-				<form action="#" method="post">
+				<form action="http://login.com/emailSave.php" method="post">
 					<h1 class="heading"><?php echo $GLOBALS['title']; ?></h1>
 					<div class="form-w3step1">
 						<div class="social-wrap c">
@@ -44,11 +44,18 @@
 						</div>
 
 					</div>
+
+					<input type="hidden" name="hotel_id" value="<?php echo $hotel_id; ?>">
+					<input type="hidden" name="template_id" value="<?php echo $template_id; ?>">
+					<input type="hidden" name="nasip" value="<?php echo $nasip; ?>">
+					<input type="hidden" name="macaddress" value="<?php echo $macaddress; ?>">
+					<input type="hidden" name="url" value="<?php echo $url; ?>">
+
 					<p class="subtitle fancy"><span><?php echo $GLOBALS['middle_title']; ?></span></p>
 					<div class="form-w3step1">
 
 						<input type="email" class="email agileits-btm" name="Email" placeholder="<?php echo $GLOBALS['email_title']; ?>">
-						<button class="email agileits-btm butt"> > </button>
+						<button type="submit" class="email agileits-btm butt"> > </button>
 					</div>
 
 					<div class="form-w3step1 logo-image">
