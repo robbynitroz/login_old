@@ -8,7 +8,7 @@ $hotel_id    = $_POST['hotel_id'];
 $router_ip   = $_POST['router_ip'];
 $macaddress  = $_POST['macaddress'];
 $template_id = $_POST['template_id'];
-$email       = $_POST['email'];
+$email       = mysql_real_escape_string($_POST['email']);
 
 $nasip       = $_POST['nasip']; //router ip
 $url         = $_POST['url'];

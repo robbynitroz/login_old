@@ -13,7 +13,7 @@ $language_codes = [
 $GLOBALS = array();
 
 $nasip = $_SERVER['REMOTE_ADDR'];
-$macaddress = $_GET['clientmac'];
+$macaddress = mysql_real_escape_string($_GET['clientmac']);
 include "UserAgentParser.php";
 $ua_info = parse_user_agent();
 $ua_info['platform'];
@@ -560,7 +560,7 @@ if ($GLOBALS['template_name'] == 'Facebook template'){
     if( !$detect->isMobile() && !$detect->isTablet() ){
         include_once "fb_template/desktop.php";
     }
-//    include 'facebook.php';
+
 } else {
     include_once "index2.php";
 }
