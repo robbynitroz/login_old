@@ -557,15 +557,11 @@ if ($GLOBALS['template_name'] == 'Facebook template') {
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title><?=$hotel_name?></title>
 
-    <meta name="description" content="description"/>
-    <meta name="keywords" content=""/>
-    <meta name="author" content=""/>
-
     <!--    <script src="js/modernizr-latest.js"></script>-->
     <!--    <script src="js/html5shiv.min.js"></script>-->
 
-    <script src="js/jquery.min.js"></script>
-    <script src="js/script.js"></script>
+<!--    <script src="js/jquery.min.js"></script>-->
+<!--    <script src="js/script.js"></script>-->
 
     <?php
         if($GLOBALS['template_name'] == 'Facebook template') {
@@ -595,7 +591,7 @@ if ($GLOBALS['template_name'] == 'Facebook template') {
 
 <?php
 
-if($GLOBALS['template_name'] == 'Facebook template') {
+if($GLOBALS['template_name'] == 'FFacebook template') {
     echo "<script>
     (function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
