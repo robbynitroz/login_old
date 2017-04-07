@@ -546,6 +546,132 @@ if ($GLOBALS['template_name'] == 'Facebook template') {
     // Include and instantiate the class.
     require_once 'lib/Mobile_Detect.php';
     $detect = new Mobile_Detect;
+}
+
+?>
+
+<html lang="en" class="no-js">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title><?=$hotel_name?></title>
+
+    <meta name="description" content="description"/>
+    <meta name="keywords" content=""/>
+    <meta name="author" content=""/>
+
+    <!--    <script src="js/modernizr-latest.js"></script>-->
+    <!--    <script src="js/html5shiv.min.js"></script>-->
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/script.js"></script>
+
+    <?php
+        if($GLOBALS['template_name'] == 'Facebook template') {
+            // Any mobile device (phones or tablets).
+            if ( $detect->isMobile() || $detect->isTablet()) {
+                echo '<link href="/css/fb/mob.css" rel="stylesheet" type="text/css" media="all" />';
+            }
+
+            // Exclude tablets.
+            if( !$detect->isMobile() && !$detect->isTablet() ){
+                echo '<link href="/css/fb/style.css" rel="stylesheet" type="text/css" media="all" />';
+            }
+        }
+    ?>
+
+    <style>
+        body {
+            background: url("images/<?php echo $GLOBALS['hotel_bg_image']; ?>") no-repeat center center fixed;
+            background-color: <?php echo $GLOBALS['bg_color']; ?>;
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+<?php
+
+if($GLOBALS['template_name'] == 'Facebook template') {
+    echo "<script>
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = '//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=696113500523537';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    $(document).ready(function() {
+
+        $.ajaxSetup({ cache: true });
+        $.getScript('//connect.facebook.net/en_US/sdk.js', function(){
+            FB.init({
+                appId: '696113500523537',
+                status: true, // check login status
+                oauth: true,
+                version: 'v2.8' // or v2.1, v2.2, v2.3, ...
+            });
+            $('#loginbutton,#feedbutton').removeAttr('disabled');
+
+             FB.Event.subscribe('edge.create', function(response) {
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://login.com/like.php',
+                    dataType: 'json',
+                    data: {likes:1, mac_address: '$macaddress', url: '$fb_url'},
+                    success: function(response){
+                        if(response) {
+                            window.location = 'http://$nasip:64873/login?username=$macaddress&password=$macaddress&dst=$url';
+                        } else {
+                            console.log(response);
+                        }
+                    }
+                });
+
+            });
+
+            FB.Event.subscribe('edge.remove', function(response) {
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://login.com/like.php',
+                    dataType: 'json',
+                    data: {dislikes:1, mac_address: '$macaddress', url: '$fb_url'},
+                    success: function(response){
+                        if(response) {
+                            window.location = 'http://$nasip:64873/login?username=$macaddress&password=$macaddress&dst=$url';
+                        } else {
+                            console.log(response);
+                        }
+                    }
+                });
+
+            });
+        });
+
+    });
+
+</script>";
+}
+
+?>
+
+<?php
+if ($GLOBALS['template_name'] == 'Login template') {
+    include 'login.php';
+}
+elseif ($GLOBALS['template_name'] == 'Question template') {
+    include 'question.php';
+}
+elseif ($GLOBALS['template_name'] == 'Email template'){
+    include 'email.php';
+}
+elseif ($GLOBALS['template_name'] == 'Facebook template'){
 
     // Any mobile device (phones or tablets).
     if ( $detect->isMobile() || $detect->isTablet() ) {
@@ -556,140 +682,10 @@ if ($GLOBALS['template_name'] == 'Facebook template') {
     if( !$detect->isMobile() && !$detect->isTablet() ){
         include_once "fb_template/desktop.php";
     }
+//    include 'facebook.php';
 }
-
 ?>
 
-<!--<html lang="en" class="no-js">-->
-<!---->
-<!--<head>-->
-<!--    <meta charset="UTF-8"/>-->
-<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-<!--    <title>--><?//=$hotel_name?><!--</title>-->
-<!---->
-<!--    <meta name="description" content="description"/>-->
-<!--    <meta name="keywords" content=""/>-->
-<!--    <meta name="author" content=""/>-->
-<!---->
-<!--    <!--    <script src="js/modernizr-latest.js"></script>-->-->
-<!--    <!--    <script src="js/html5shiv.min.js"></script>-->-->
-<!---->
-<!--    <script src="js/jquery.min.js"></script>-->
-<!--    <script src="js/script.js"></script>-->
-<!---->
-<!--    --><?php
-//        if($GLOBALS['template_name'] == 'Facebook template') {
-//            // Any mobile device (phones or tablets).
-//            if ( $detect->isMobile() || $detect->isTablet()) {
-//                echo '<link href="/css/fb/mob.css" rel="stylesheet" type="text/css" media="all" />';
-//            }
-//
-//            // Exclude tablets.
-//            if( !$detect->isMobile() && !$detect->isTablet() ){
-//                echo '<link href="/css/fb/style.css" rel="stylesheet" type="text/css" media="all" />';
-//            }
-//        }
-//    ?>
-<!---->
-<!--</head>-->
-<!---->
-<!---->
-<!--<body>-->
-<!---->
-<?php
-//
-//if($GLOBALS['template_name'] == 'Facebook template') {
-//    echo "<script>
-//    (function(d, s, id) {
-//        var js, fjs = d.getElementsByTagName(s)[0];
-//        if (d.getElementById(id)) return;
-//        js = d.createElement(s); js.id = id;
-//        js.src = '//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=696113500523537';
-//        fjs.parentNode.insertBefore(js, fjs);
-//    }(document, 'script', 'facebook-jssdk'));
-//
-//    $(document).ready(function() {
-//
-//        $.ajaxSetup({ cache: true });
-//        $.getScript('//connect.facebook.net/en_US/sdk.js', function(){
-//            FB.init({
-//                appId: '696113500523537',
-//                status: true, // check login status
-//                oauth: true,
-//                version: 'v2.8' // or v2.1, v2.2, v2.3, ...
-//            });
-//            $('#loginbutton,#feedbutton').removeAttr('disabled');
-//
-//             FB.Event.subscribe('edge.create', function(response) {
-//
-//                $.ajax({
-//                    type: 'POST',
-//                    url: 'http://login.com/like.php',
-//                    dataType: 'json',
-//                    data: {likes:1, mac_address: '$macaddress', url: '$fb_url'},
-//                    success: function(response){
-//                        if(response) {
-//                            window.location = 'http://$nasip:64873/login?username=$macaddress&password=$macaddress&dst=$url';
-//                        } else {
-//                            console.log(response);
-//                        }
-//                    }
-//                });
-//
-//            });
-//
-//            FB.Event.subscribe('edge.remove', function(response) {
-//
-//                $.ajax({
-//                    type: 'POST',
-//                    url: 'http://login.com/like.php',
-//                    dataType: 'json',
-//                    data: {dislikes:1, mac_address: '$macaddress', url: '$fb_url'},
-//                    success: function(response){
-//                        if(response) {
-//                            window.location = 'http://$nasip:64873/login?username=$macaddress&password=$macaddress&dst=$url';
-//                        } else {
-//                            console.log(response);
-//                        }
-//                    }
-//                });
-//
-//            });
-//        });
-//
-//    });
-//
-//</script>";
-//}
-//
-//?>
-<!---->
-<?php
-//if ($GLOBALS['template_name'] == 'Login template') {
-//    include 'login.php';
-//}
-//elseif ($GLOBALS['template_name'] == 'Question template') {
-//    include 'question.php';
-//}
-//elseif ($GLOBALS['template_name'] == 'Email template'){
-//    include 'email.php';
-//}
-//elseif ($GLOBALS['template_name'] == 'Facebook template'){
-//
-//    // Any mobile device (phones or tablets).
-//    if ( $detect->isMobile() || $detect->isTablet() ) {
-//        include_once "fb_template/mobile.php";
-//    }
-//
-//    // Exclude tablets.
-//    if( !$detect->isMobile() && !$detect->isTablet() ){
-//        include_once "fb_template/desktop.php";
-//    }
-////    include 'facebook.php';
-//}
-//?>
-<!---->
-<!--</body>-->
-<!---->
-<!--</html>-->
+</body>
+
+</html>
