@@ -7,6 +7,9 @@
 		<meta name="keywords" content="Client Signup Form template Responsive, Login form web template,Flat Pricing tables,Flat Drop downs  Sign up Web Templates, Flat Web Templates, Login sign up Responsive web template, SmartPhone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 		<link href="/css/fb/mob.css" rel="stylesheet" type="text/css" media="all" />
 
+		<script src="../js/jquery.min.js"></script>
+		<script src="../js/script.js"></script>
+
 		<script>
 			(function(d, s, id) {
 				var js, fjs = d.getElementsByTagName(s)[0];
