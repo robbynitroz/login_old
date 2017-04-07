@@ -575,7 +575,7 @@ mysql_close($link);
 
 <?php
 
-if($GLOBALS['template_name'] == 'Facebook template') {
+if($GLOBALS['template_name'] == 'FFacebook template') {
     echo "<script>
     (function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
