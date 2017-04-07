@@ -104,7 +104,7 @@
 		</form>
 			<div class="form-w3step1 logo-image">
 
-				<img src="images/logo.png">
+				<img src="images/<?php echo $GLOBALS['image']; ?>">
 			</div>
 
 
