@@ -13,7 +13,7 @@ $language_codes = [
 $GLOBALS = array();
 
 $nasip = $_SERVER['REMOTE_ADDR'];
-$macaddress = mysql_real_escape_string($_GET['clientmac']);
+$macaddress = ($_GET['clientmac']);
 include "UserAgentParser.php";
 $ua_info = parse_user_agent();
 $ua_info['platform'];
