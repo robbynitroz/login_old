@@ -21,7 +21,12 @@
 	<!-- main -->
 
 
-
+<style>
+	body {
+		background: url("images/<?php echo $GLOBALS['hotel_bg_image']; ?>") no-repeat center center fixed;
+		background-color: <?php echo $GLOBALS['bg_color']; ?>;
+	}
+</style>
 
 			<div class="contact-wthree">
 				<a href="#"><p class="terms">terms & conditions ></p></a>
