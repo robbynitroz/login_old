@@ -10,8 +10,8 @@
 <link href="/css/fb/style.css" rel="stylesheet" type="text/css" media="all" />
 <!-- //Custom Theme files -->
 <!-- web font -->
-<link href="//fonts.googleapis.com/css?family=Old+Standard+TT:400,400i,700" rel="stylesheet">
-<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'><!--web font-->
+<!--<link href="//fonts.googleapis.com/css?family=Old+Standard+TT:400,400i,700" rel="stylesheet">-->
+<!--<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'><!--web font-->-->
 <!-- //web font -->
 
 <style>
