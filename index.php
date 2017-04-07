@@ -14,7 +14,6 @@ $GLOBALS = array();
 
 $nasip = $_SERVER['REMOTE_ADDR'];
 $macaddress = $_GET['clientmac'];
-var_dump(mysqli_real_escape_string($macaddress));exit;
 include "UserAgentParser.php";
 $ua_info = parse_user_agent();
 $ua_info['platform'];
@@ -26,9 +25,9 @@ if ($macaddress == '') {
     exit;
 }
 
-$link = mysql_connect('localhost', 'root', 'Zq4F3R607h1K') or die('Connection failed ' . mysql_error());
+$link = mysqli_connect('localhost', 'root', 'Zq4F3R607h1K') or die('Connection failed ' . mysqli_error());
 
-mysql_select_db('radius') or die('DB selection failed');
+mysqli_select_db('radius') or die('DB selection failed');
 
 $query = 'SELECT  COUNT(username)  FROM radcheck where username="' . $macaddress . '" and attribute="User-Password"';
 $result = mysql_query($query) or die('Radius query error ' . mysql_error());
