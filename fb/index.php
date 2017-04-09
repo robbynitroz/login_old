@@ -5,8 +5,8 @@ session_start();
 
 require_once '../Facebook/autoload.php';
 $fb = new Facebook\Facebook([
-    'app_id' => '799204046894241',
-    'app_secret' => '2ee35382ac8d4599226edf942dbaba75',
+    'app_id' => '696113500523537',
+    'app_secret' => 'f7c94fe5f0f51cc9a04fc2512b5c58cd',
     'default_graph_version' => 'v2.8',
 ]);
 
@@ -63,7 +63,7 @@ if (isset($accessToken)) {
     }
     // get list of pages liked by user
     try {
-        $requestLikes = $fb->get('/100010109286670/likes');
+        $requestLikes = $fb->get('/me/likes/423646974653399');
         $likes = $requestLikes->getGraphEdge();
     } catch (Facebook\Exceptions\FacebookResponseException $e) {
         // When Graph returns an error
