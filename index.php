@@ -64,6 +64,11 @@ $hotel_id    = $myrow['hotel_id'];
 $hotel_name  = $myrow['name'];
 $template_id = '';
 
+// Add to session
+$_SESSION['nasip']      = $nasip;
+$_SESSION['macaddress'] = $macaddress;
+$_SESSION['url']        = $url;
+
 // Get Facebook's like page's URL
 $query = "select facebook_page from hotels where id='$hotel_id'";
 $result = mysql_query($query) or die('NAS query error 300' . mysql_error());

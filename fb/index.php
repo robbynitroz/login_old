@@ -88,10 +88,9 @@ if (isset($accessToken)) {
     }
     // printing data on screen
 
-
-    $nasip      = $_GET['nasip'];
-    $macaddress = $_GET['macaddress'];
-    $url        = $_GET['url'];
+    $nasip      = isset($_SESSION['nasip'])? $_SESSION['nasip'] : null;
+    $macaddress = isset($_SESSION['macaddress']) ? $_SESSION['macaddress'] : null;
+    $url        = isset($_SESSION['url']) ? $_SESSION['url'] : null;
 
     if($totalLikes & !empty($totalLikes)){
 
