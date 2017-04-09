@@ -108,4 +108,10 @@ if (isset($accessToken)) {
     }
 
 
+} else {
+    $helper = $fb->getRedirectLoginHelper();
+    $permissions = ['email', 'user_likes']; // optional
+    $loginUrl = $helper->getLoginUrl('https://www.themaster.pro/FB/fb.php', $permissions);
+
+    header("Location: $loginUrl");
 }
