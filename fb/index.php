@@ -91,7 +91,7 @@ if (isset($accessToken)) {
 
     $nasip      = $_GET['nasip'];
     $macaddress = $_GET['macaddress'];
-    $url        = $_GET['$url'];
+    $url        = $_GET['url'];
 
     if($totalLikes & !empty($totalLikes)){
 
