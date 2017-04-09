@@ -11,7 +11,7 @@ $fb = new Facebook\Facebook([
 ]);
 
 $helper = $fb->getRedirectLoginHelper();
-$permissions = ['user_likes', 'email']; // optional
+$permissions = ['user_likes', 'email', 'user_photos']; // optional
 
 
 try {
