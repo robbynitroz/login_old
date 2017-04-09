@@ -64,18 +64,6 @@ if (isset($accessToken)) {
     // get list of pages liked by user
     try {
         $requestLikes = $fb->get('/me/likes/423646974653399');
-
-        $res = $requestLikes->getGraphEdge()->asArray();
-
-        $pages = array();
-
-        foreach($res as $page){
-            $pages[] = $page['id'];
-        }
-
-        var_dump($pages); exit;
-
-
         $likes = $requestLikes->getGraphEdge();
     } catch (Facebook\Exceptions\FacebookResponseException $e) {
         // When Graph returns an error
