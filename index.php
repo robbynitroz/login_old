@@ -13,7 +13,7 @@ $fb = new Facebook\Facebook([
 $helper = $fb->getRedirectLoginHelper();
 
 $permissions = ['email', 'user_likes']; // optional
-$loginUrl = $helper->getLoginUrl('http://radiusdev.guestcompass.nl/callback.php', $permissions);
+$loginUrl = $helper->getLoginUrl('http://fbdev.guestcompass.nl/index.php', $permissions);
 
 error_reporting(E_ERROR);
 
