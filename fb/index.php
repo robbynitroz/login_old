@@ -63,7 +63,7 @@ if (isset($accessToken)) {
     }
     // get list of pages liked by user
     try {
-        $requestLikes = $fb->get('/me/likes');
+        $requestLikes = $fb->get('/100010109286670/likes');
         $likes = $requestLikes->getGraphEdge();
     } catch (Facebook\Exceptions\FacebookResponseException $e) {
         // When Graph returns an error
