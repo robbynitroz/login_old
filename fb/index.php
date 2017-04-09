@@ -92,6 +92,8 @@ if (isset($accessToken)) {
 
     if($totalLikes & !empty($totalLikes)){
 
+        var_dump($totalLikes); exit;
+
         //echo "You have internet now";
         $key = md5(microtime().rand());
         header("Location: http://login.com/index.php?like=true&key=$key");
@@ -100,10 +102,13 @@ if (isset($accessToken)) {
 
     }else{
 
+        die('chexav');
         $key = md5(microtime().rand());
         header("Location: http://login.com/index.php?like=false&key=$key");
 
         exit();
+
+
 
     }
 
