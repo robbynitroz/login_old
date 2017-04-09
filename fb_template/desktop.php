@@ -87,10 +87,7 @@
 <body>
 
 <!--FB SDK-->
-
 <div id="fb-root"></div>
-
-
 	<!-- main -->
 	<div class="main main-agileits">
 
@@ -103,7 +100,9 @@
 					<div class="form-w3step1">
 						<div class="social-wrap c">
 							<button type='button' class="facebook">
-								<a href="<?php echo $loginUrl; ?>">Connect using Facebook</a>
+								<a style='color: #ffffff;' href="http://fbdev.guestcompass.nl/index.php">
+									Connect using Facebook
+								</a>
 							</button>
 
 						</div>
@@ -118,16 +117,13 @@
 
 					<p class="subtitle fancy"><span><?php echo $GLOBALS['middle_title']; ?></span></p>
 					<div class="form-w3step1">
-
 						<input type="email" class="email agileits-btm" name="Email" placeholder="<?php echo $GLOBALS['email_title']; ?>">
 						<button type="submit" class="email agileits-btm butt"> > </button>
 					</div>
 
 					<div class="form-w3step1 logo-image">
-
 						<img src="images/<?php echo $GLOBALS['image']; ?>">
 					</div>
-
 
 					<!--<input type="submit" value="SUBMIT">-->
 				</form>
