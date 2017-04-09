@@ -102,7 +102,7 @@
 					<h1 class="heading"><?php echo $GLOBALS['title']; ?></h1>
 					<div class="form-w3step1">
 						<div class="social-wrap c">
-							<button class="facebook">Connect using Facebook
+							<button type='button' class="facebook">Connect using Facebook
 								<a href="<?php echo $loginUrl; ?>"></a>
 							</button>
 
