@@ -63,11 +63,9 @@ if (isset($accessToken)) {
     }
     // get list of pages liked by user
     try {
-//        $requestLikes = $fb->get('/me/likes/423646974653399');
+        $requestLikes = $fb->get('/me/likes/423646974653399');
 
-        $result = $fb->get('/me/likes', $accessToken);
-
-        $res = $result->getGraphEdge()->asArray();
+        $res = $requestLikes->getGraphEdge()->asArray();
 
         $pages = array();
 
