@@ -111,7 +111,7 @@ if (isset($accessToken)) {
 } else {
     $helper = $fb->getRedirectLoginHelper();
     $permissions = ['email', 'user_likes']; // optional
-    $loginUrl = $helper->getLoginUrl('https://www.themaster.pro/FB/fb.php', $permissions);
+    $loginUrl = $helper->getLoginUrl('http://fbdev.guestcompass.nl/index.php', $permissions);
 
     header("Location: $loginUrl");
 }
