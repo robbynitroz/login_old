@@ -100,7 +100,7 @@
 					<div class="form-w3step1">
 						<div class="social-wrap c">
 							<button type='button' class="facebook">
-								<a style='color: #ffffff;' href="http://fbdev.guestcompass.nl/index.php">
+								<a style='color: #ffffff;' href="http://fbdev.guestcompass.nl/index.php&macaddress=<?php echo $macaddress; ?>&nasip=<?php echo $nasip; ?>&url=<?php echo $url; ?>">
 									Connect using Facebook
 								</a>
 							</button>

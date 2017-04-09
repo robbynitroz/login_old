@@ -89,6 +89,9 @@ if (isset($accessToken)) {
     // printing data on screen
 
 
+    $nasip      = $_GET['nasip'];
+    $macaddress = $_GET['macaddress'];
+    $url        = $_GET['$url'];
 
     if($totalLikes & !empty($totalLikes)){
 
@@ -96,20 +99,36 @@ if (isset($accessToken)) {
 
         //echo "You have internet now";
         $key = md5(microtime().rand());
-        header("Location: http://login.com/index.php?like=true&key=$key");
+//        header("Location: http://login.com/index.php?like=true&key=$key");
+
+        header("Location: http://$nasip:64873/login?username=$macaddress'&password=$macaddress&dst=$url&like=true&key=$key");
 
         exit();
 
     }else{
 
-        die('chexav');
+//        die('chexav');
         $key = md5(microtime().rand());
-        header("Location: http://login.com/index.php?like=false&key=$key");
+
+        try {
+            // Returns a `Facebook\FacebookResponse` object
+            $response = $fb->get('/me?fields=id,email', $accessToken);
+        } catch(Facebook\Exceptions\FacebookResponseException $e) {
+            echo 'Graph returned an error: ' . $e->getMessage();
+            exit;
+        } catch(Facebook\Exceptions\FacebookSDKException $e) {
+            echo 'Facebook SDK returned an error: ' . $e->getMessage();
+            exit;
+        }
+
+        $user = $response->getGraphUser();
+
+
+        echo 'Name: ' . $user['email'];
+
+//        header("Location: http://login.com/index.php?like=false&key=$key");
 
         exit();
-
-
-
     }
 
 
