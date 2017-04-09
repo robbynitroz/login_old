@@ -5,9 +5,9 @@ session_start();
 
 require_once '../Facebook/autoload.php';
 $fb = new Facebook\Facebook([
-    'app_id' => '696113500523537',
-    'app_secret' => 'f7c94fe5f0f51cc9a04fc2512b5c58cd',
-    'default_graph_version' => 'v2.5',
+    'app_id' => '664241677092927',
+    'app_secret' => '126a257c2ee5a593e82a1ba2d9f5eb2a',
+    'default_graph_version' => 'v2.8',
 ]);
 
 $helper = $fb->getRedirectLoginHelper();
