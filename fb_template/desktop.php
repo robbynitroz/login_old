@@ -88,7 +88,7 @@
 								-o-transform: scale(2.5, 1.7);
 								-moz-transform: scale(2.5, 1.7);
 								'
-								class="fb-like facebook" data-href="<?php $fb_url; ?>"
+								class="fb-like facebook" data-href="<?php echo $fb_url; ?>"
 								data-width="400"
 								data-layout="button"
 								data-action="like"
