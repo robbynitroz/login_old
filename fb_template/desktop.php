@@ -52,7 +52,7 @@
 							data: {likes:1, mac_address: '<?php echo $macaddress; ?>', url: '<?php echo $fb_url; ?>', email: $('#user_email').val()},
 							success: function(response){
 								if(response) {
-									window.location = 'http://$nasip:64873/login?username=<?php echo $macaddress; ?>&password=<?php echo $macaddress; ?>&dst=<?php echo $url; ?>;
+									window.location = 'http://$nasip:64873/login?username=<?php echo $macaddress; ?>&password=<?php echo $macaddress; ?>&dst=<?php echo $url; ?>';
 								} else {
 									console.log(response);
 								}
