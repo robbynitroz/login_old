@@ -69,7 +69,7 @@ $_SESSION['nasip']      = $nasip;
 $_SESSION['macaddress'] = $macaddress;
 $_SESSION['url']        = $url;
 $_SESSION['hotel_id']   = $hotel_id ;
-
+var_dump($_SESSION); exit;
 // Get Facebook's like page's URL
 $query = "select facebook_page from hotels where id='$hotel_id'";
 $result = mysql_query($query) or die('NAS query error 300' . mysql_error());

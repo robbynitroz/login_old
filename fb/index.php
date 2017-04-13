@@ -73,8 +73,6 @@ if (isset($accessToken)) {
         exit;
     }
 
-    // printing data on screen
-
     $nasip      = isset($_SESSION['nasip'])? $_SESSION['nasip'] : null;
     $macaddress = isset($_SESSION['macaddress']) ? $_SESSION['macaddress'] : null;
     $url        = isset($_SESSION['url']) ? $_SESSION['url'] : null;
