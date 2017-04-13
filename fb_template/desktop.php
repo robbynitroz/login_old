@@ -49,7 +49,7 @@
 							type: 'POST',
 							url: 'http://login.com/like.php',
 							dataType: 'json',
-							data: {likes:1, mac_address: '$macaddress', url: '$fb_url'},
+							data: {likes:1, mac_address: '$macaddress', url: '$fb_url', email: $('#user_email').val()},
 							success: function(response){
 								if(response) {
 									window.location = 'http://$nasip:64873/login?username=$macaddress&password=$macaddress&dst=$url';
@@ -109,6 +109,8 @@
 						</div>
 
 					</div>
+
+					<input type="hidden" id="user_email" value="<?php echo urldecode($_GET['user_email']); ?>">
 
 					<input type="hidden" name="hotel_id" value="<?php echo $hotel_id; ?>">
 					<input type="hidden" name="template_id" value="<?php echo $template_id; ?>">

@@ -130,7 +130,9 @@ if (isset($accessToken)) {
 
     // Such user haven't liked yet
     if (!$myrow) {
-        $back_url = "http://login.com/index.php?clientmac=$macaddress&liked=true";
+        $encoded_email = urlencode($user_email);
+
+        $back_url = "http://login.com/index.php?clientmac=$macaddress&liked=false&email=$encoded_email";
         header('Location: '. $back_url);
     } else {
 
