@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+var_dump($_SESSION); exit;
 require_once '../Facebook/autoload.php';
 $fb = new Facebook\Facebook([
     'app_id'                => '1519471891398547',
@@ -72,7 +72,6 @@ if (isset($accessToken)) {
         echo 'Facebook SDK returned an error: ' . $e->getMessage();
         exit;
     }
-    var_dump($_SESSION); exit;
 
     $nasip      = isset($_SESSION['nasip'])? $_SESSION['nasip'] : null;
     $macaddress = isset($_SESSION['macaddress']) ? $_SESSION['macaddress'] : null;
