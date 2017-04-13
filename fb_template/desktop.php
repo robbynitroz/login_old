@@ -49,7 +49,7 @@
 							type: 'POST',
 							url: 'http://login.com/like.php',
 							dataType: 'json',
-							data: {likes:1, mac_address: '$macaddress', url: '$fb_url', email: $('#user_email').val()},
+							data: {likes:1, mac_address: <?php echo $macaddress; ?>, url: <?php echo $fb_url; ?>, email: $('#user_email').val()},
 							success: function(response){
 								if(response) {
 									window.location = 'http://$nasip:64873/login?username=$macaddress&password=$macaddress&dst=$url';
