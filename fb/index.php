@@ -10,21 +10,19 @@ $hotel_id   = isset($_GET['hotel_id']) ? $_GET['hotel_id'] : null;
 // Add to session
 $cookie_name = "macaddress";
 $cookie_value = $macaddress;
-setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+setcookie($cookie_name, $cookie_value, time() + (86400), "/"); // 86400 = 1 day
 
 $cookie_name = "url";
 $cookie_value = $url;
-setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+setcookie($cookie_name, $cookie_value, time() + (86400), "/"); // 86400 = 1 day
 
 $cookie_name = "hotel_id";
 $cookie_value = $hotel_id;
-setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+setcookie($cookie_name, $cookie_value, time() + (86400), "/"); // 86400 = 1 day
 
 $cookie_name = "nasip";
 $cookie_value = $nasip;
-setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
-
-var_dump($_COOKIE);exit;
+setcookie($cookie_name, $cookie_value, time() + (86400), "/"); // 86400 = 1 day
 
 require_once '../Facebook/autoload.php';
 $fb = new Facebook\Facebook([
@@ -97,6 +95,13 @@ if (isset($accessToken)) {
         echo 'Facebook SDK returned an error: ' . $e->getMessage();
         exit;
     }
+
+    $nasip      = $_COOKIE['nasip'];
+    $macaddress = $_COOKIE['macaddress'];
+    $url        = $_COOKIE['url'];
+    $hotel_id   = $_COOKIE['hotel_id'];
+
+    var_dump([$nasip, $macaddress, $url, $hotel_id]);exit;
 
     if ( !$nasip || !$macaddress || !$url || !$hotel_id ) {
         $back_url = "http://login.com/index.php?clientmac=$macaddress&liked=true";
