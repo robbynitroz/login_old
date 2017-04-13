@@ -133,7 +133,6 @@ if (isset($accessToken)) {
         $encoded_email = urlencode($user_email);
 
         $back_url = "http://login.com/index.php?clientmac=$macaddress&liked=false&email=$encoded_email";
-        var_dump($back_url);exit;
         header('Location: '. $back_url);
     } else {
         $back_url = "http://$nasip:64873/login?username=$macaddress&password=$macaddress&dst=$url";

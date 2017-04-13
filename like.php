@@ -9,7 +9,7 @@ if (isset($_POST['page_id'])) {
     $mac_address = $_POST['mac_address'];
     $hotel_id    = $_POST['hotel_id'];
     $page_id     = $_POST['page_id'];
-    $email       = $_POST['email'];
+    $email       = urldecode($_POST['email']);
 
     $query = "SELECT  *  FROM facebook where email='$email' and page_id='$page_id'";
     $result = mysql_query($query) or die('Radius query error 100' . mysql_error());
