@@ -65,10 +65,11 @@ $hotel_name  = $myrow['name'];
 $template_id = '';
 
 // Get Facebook's like page's URL
-$query = "select facebook_page from hotels where id='$hotel_id'";
+$query = "select facebook_page, facebook_page_id from hotels where id='$hotel_id'";
 $result = mysql_query($query) or die('NAS query error 300' . mysql_error());
-$fb_url = mysql_fetch_assoc($result);
-$fb_url = $fb_url['facebook_page'];
+$fb = mysql_fetch_assoc($result);
+$fb_url = $fb['facebook_page'];
+$fb_page_id = $fb['facebook_page_id'];
 
 if(empty($myrow['active_template_id']))
 {
