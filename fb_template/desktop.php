@@ -101,7 +101,7 @@
 						<div class="social-wrap c">
 
 							<?php
-								if ($_GET['liked'] == false):
+								if ($_GET['liked'] == 'false'):
 							?>
 							<button id='fb_btn' style='display: block; position: relative; width: 93%; height: 90px;
 								background-image: url("/images/fb.png");
@@ -111,9 +111,9 @@
 								margin: 0 auto;
 								border: 0px;'>
 								<div id='like_wrapper' style='position: absolute;
-                /*width: 100%;*/
-                opacity: 0;
-                margin: 0 auto;'
+									/*width: 100%;*/
+									opacity: 0;
+									margin: 0 auto;'
 									 class="fb-like" data-href="<?php $fb_url; ?>"
 									 data-width="400"
 									 data-layout="button"
