@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 
 $link = mysql_connect('localhost', 'root', 'Zq4F3R607h1K') or die('Connection failed ' . mysql_error());
 
