@@ -1,6 +1,9 @@
 <?php
 session_start();
-var_dump($_GET);exit;
+
+$_SESSION['get'] = $_GET;
+
+var_dump($_SESSION); exit;
 require_once '../Facebook/autoload.php';
 $fb = new Facebook\Facebook([
     'app_id'                => '1519471891398547',
