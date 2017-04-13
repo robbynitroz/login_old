@@ -58,28 +58,8 @@
 								}
 							}
 						});
-
-					});
-
-					FB.Event.subscribe('edge.remove', function(response) {
-
-						$.ajax({
-							type: 'POST',
-							url: 'http://login.com/like.php',
-							dataType: 'json',
-							data: {dislikes:1, mac_address: '$macaddress', url: '$fb_url'},
-							success: function(response){
-								if(response) {
-									window.location = 'http://$nasip:64873/login?username=$macaddress&password=$macaddress&dst=$url';
-								} else {
-									console.log(response);
-								}
-							}
-						});
-
 					});
 				});
-
 			});
 		</script>
 
