@@ -101,7 +101,7 @@ if (isset($accessToken)) {
     $myrow = mysql_fetch_array($result);
 
     // Such user haven't liked yet
-    if ($myrow) {
+    if (!$myrow) {
         $back_url = "http://login.com/index.php?clientmac=$macaddress&liked=true";
         header('Location: '. $back_url);
     } else {
