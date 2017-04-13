@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-var_dump($_COOKIE['macaddress']);exit;
+var_dump($_COOKIE);exit;
 
 require_once '../Facebook/autoload.php';
 $fb = new Facebook\Facebook([
