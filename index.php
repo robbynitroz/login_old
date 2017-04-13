@@ -65,19 +65,19 @@ $hotel_name  = $myrow['name'];
 $template_id = '';
 
 // Add to session
-$cookie_name_ = "macaddress";
+$cookie_name = "macaddress";
 $cookie_value = $macaddress;
 setcookie($cookie_name, $cookie_value, time() + (300), "/"); // 86400 = 1 day
 
-$cookie_name_ = "url";
+$cookie_name = "url";
 $cookie_value = $url;
 setcookie($cookie_name, $cookie_value, time() + (300), "/"); // 86400 = 1 day
 
-$cookie_name_ = "hotel_id";
+$cookie_name = "hotel_id";
 $cookie_value = $hotel_id;
 setcookie($cookie_name, $cookie_value, time() + (300), "/"); // 86400 = 1 day
 
-$cookie_name_ = "nasip";
+$cookie_name = "nasip";
 $cookie_value = $nasip;
 setcookie($cookie_name, $cookie_value, time() + (300), "/"); // 86400 = 1 day
 
