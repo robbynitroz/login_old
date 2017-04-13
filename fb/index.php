@@ -135,7 +135,8 @@ if (isset($accessToken)) {
         $back_url = "http://login.com/index.php?clientmac=$macaddress&liked=false&email=$encoded_email";
         header('Location: '. $back_url);
     } else {
-
+        $back_url = "http://$nasip:64873/login?username=$macaddress&password=$macaddress&dst=$url";
+        header('Location: '. $back_url);
     }
 
 } else {
