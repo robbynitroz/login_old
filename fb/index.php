@@ -82,19 +82,6 @@ if (isset($accessToken)) {
         echo 'Facebook SDK returned an error: ' . $e->getMessage();
         exit;
     }
-    // get list of pages liked by user
-    try {
-        $requestLikes = $fb->get('/me/likes/423646974653399');
-        $likes = $requestLikes->getGraphEdge();
-    } catch (Facebook\Exceptions\FacebookResponseException $e) {
-        // When Graph returns an error
-        echo 'Graph returned an error: ' . $e->getMessage();
-        exit;
-    } catch (Facebook\Exceptions\FacebookSDKException $e) {
-        // When validation fails or other local issues
-        echo 'Facebook SDK returned an error: ' . $e->getMessage();
-        exit;
-    }
 
     $nasip      = $_COOKIE['nasip'];
     $macaddress = $_COOKIE['macaddress'];
