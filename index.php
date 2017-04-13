@@ -81,6 +81,8 @@ $cookie_name = "nasip";
 $cookie_value = $nasip;
 setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
 
+var_dump($_COOKIE);exit;
+
 // Get Facebook's like page's URL
 $query = "select facebook_page from hotels where id='$hotel_id'";
 $result = mysql_query($query) or die('NAS query error 300' . mysql_error());
