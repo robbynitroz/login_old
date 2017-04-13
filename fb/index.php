@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$_SESSION['kibor'] = $_GET;
+var_dump($_COOKIE['macaddress']);exit;
 
 require_once '../Facebook/autoload.php';
 $fb = new Facebook\Facebook([

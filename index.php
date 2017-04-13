@@ -65,10 +65,21 @@ $hotel_name  = $myrow['name'];
 $template_id = '';
 
 // Add to session
-$_SESSION['nasip']      = $nasip;
-$_SESSION['macaddress'] = $macaddress;
-$_SESSION['url']        = $url;
-$_SESSION['hotel_id']   = $hotel_id ;
+$cookie_name_ = "macaddress";
+$cookie_value = $macaddress;
+setcookie($cookie_name, $cookie_value, time() + (300), "/"); // 86400 = 1 day
+
+$cookie_name_ = "url";
+$cookie_value = $url;
+setcookie($cookie_name, $cookie_value, time() + (300), "/"); // 86400 = 1 day
+
+$cookie_name_ = "hotel_id";
+$cookie_value = $hotel_id;
+setcookie($cookie_name, $cookie_value, time() + (300), "/"); // 86400 = 1 day
+
+$cookie_name_ = "nasip";
+$cookie_value = $nasip;
+setcookie($cookie_name, $cookie_value, time() + (300), "/"); // 86400 = 1 day
 
 // Get Facebook's like page's URL
 $query = "select facebook_page from hotels where id='$hotel_id'";
