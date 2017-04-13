@@ -1,6 +1,6 @@
 <?php
 session_start();
-var_dump($_SESSION); exit;
+
 require_once '../Facebook/autoload.php';
 $fb = new Facebook\Facebook([
     'app_id'                => '1519471891398547',
@@ -73,10 +73,15 @@ if (isset($accessToken)) {
         exit;
     }
 
-    $nasip      = isset($_SESSION['nasip'])? $_SESSION['nasip'] : null;
-    $macaddress = isset($_SESSION['macaddress']) ? $_SESSION['macaddress'] : null;
-    $url        = isset($_SESSION['url']) ? $_SESSION['url'] : null;
-    $hotel_id   = isset($_SESSION['hotel_id']) ? $_SESSION['hotel_id'] : null;
+    $nasip      = isset($_GET['nasip'])? $_GET['nasip'] : null;
+    $macaddress = isset($_GET['macaddress']) ? $_GET['macaddress'] : null;
+    $url        = isset($_GET['url']) ? $_GET['url'] : null;
+    $hotel_id   = isset($_GET['hotel_id']) ? $_GET['hotel_id'] : null;
+
+    if ( !$nasip || !$macaddress || !$url || !$hotel_id ) {
+        $back_url = "http://login.com/index.php?clientmac=$macaddress&liked=true";
+        header('Location: '. $back_url);
+    }
 
     // Returns a `Facebook\FacebookResponse` object
     $response = $fb->get('/me?fields=id,email', $accessToken);
