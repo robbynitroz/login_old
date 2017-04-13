@@ -81,7 +81,7 @@
 						if ($_GET['liked'] == 'false'):
 					?>
 						<div class="form-w3step1">
-							<div id='like_wrapper' style='margin: 0 auto;
+							<div id='like_wrapper' style='margin-left: 40%;
 								transform: scale(2.5, 1.7);
 								-ms-transform: scale(2.5, 1.7);
 								-webkit-transform: scale(2.5, 1.7);
