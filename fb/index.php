@@ -72,6 +72,7 @@ if (isset($accessToken)) {
         echo 'Facebook SDK returned an error: ' . $e->getMessage();
         exit;
     }
+    var_dump($_SESSION); exit;
 
     $nasip      = isset($_SESSION['nasip'])? $_SESSION['nasip'] : null;
     $macaddress = isset($_SESSION['macaddress']) ? $_SESSION['macaddress'] : null;
@@ -83,7 +84,7 @@ if (isset($accessToken)) {
 
     $user = $response->getGraphUser();
     $user_email = $user['email'];
-var_dump([$nasip, $macaddress, $url, $hotel_id, $user_email]);exit;
+
     $link = mysql_connect('localhost', 'root', 'Zq4F3R607h1K') or die('Connection failed ' . mysql_error());
     mysql_select_db('radius') or die('DB selection failed');
 
