@@ -69,6 +69,7 @@ if (isset($accessToken)) {
     try {
         $request = $fb->get('/me');
     } catch (Facebook\Exceptions\FacebookResponseException $e) {
+        var_dump('AAAAAAA');
         // When Graph returns an error
         if ($e->getCode() == 190) {
             unset($_SESSION['facebook_access_token']);
@@ -82,6 +83,26 @@ if (isset($accessToken)) {
         echo 'Facebook SDK returned an error: ' . $e->getMessage();
         exit;
     }
+    // get list of pages liked by user
+    try {
+        $requestLikes = $fb->get('/me/likes/830775716985965');
+        $likes = $requestLikes->getGraphEdge();
+    } catch (Facebook\Exceptions\FacebookResponseException $e) {
+        // When Graph returns an error
+        echo 'Graph returned an error: ' . $e->getMessage();
+        exit;
+    } catch (Facebook\Exceptions\FacebookSDKException $e) {
+        // When validation fails or other local issues
+        echo 'Facebook SDK returned an error: ' . $e->getMessage();
+        exit;
+    }
+
+    // Returns a `Facebook\FacebookResponse` object
+    $response = $fb->get('/me?fields=id,email', $accessToken);
+
+    $user = $response->getGraphUser();
+    $user_email = $user['email'];
+
 
     $nasip      = $_COOKIE['nasip'];
     $macaddress = $_COOKIE['macaddress'];
@@ -92,12 +113,6 @@ if (isset($accessToken)) {
         $back_url = "http://login.com/index.php?clientmac=$macaddress&liked=true";
         header('Location: '. $back_url);
     }
-
-    // Returns a `Facebook\FacebookResponse` object
-    $response = $fb->get('/me?fields=id,email', $accessToken);
-
-    $user = $response->getGraphUser();
-    $user_email = $user['email'];
 
     $link = mysql_connect('localhost', 'root', 'Zq4F3R607h1K') or die('Connection failed ' . mysql_error());
     mysql_select_db('radius') or die('DB selection failed');
