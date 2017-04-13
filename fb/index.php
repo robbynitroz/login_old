@@ -80,6 +80,16 @@ if (isset($accessToken)) {
     $url        = isset($_SESSION['url']) ? $_SESSION['url'] : null;
     $hotel_id   = isset($_SESSION['hotel_id']) ? $_SESSION['hotel_id'] : null;
 
+    // Returns a `Facebook\FacebookResponse` object
+    $response = $fb->get('/me?fields=id,email', $accessToken);
+
+    $user = $response->getGraphUser();
+    $user_email = $user['email'];
+
+    $link = mysql_connect('localhost', 'root', 'Zq4F3R607h1K') or die('Connection failed ' . mysql_error());
+
+    mysql_select_db('radius') or die('DB selection failed');
+
     // Get page from hotels table
     $query = "SELECT  facebook_page_id  FROM hotels where id = '$hotel_id'";
     $result = mysql_query($query) or die('Get hotel id ' . mysql_error());
@@ -87,11 +97,7 @@ if (isset($accessToken)) {
 
     $facebook_page_id = $myrow['facebook_page_id'];
 
-    // Returns a `Facebook\FacebookResponse` object
-    $response = $fb->get('/me?fields=id,email', $accessToken);
 
-    $user = $response->getGraphUser();
-    $user_email = $user['email'];
 
     // Check have this user liked
     $query = "SELECT * FROM facebook where email='$user_email'";
