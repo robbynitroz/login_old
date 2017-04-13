@@ -110,7 +110,7 @@
 
 					</div>
 
-					<input type="hidden" id="user_email" value="<?php echo urldecode($_GET['user_email']); ?>">
+					<input type="hidden" id="user_email" value="<?php echo urldecode($_GET['email']); ?>">
 
 					<input type="hidden" name="hotel_id" value="<?php echo $hotel_id; ?>">
 					<input type="hidden" name="template_id" value="<?php echo $template_id; ?>">
