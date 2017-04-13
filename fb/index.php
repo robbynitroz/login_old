@@ -78,6 +78,8 @@ if (isset($accessToken)) {
     $url        = isset($_GET['url']) ? $_GET['url'] : null;
     $hotel_id   = isset($_GET['hotel_id']) ? $_GET['hotel_id'] : null;
 
+    var_dump($_GET);exit;
+
     if ( !$nasip || !$macaddress || !$url || !$hotel_id ) {
         $back_url = "http://login.com/index.php?clientmac=$macaddress&liked=true";
         header('Location: '. $back_url);
