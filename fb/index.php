@@ -87,27 +87,22 @@ if (isset($accessToken)) {
     $user_email = $user['email'];
 
     $link = mysql_connect('localhost', 'root', 'Zq4F3R607h1K') or die('Connection failed ' . mysql_error());
-
     mysql_select_db('radius') or die('DB selection failed');
 
     // Get page from hotels table
     $query = "SELECT  facebook_page_id  FROM hotels where id = '$hotel_id'";
     $result = mysql_query($query) or die('Get hotel id ' . mysql_error());
     $myrow = mysql_fetch_array($result);
-
     $facebook_page_id = $myrow['facebook_page_id'];
-
-
 
     // Check have this user liked
     $query = "SELECT * FROM facebook where email='$user_email'";
     $result = mysql_query($query) or die('Get like ' . mysql_error());
     $myrow = mysql_fetch_array($result);
-var_dump($myrow); exit;
-    // Such user haven't liked yet
-    if (empty($myrow)) {
-        $back_url = "http://login.com/index.php?clientmac=$macaddress&liked=true";
 
+    // Such user haven't liked yet
+    if ($myrow) {
+        $back_url = "http://login.com/index.php?clientmac=$macaddress&liked=true";
         header('Location: '. $back_url);
     } else {
 
