@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$_SESSION['get'] = $_GET;
+$_SESSION['kibor'] = $_GET;
 
 require_once '../Facebook/autoload.php';
 $fb = new Facebook\Facebook([
@@ -75,7 +75,7 @@ if (isset($accessToken)) {
         exit;
     }
 
-    var_dump($_SESSION); exit;
+    var_dump($_SESSION['kibor']); exit;
 
     $nasip      = isset($_GET['nasip'])? $_GET['nasip'] : null;
     $macaddress = isset($_GET['macaddress']) ? $_GET['macaddress'] : null;
