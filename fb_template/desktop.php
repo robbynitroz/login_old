@@ -83,16 +83,14 @@
 							<?php
 								if ($_GET['liked'] == 'false'):
 							?>
-								<div id='like_wrapper' style='position: absolute;
-
-									margin: 0 auto;
-									transform: scale(1.5);
-									-ms-transform: scale(1.5);
-									-webkit-transform: scale(1.5);
-									-o-transform: scale(1.5);
-									-moz-transform: scale(1.5);
+								<div id='like_wrapper' style='margin: 0 auto;
+									transform: scale(2.5, 1.7);
+									-ms-transform: scale(2.5, 1.7);
+									-webkit-transform: scale(2.5, 1.7);
+									-o-transform: scale(2.5, 1.7);
+									-moz-transform: scale(2.5, 1.7);
 									'
-									class="fb-like" data-href="<?php $fb_url; ?>"
+									class="fb-like facebook" data-href="<?php $fb_url; ?>"
 									data-width="400"
 									data-layout="button"
 									data-action="like"
