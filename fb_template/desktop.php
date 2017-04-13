@@ -27,7 +27,7 @@
 				var js, fjs = d.getElementsByTagName(s)[0];
 				if (d.getElementById(id)) return;
 				js = d.createElement(s); js.id = id;
-				js.src = '//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=696113500523537';
+				js.src = '//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=1519471891398547';
 				fjs.parentNode.insertBefore(js, fjs);
 			}(document, 'script', 'facebook-jssdk'));
 
@@ -36,7 +36,7 @@
 				$.ajaxSetup({ cache: true });
 				$.getScript('//connect.facebook.net/en_US/sdk.js', function(){
 					FB.init({
-						appId: '696113500523537',
+						appId: '1519471891398547',
 						status: true, // check login status
 						oauth: true,
 						version: 'v2.8' // or v2.1, v2.2, v2.3, ...

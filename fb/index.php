@@ -1,17 +1,15 @@
 <?php
-
-
 session_start();
 
 require_once '../Facebook/autoload.php';
 $fb = new Facebook\Facebook([
-    'app_id' => '799204046894241',
-    'app_secret' => '2ee35382ac8d4599226edf942dbaba75',
+    'app_id'                => '1519471891398547',
+    'app_secret'            => '47eead9613200c186954862b7e428c86',
     'default_graph_version' => 'v2.8',
 ]);
 
 $helper = $fb->getRedirectLoginHelper();
-$permissions = ['user_likes', 'email', 'user_photos']; // optional
+$permissions = ['email']; // optional
 
 
 try {
@@ -147,7 +145,7 @@ if (isset($accessToken)) {
 
 } else {
     $helper = $fb->getRedirectLoginHelper();
-    $permissions = ['email', 'user_likes']; // optional
+    $permissions = ['email']; // optional
     $loginUrl = $helper->getLoginUrl('http://fbdev.guestcompass.nl/index.php', $permissions);
 
     header("Location: $loginUrl");
