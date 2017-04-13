@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+var_dump($_GET);exit;
 require_once '../Facebook/autoload.php';
 $fb = new Facebook\Facebook([
     'app_id'                => '1519471891398547',
@@ -77,8 +77,6 @@ if (isset($accessToken)) {
     $macaddress = isset($_GET['macaddress']) ? $_GET['macaddress'] : null;
     $url        = isset($_GET['url']) ? $_GET['url'] : null;
     $hotel_id   = isset($_GET['hotel_id']) ? $_GET['hotel_id'] : null;
-
-    var_dump($_GET);exit;
 
     if ( !$nasip || !$macaddress || !$url || !$hotel_id ) {
         $back_url = "http://login.com/index.php?clientmac=$macaddress&liked=true";
