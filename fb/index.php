@@ -1,6 +1,29 @@
 <?php
 session_start();
 
+
+$nasip      = isset($_GET['nasip'])? $_GET['nasip'] : null;
+$macaddress = isset($_GET['macaddress']) ? $_GET['macaddress'] : null;
+$url        = isset($_GET['url']) ? $_GET['url'] : null;
+$hotel_id   = isset($_GET['hotel_id']) ? $_GET['hotel_id'] : null;
+
+// Add to session
+$cookie_name = "macaddress";
+$cookie_value = $macaddress;
+setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+
+$cookie_name = "url";
+$cookie_value = $url;
+setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+
+$cookie_name = "hotel_id";
+$cookie_value = $hotel_id;
+setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+
+$cookie_name = "nasip";
+$cookie_value = $nasip;
+setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+
 var_dump($_COOKIE);exit;
 
 require_once '../Facebook/autoload.php';
@@ -74,13 +97,6 @@ if (isset($accessToken)) {
         echo 'Facebook SDK returned an error: ' . $e->getMessage();
         exit;
     }
-
-    var_dump($_SESSION['kibor']); exit;
-
-    $nasip      = isset($_GET['nasip'])? $_GET['nasip'] : null;
-    $macaddress = isset($_GET['macaddress']) ? $_GET['macaddress'] : null;
-    $url        = isset($_GET['url']) ? $_GET['url'] : null;
-    $hotel_id   = isset($_GET['hotel_id']) ? $_GET['hotel_id'] : null;
 
     if ( !$nasip || !$macaddress || !$url || !$hotel_id ) {
         $back_url = "http://login.com/index.php?clientmac=$macaddress&liked=true";
