@@ -99,12 +99,42 @@
 					<h1 class="heading"><?php echo $GLOBALS['title']; ?></h1>
 					<div class="form-w3step1">
 						<div class="social-wrap c">
-							<button type='button' class="facebook">
-								<a style='color: #ffffff;'
-								   href="http://fbdev.guestcompass.nl/index.php?macaddress=<?php echo $macaddress; ?>&nasip=<?php echo $nasip; ?>&hotel_id=<?php echo $hotel_id; ?>&url=<?php echo $url; ?>">
-									Connect using Facebook
-								</a>
+
+							<?php
+								if ($_GET['liked'] == false):
+							?>
+							<button id='fb_btn' style='display: block; position: relative; width: 93%; height: 90px;
+								background-image: url("/images/fb.png");
+								background-size: 100% 100%;
+								background-repeat: no-repeat;
+								background-position: center center;
+								margin: 0 auto;
+								border: 0px;'>
+								<div id='like_wrapper' style='position: absolute;
+                /*width: 100%;*/
+                opacity: 0;
+                margin: 0 auto;'
+									 class="fb-like" data-href="<?php $fb_url; ?>"
+									 data-width="400"
+									 data-layout="button"
+									 data-action="like"
+									 data-size="large"
+									 data-show-faces="false"
+									 data-share="false">
+								</div>
 							</button>
+							<?php
+								else:
+							?>
+								<button type='button' class="facebook">
+									<a style='color: #ffffff;'
+									   href="http://fbdev.guestcompass.nl/index.php?macaddress=<?php echo $macaddress; ?>&nasip=<?php echo $nasip; ?>&hotel_id=<?php echo $hotel_id; ?>&url=<?php echo $url; ?>">
+										Connect using Facebook
+									</a>
+								</button>
+							<?php
+								endif;
+							?>
 
 						</div>
 
