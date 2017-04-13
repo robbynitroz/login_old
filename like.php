@@ -22,8 +22,7 @@ if (isset($_POST['page_id'])) {
 
         $query = "INSERT INTO facebook (mac_address, hotel_id, email, page_id) VALUES ('$mac_address', '$hotel_id', '$email', '$page_id')";
         $result = mysql_query($query) or die('Radius query error 102' . mysql_error());
-
-        echo 1;
     }
 
+    echo 1;
 }
