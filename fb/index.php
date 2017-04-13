@@ -72,76 +72,40 @@ if (isset($accessToken)) {
         echo 'Facebook SDK returned an error: ' . $e->getMessage();
         exit;
     }
-    $totalLikes = array();
-    if ($fb->next($likes)) {
-        $likesArray = $likes->asArray();
-        $totalLikes = array_merge($totalLikes, $likesArray);
-        while ($likes = $fb->next($likes)) {
-            $likesArray = $likes->asArray();
-            $totalLikes = array_merge($totalLikes, $likesArray);
-        }
-    } else {
-        $likesArray = $likes->asArray();
-        $totalLikes = array_merge($totalLikes, $likesArray);
-    }
+
     // printing data on screen
 
     $nasip      = isset($_SESSION['nasip'])? $_SESSION['nasip'] : null;
     $macaddress = isset($_SESSION['macaddress']) ? $_SESSION['macaddress'] : null;
     $url        = isset($_SESSION['url']) ? $_SESSION['url'] : null;
+    $hotel_id   = isset($_SESSION['hotel_id']) ? $_SESSION['hotel_id'] : null;
 
-    if($totalLikes & !empty($totalLikes)){
+    // Get page from hotels table
+    $query = "SELECT  facebook_page_id  FROM hotels where id = '$hotel_id'";
+    $result = mysql_query($query) or die('Get hotel id ' . mysql_error());
+    $myrow = mysql_fetch_array($result);
 
-        var_dump($totalLikes); exit;
+    $facebook_page_id = $myrow['facebook_page_id'];
 
-        //echo "You have internet now";
-        $key = md5(microtime().rand());
-//        header("Location: http://login.com/index.php?like=true&key=$key");
+    // Returns a `Facebook\FacebookResponse` object
+    $response = $fb->get('/me?fields=id,email', $accessToken);
 
-        try {
-            // Returns a `Facebook\FacebookResponse` object
-            $response = $fb->get('/me?fields=id,email', $accessToken);
-        } catch(Facebook\Exceptions\FacebookResponseException $e) {
-            echo 'Graph returned an error: ' . $e->getMessage();
-            exit;
-        } catch(Facebook\Exceptions\FacebookSDKException $e) {
-            echo 'Facebook SDK returned an error: ' . $e->getMessage();
-            exit;
-        }
+    $user = $response->getGraphUser();
+    $user_email = $user['email'];
 
-        $user = $response->getGraphUser();
+    // Check have this user liked
+    $query = "SELECT * FROM facebook where email='$user_email'";
+    $result = mysql_query($query) or die('Get like ' . mysql_error());
+    $myrow = mysql_fetch_array($result);
+var_dump($myrow); exit;
+    // Such user haven't liked yet
+    if (empty($myrow)) {
+        $back_url = "http://login.com/index.php?clientmac=$macaddress&liked=true";
 
-        echo 'Name: ' . $user['email'];
+        header('Location: '. $back_url);
+    } else {
 
-//        header("Location: http://$nasip:64873/login?username=$macaddress'&password=$macaddress&dst=$url&like=true&key=$key");
-
-        exit();
-
-    }else{
-
-//        die('chexav');
-        $key = md5(microtime().rand());
-
-        try {
-            // Returns a `Facebook\FacebookResponse` object
-            $response = $fb->get('/me?fields=id,email', $accessToken);
-        } catch(Facebook\Exceptions\FacebookResponseException $e) {
-            echo 'Graph returned an error: ' . $e->getMessage();
-            exit;
-        } catch(Facebook\Exceptions\FacebookSDKException $e) {
-            echo 'Facebook SDK returned an error: ' . $e->getMessage();
-            exit;
-        }
-
-        $user = $response->getGraphUser();
-
-        echo 'Name: ' . $user['email'];
-
-//        header("Location: http://login.com/index.php?like=false&key=$key");
-
-        exit();
     }
-
 
 } else {
     $helper = $fb->getRedirectLoginHelper();
