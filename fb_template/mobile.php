@@ -86,7 +86,6 @@
 	<div class="contact-wthree">
 		<a href="#"><p class="terms">terms & conditions ></p></a>
 
-			<h1 class="heading">Go online with WiFi </h1>
 <!--			<div class="form-w3step1">-->
 <!--				<div class="social-wrap c">-->
 <!--					<button class="facebook">Connect using Facebook</button>-->
