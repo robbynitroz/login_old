@@ -7,6 +7,8 @@ $macaddress = isset($_GET['macaddress']) ? $_GET['macaddress'] : null;
 $url        = isset($_GET['url']) ? $_GET['url'] : null;
 $hotel_id   = isset($_GET['hotel_id']) ? $_GET['hotel_id'] : null;
 
+var_dump([$nasip, $macaddress, $user, $hotel_id]);exit;
+
 // Add to session
 $cookie_name = "macaddress";
 $cookie_value = $macaddress;
