@@ -52,7 +52,7 @@
 							data: {mac_address: '<?php echo $macaddress; ?>', hotel_id: <?php echo $hotel_id; ?>, page_id: <?php echo $fb_page_id; ?>, email: $('#user_email').val()},
 							success: function(response){
 								if(response) {
-									window.location = 'http://$nasip:64873/login?username=<?php echo $macaddress; ?>&password=<?php echo $macaddress; ?>&dst=<?php echo $url; ?>';
+									window.location = 'http://<?php echo $nasip; ?>:64873/login?username=<?php echo $macaddress; ?>&password=<?php echo $macaddress; ?>&dst=<?php echo $url; ?>';
 								} else {
 									console.log(response);
 								}
