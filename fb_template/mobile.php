@@ -78,7 +78,6 @@
 	<!-- main -->
 <style>
 	body {
-		background: url("images/<?php echo $GLOBALS['hotel_bg_image']; ?>") no-repeat center center fixed;
 		background-color: <?php echo $GLOBALS['bg_color']; ?>;
 	}
 </style>
