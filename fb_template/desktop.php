@@ -77,43 +77,42 @@
 				<a href="#"><p class="terms">terms & conditions ></p></a>
 				<form action="http://login.com/emailSave.php" method="post">
 					<h1 class="heading"><?php echo $GLOBALS['title']; ?></h1>
-					<div class="form-w3step1">
-						<div class="social-wrap c">
-
-							<?php
-								if ($_GET['liked'] == 'false'):
-							?>
-								<div id='like_wrapper' style='margin: 0 auto;
-									transform: scale(2.5, 1.7);
-									-ms-transform: scale(2.5, 1.7);
-									-webkit-transform: scale(2.5, 1.7);
-									-o-transform: scale(2.5, 1.7);
-									-moz-transform: scale(2.5, 1.7);
-									'
-									class="fb-like facebook" data-href="<?php $fb_url; ?>"
-									data-width="400"
-									data-layout="button"
-									data-action="like"
-									data-size="large"
-									data-show-faces="false"
-									data-share="false">
-								</div>
-							<?php
-								else:
-							?>
+					<?php
+						if ($_GET['liked'] == 'false'):
+					?>
+						<div class="form-w3step1">
+							<div id='like_wrapper' style='margin: 0 auto;
+								transform: scale(2.5, 1.7);
+								-ms-transform: scale(2.5, 1.7);
+								-webkit-transform: scale(2.5, 1.7);
+								-o-transform: scale(2.5, 1.7);
+								-moz-transform: scale(2.5, 1.7);
+								'
+								class="fb-like facebook" data-href="<?php $fb_url; ?>"
+								data-width="400"
+								data-layout="button"
+								data-action="like"
+								data-size="large"
+								data-show-faces="false"
+								data-share="false">
+							</div>
+						</div>
+					<?php
+						else:
+					?>
+						<div class="form-w3step1">
+							<div class="social-wrap c">
 								<button type='button' class="facebook">
 									<a style='color: #ffffff;'
 									   href="http://fbdev.guestcompass.nl/index.php?macaddress=<?php echo $macaddress; ?>&nasip=<?php echo $nasip; ?>&hotel_id=<?php echo $hotel_id; ?>&url=<?php echo $url; ?>">
 										Connect using Facebook
 									</a>
 								</button>
-							<?php
-								endif;
-							?>
-
+							</div>
 						</div>
-
-					</div>
+					<?php
+						endif;
+					?>
 
 					<input type="hidden" id="user_email" value="<?php echo urldecode($_GET['email']); ?>">
 
