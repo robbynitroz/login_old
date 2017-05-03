@@ -1,4 +1,6 @@
 <?php
+error_reporting(0);
+
 $language_codes = [
     'en' => 'English',
     'fr' => 'French',

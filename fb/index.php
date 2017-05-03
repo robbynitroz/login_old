@@ -124,7 +124,7 @@ if (isset($accessToken)) {
     $facebook_page_id = $myrow['facebook_page_id'];
 
     // Check have this user liked
-    $query = "SELECT * FROM facebook where email='$user_email'";
+    $query = "SELECT * FROM facebook where email='$user_email' and page_id='$facebook_page_id'";
     $result = mysql_query($query) or die('Get like ' . mysql_error());
     $myrow = mysql_fetch_array($result);
 
