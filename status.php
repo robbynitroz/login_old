@@ -1,6 +1,4 @@
 <?php
-error_reporting(0);
-
 $language_codes = [
     'en' => 'English',
     'fr' => 'French',
@@ -15,14 +13,37 @@ $nasip = $_SERVER['REMOTE_ADDR'];
 //Device language
 $lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
 
-//CONNECT TO DB
-$link = mysql_connect('localhost', 'radius', 'rcFGmPSu68ZY') or die('Status >> Connection failed ' . mysql_error());
-mysql_select_db('radius') or die('DB selection failed');
+/*
+ * MySQL connection
+ * */
+
+$servername = "localhost";
+$username = "radius";
+$password = "rcFGmPSu68ZY";
+$dbname = "radius";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+//Security check
+
+//Security for MAC
+$lang=mysqli_real_escape_string($conn, $lang);
+$nasip=mysqli_real_escape_string($conn, $nasip);
+
+
+
+
+
 
 // Get Hotel ID
 $query = "select hotel_id from nas where nasname='$nasip'";
-$result = mysql_query($query) or die('Status query error 1 ' . mysql_error());
-$myrow = mysql_fetch_array($result);
+$result = $conn->query($query);
+$myrow = $result->fetch_array();
 $hotel_id = $myrow['hotel_id'];
 
 
@@ -30,8 +51,8 @@ $query = "select * from templates
                   left join templates_variables on templates.id = templates_variables.template_id
                   where templates.name='Login template' and hotel_id='$hotel_id'";
 
-$result = mysql_query($query) or die('Status query error 2 ' . mysql_error());
-$myrow = mysql_fetch_array($result);
+$result = $conn->query($query);
+$myrow = $result->fetch_array();
 
 $GLOBALS['template_name'] = 'Login template';
 
@@ -56,8 +77,10 @@ $GLOBALS['hotel_btn_bg_color'] = $myrow['hotel_btn_bg_color'];
 $query = "select * from hotel_language
           left join languages on languages.id = hotel_language.language_id
           where hotel_language.hotel_id='$hotel_id' and languages.name='$language_codes[$lang]'";
-$result = mysql_query($query) or die('Status query error 3 ' . mysql_error());
-$check_language = mysql_num_rows($result);
+
+
+$result = $conn->query($query);
+$check_language = $result->num_rows;
 
 $translate_id = 0;
 
@@ -65,13 +88,18 @@ if ($check_language) {
     $translate_id_query = "select translate_id from hotel_language
                               left join languages on languages.id = hotel_language.language_id
                               where languages.name='$language_codes[$lang]' and hotel_language.hotel_id='$hotel_id'";
-    $result = mysql_query($translate_id_query) or die('Status query error 4 ' . mysql_error());
-    $translate_id = mysql_fetch_array($result)['translate_id'];
+
+    $result = $conn->query($query);
+    $translate_id = $result->fetch_array()['translate_id'];
+
+
 
     $query = "select * from translate_login
               where translate_id='$translate_id'";
-    $result = mysql_query($query) or die('Status query error 5 ' . mysql_error());
-    $translate_data = mysql_fetch_array($result);
+
+
+    $result = $conn->query($query);
+    $translate_data = $result->fetch_array();
 
     $GLOBALS['hotel_label_1'] = $translate_data['hotel_label_1'];
     $GLOBALS['hotel_label_2'] = $translate_data['hotel_label_2'];
@@ -81,13 +109,17 @@ if ($check_language) {
     $translate_id_query = "select translate_id from hotel_language
                               left join languages on languages.id = hotel_language.language_id
                               where hotel_language.is_default='1' and hotel_language.hotel_id='$hotel_id'";
-    $result = mysql_query($translate_id_query) or die('Status query error 6 ' . mysql_error());
-    $translate_id = mysql_fetch_array($result)['translate_id'];
+
+
+    $result = $conn->query($query);
+    $translate_id = $result->fetch_array()['translate_id'];
+
 
     $query = "select * from translate_login
               where translate_id='$translate_id'";
-    $result = mysql_query($query) or die('Status query error 7 ' . mysql_error());
-    $translate_data = mysql_fetch_array($result);
+
+    $result = $conn->query($query);
+    $translate_data = $result->fetch_array();
 
     $GLOBALS['hotel_label_1'] = $translate_data['hotel_label_1'];
     $GLOBALS['hotel_label_2'] = $translate_data['hotel_label_2'];
@@ -137,8 +169,7 @@ function hex2rgba($color, $opacity = false, $darkness = 0)
     return $output;
 }
 
-mysql_free_result($result);
-mysql_close($link);
+$conn->close();
 
 ?>
 <!doctype html>
@@ -149,6 +180,16 @@ mysql_close($link);
 
     <style>
         body {
+            background-image: url(images/<?php echo $GLOBALS['hotel_bg_image'] ?>) no-repeat center center fixed;
+            no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+            
+            
+            
+            
             background-color: <?php echo $GLOBALS['bg_color']; ?>;
         }
 

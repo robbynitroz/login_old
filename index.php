@@ -1,6 +1,8 @@
 <?php
-error_reporting(0);
 
+/*
+ * Languages available
+ * */
 $language_codes = [
     'en' => 'English',
     'fr' => 'French',
@@ -12,89 +14,306 @@ $language_codes = [
 
 $GLOBALS = array();
 
+
+/*
+ * Getting reqired data with GET
+ * */
+
+//IP address
 $nasip = $_SERVER['REMOTE_ADDR'];
+//MAC adress
 $macaddress = $_GET['clientmac'];
+
+//Including
 include "UserAgentParser.php";
 $ua_info = parse_user_agent();
 $ua_info['platform'];
 $ua_info['browser'];
 $lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
 
-if ($macaddress == '') {
+
+
+
+
+
+if (empty($macaddress) or $macaddress===null) {
     header('Location: http://login.com/status.php', true, 301);
     exit;
 }
 
-$link = mysql_connect('localhost', 'root', 'Zq4F3R607h1K') or die('Connection failed ' . mysql_error());
 
-mysql_select_db('radius') or die('DB selection failed');
+/*
+ * MySQL connection
+ * */
 
-$query = 'SELECT  COUNT(username)  FROM radcheck where username="' . $macaddress . '" and attribute="User-Password"';
-$result = mysql_query($query) or die('Radius query error ' . mysql_error());
-$myrow = mysql_fetch_array($result);
+$servername = "localhost";
+$username = "radius";
+$password = "rcFGmPSu68ZY";
+$dbname = "radius";
 
-if ($myrow[0] == 0) {
-    $query = 'INSERT INTO radcheck set username ="' . $macaddress . '", attribute="User-Password", op="==", value="' . $macaddress . '"';
-    mysql_query($query) or die('NAS query error 1 ' . mysql_error());
-};
-
-$query = 'SELECT  COUNT(username)  FROM radcheck where username="' . $macaddress . '" and attribute="Auth-Type"';
-$result = mysql_query($query) or die('Radius query error ' . mysql_error());
-$myrow = mysql_fetch_array($result);
-
-if ($myrow[0] == 0) {
-    $query = 'INSERT INTO radcheck set username ="' . $macaddress . '", attribute="Auth-Type", op=":=", value="Accept"';
-    mysql_query($query) or die('Radius query error ' . mysql_error());
-};
-
-$query = 'SELECT COUNT(client_mac)  FROM clients_mac where client_mac="' . $macaddress . '"';
-$result = mysql_query($query) or die('Radius query error ' . mysql_error());
-$myrow = mysql_fetch_array($result);
-
-if ($myrow[0] == 0) {
-    $query = 'INSERT INTO clients_mac set client_mac="' . $macaddress . '", os="' . $ua_info['platform'] . '", browser="' . $ua_info['browser'] . '", language="' . $lang . '"';
-    mysql_query($query) or die('Radius query error ' . mysql_error());
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 
-$query = 'select * from nas left join hotels on nas.hotel_id=hotels.id where nasname="' . $nasip . '"';
-$result = mysql_query($query) or die('NAS query error 2' . mysql_error());
-$myrow = mysql_fetch_array($result);
-$url         = $myrow['url'];
-$hotel_id    = $myrow['hotel_id'];
-$hotel_name  = $myrow['name'];
+//Security check
+
+//Security for MAC
+$macaddress=mysqli_real_escape_string($conn, $macaddress);
+//Security for IP
+$nasip=mysqli_real_escape_string($conn, $nasip);
+//Security for platform
+$ua_info['platform']=mysqli_real_escape_string($conn, $ua_info['platform']);
+//Security for browser
+$ua_info['browser']=mysqli_real_escape_string($conn, $ua_info['browser']);
+
+$lang=mysqli_real_escape_string($conn, $lang);
+
+
+
+
+
+
+
+
+
+$sql = 'SELECT  COUNT(username)  FROM radcheck where username="' . $macaddress . '" and attribute="User-Password"';
+$result = $conn->query($sql);
+
+
+
+
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+
+        $rezultat=$row;
+
+    }
+}
+
+if ($rezultat["COUNT(username)"] == 0) {
+
+    $sql="INSERT INTO radcheck (username, attribute, op, value)
+VALUES ('$macaddress', 'User-Password', '==', '$macaddress')";
+
+
+
+    if ($conn->query($sql) === false) {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+
+    }
+};
+
+
+//First phase end
+
+
+$sql = 'SELECT  COUNT(username)  FROM radcheck where username="' . $macaddress . '" and attribute="Auth-Type"';
+$result = $conn->query($sql);
+
+
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+
+        $rezultat=$row;
+
+    }
+}
+
+
+if ($rezultat["COUNT(username)"] == 0) {
+
+
+    $sql="INSERT INTO radcheck (username, attribute, op, value)
+VALUES ('$macaddress', 'Auth-Type', ':=', '\"Accept\"')";
+
+
+
+    if ($conn->query($sql) === false) {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+}
+
+
+
+
+//Third phase
+
+
+
+$sql = 'SELECT COUNT(client_mac)  FROM clients_mac where client_mac="' . $macaddress . '"';
+$result = $conn->query($sql);
+
+
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+
+        $rezultat=$row;
+
+
+
+    }
+}
+
+
+if ($rezultat["COUNT(client_mac)"] == 0) {
+
+$sql="INSERT INTO clients_mac (client_mac, os, browser, language)
+VALUES ('$macaddress', 'Auth-Type', ':=', '$lang')";
+
+    if ($conn->query($sql) === false) {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+};
+
+
+
+
+//Last phase
+
+
+$sql ="SELECT * from nas LEFT JOIN hotels ON nas.hotel_id=hotels.id WHERE nas.nasname='$nasip'";
+$result = $conn->query($sql);
+
+
+    ;
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+
+        $rezultat=$row;
+
+    }
+
+    }
+else{
+
+    die('DB error: Please try later');
+}
+
+
+$url         = $rezultat['url'];
+$hotel_id    = $rezultat['hotel_id'];
+$hotel_name  = $rezultat['name'];
 $template_id = '';
 
+
 // Get Facebook's like page's URL
-$query = "select facebook_page, facebook_page_id from hotels where id='$hotel_id'";
-$result = mysql_query($query) or die('NAS query error 300' . mysql_error());
-$fb = mysql_fetch_assoc($result);
+
+$sql ="select facebook_page, facebook_page_id from hotels where id='$hotel_id'";
+$result = $conn->query($sql);
+
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+
+        $fb=$row;
+
+    }
+
+}
+else{
+
+    die('DB error: Please try later');
+}
+
+
 $fb_url = $fb['facebook_page'];
 $fb_page_id = $fb['facebook_page_id'];
 
-if(empty($myrow['active_template_id']))
+
+
+
+
+if(empty($rezultat['active_template_id']))
 {
-    $query = "select * from templates where hotel_id='$hotel_id' and name='Login template'";
-    $result = mysql_query($query) or die('NAS query error 3' . mysql_error());
-    $tmp_template = mysql_fetch_array($result);
-    $template_id = $tmp_template['id'];
+
+
+
+    $sql ="select * from templates where hotel_id='$hotel_id' and name='Login template'";
+    $result = $conn->query($sql);
+
+
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while($row = $result->fetch_assoc()) {
+
+            $tmp=$row;
+
+        }
+
+    }
+    else{
+
+        die('DB error: Please try later');
+    }
+
+
+
+    $template_id = $tmp['id'];
 }
 else
 {
-    $template_id = $myrow['active_template_id'];
+    $template_id = $rezultat['active_template_id'];
 }
 
+
+
 // Find Active template's name
-$query = "select name from templates where id='$template_id'";
-$result = mysql_query($query) or die('Find Active template name ' . mysql_error());
-$myrow = mysql_fetch_array($result);
+$sql ="select name from templates where id='$template_id'";
+$result = $conn->query($sql);
+
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+
+        $myrow=$row;
+
+    }
+
+}
+else{
+
+    die('DB error: Please try later');
+}
+
+
 $GLOBALS['template_name'] = $myrow['name'];
 
-$query = "select * from templates
+
+
+$sql ="select * from templates
           left join templates_variables on templates.id = templates_variables.template_id
           where templates.id='$template_id' and hotel_id='$hotel_id'";
+$result = $conn->query($sql);
 
-$result = mysql_query($query) or die('NAS query error 4' . mysql_error());
-$myrow = mysql_fetch_array($result);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+
+        $myrow=$row;
+
+    }
+
+}
+else{
+
+    die('DB error: Please try later');
+}
+
+
+
 $GLOBALS['image']              = $myrow['hotel_logo'];
 $GLOBALS['bg_color']           = $myrow['hotel_bg_color'];
 //Color of Header
@@ -110,87 +329,167 @@ $GLOBALS['hotel_bg_image']     = $myrow['hotel_bg_image'];
 $GLOBALS['hotel_centr_color']  = $myrow['hotel_centr_color'];
 $GLOBALS['hotel_btn_bg_color'] = $myrow['hotel_btn_bg_color'];
 
+
+
+
+
+
+
 /*********************** Get translated text variables ***************************/
 // Check if device's language exists in language_codes
-$query = "select * from hotel_language
+
+if ( ! isset($language_codes[$lang])) {
+    $lang = 'en';
+}
+
+$sql ="select * from hotel_language
           left join languages on languages.id = hotel_language.language_id
           where hotel_language.hotel_id='$hotel_id' and languages.name='$language_codes[$lang]'";
-$result = mysql_query($query) or die('NAS query error 5' . mysql_error());
-$check_language = mysql_num_rows($result);
+$result = $conn->query($sql);
+
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+
+        $check_language=$row;
+
+    }
+
+}
+else{
+
+    $check_language=null;
+}
+
+
 
 $translate_id = 0;
 
-if($check_language)
-{
+
+
+
+
+
+
+
+
+if($check_language) {
     $translate_id_query = "select translate_id from hotel_language
                               left join languages on languages.id = hotel_language.language_id
                               where languages.name='$language_codes[$lang]' and hotel_language.hotel_id='$hotel_id'";
-    $result = mysql_query($translate_id_query) or die('NAS query error 6 ' . mysql_error());
-    $translate_id = mysql_fetch_array($result)['translate_id'];
 
-    if ($GLOBALS['template_name'] == 'Question template')
-    {
+
+    $result = $conn->query($translate_id_query);
+
+    while ($row = $result->fetch_assoc()) {
+
+        $translate_id = $row['translate_id'];
+
+    }
+
+
+    if ($GLOBALS['template_name'] == 'Question template') {
         $query = "select * from translate_question_label
                   where translate_id='$translate_id'";
-        $result = mysql_query($query) or die('NAS query error 7 ' . mysql_error());
-        $translate_data = mysql_fetch_array($result);
+        $result = $conn->query($query);
+
+        while ($row = $result->fetch_assoc()) {
+
+            $translate_data = $row;
+
+        }
+
 
         $GLOBALS['translate_question_label'] = $translate_data['translate_question_label'];
     }
-    if ($GLOBALS['template_name'] == 'Login template')
-    {
+    if ($GLOBALS['template_name'] == 'Login template') {
         $query = "select * from translate_login
                   where translate_id='$translate_id'";
-        $result = mysql_query($query) or die('NAS query error 8 ' . mysql_error());
-        $translate_data = mysql_fetch_array($result);
 
-        $GLOBALS['hotel_label_1']      = $translate_data['hotel_label_1'];
-        $GLOBALS['hotel_label_2']      = $translate_data['hotel_label_2'];
-        $GLOBALS['hotel_btn_label']    = $translate_data['hotel_btn_label'];
+
+        $result = $conn->query($query);
+
+        while ($row = $result->fetch_assoc()) {
+
+            $translate_data = $row;
+
+        }
+
+
+        $GLOBALS['hotel_label_1'] = $translate_data['hotel_label_1'];
+        $GLOBALS['hotel_label_2'] = $translate_data['hotel_label_2'];
+        $GLOBALS['hotel_btn_label'] = $translate_data['hotel_btn_label'];
     }
-    if ($GLOBALS['template_name'] == 'Email template')
-    {
+    if ($GLOBALS['template_name'] == 'Email template') {
         $query = "select * from translate_email
                   where translate_id='$translate_id'";
-        $result = mysql_query($query) or die('NAS query error 9 ' . mysql_error());
-        $translate_data = mysql_fetch_array($result);
 
-        $GLOBALS['hotel_label_1']      = $translate_data['hotel_label_1'];
-        $GLOBALS['hotel_label_2']      = $translate_data['hotel_label_2'];
-        $GLOBALS['hotel_btn_label']    = $translate_data['hotel_btn_label'];
+
+        $result = $conn->query($query);
+
+        while ($row = $result->fetch_assoc()) {
+
+            $translate_data = $row;
+
+        }
+
+        $GLOBALS['hotel_label_1'] = $translate_data['hotel_label_1'];
+        $GLOBALS['hotel_label_2'] = $translate_data['hotel_label_2'];
+        $GLOBALS['hotel_btn_label'] = $translate_data['hotel_btn_label'];
     }
 
-    if ($GLOBALS['template_name'] == 'Facebook template')
-    {
+    if ($GLOBALS['template_name'] == 'Facebook template') {
         $query = "select * from translate_fb
                   where translate_id='$translate_id'";
-        $result = mysql_query($query) or die('NAS query error 9_1' . mysql_error());
-        $translate_data = mysql_fetch_assoc($result);
+        $result = $conn->query($query);
 
-        $GLOBALS['title']        = $translate_data['title'];
+        while ($row = $result->fetch_assoc()) {
+
+            $translate_data = $row;
+
+        }
+
+        $GLOBALS['title'] = $translate_data['title'];
         $GLOBALS['middle_title'] = $translate_data['middle_title'];
-        $GLOBALS['email_title']  = $translate_data['email_title'];
-        $GLOBALS['fb_title']     = $translate_data['fb_title'];
+        $GLOBALS['email_title'] = $translate_data['email_title'];
+        $GLOBALS['fb_title'] = $translate_data['fb_title'];
     }
 
     //Get terms texts for current language
     $translate_term = "select * from translate_term
                               left join languages on languages.id = translate_term.language_id
                               where languages.name='$language_codes[$lang]'";
-    $result = mysql_query($translate_id_query) or die('NAS query error 9_1 ' . mysql_error());
-    $translate_term_data = mysql_fetch_array($result);
+
+    $result = $conn->query($translate_term);
+
+    while ($row = $result->fetch_assoc()) {
+
+        $translate_term_data = $row;
+
+    }
 
     $GLOBALS['term_title'] = $translate_term_data['title'];
     $GLOBALS['term_text'] = $translate_term_data['text'];
 
+
 }
+
+
+
 else
 {
     $translate_id_query = "select translate_id, language_id from hotel_language
                               left join languages on languages.id = hotel_language.language_id
                               where hotel_language.is_default='1' and hotel_language.hotel_id='$hotel_id'";
-    $result = mysql_query($translate_id_query) or die('NAS query error 10' . mysql_error());
-    $data = mysql_fetch_array($result);
+
+
+    $result = $conn->query($translate_id_query);
+    while ($row = $result->fetch_assoc()) {
+
+        $data = $row;
+    }
+
     $translate_id = $data['translate_id'];
     $language_id  = $data['language_id'];
 
@@ -198,8 +497,14 @@ else
     {
         $query = "select * from translate_question_label
                   where translate_id='$translate_id'";
-        $result = mysql_query($query) or die('NAS query error 11' . mysql_error());
-        $translate_data = mysql_fetch_array($result);
+
+        $result = $conn->query($query);
+        while ($row = $result->fetch_assoc()) {
+
+            $translate_data = $row;
+        }
+
+
 
         $GLOBALS['translate_question_label'] = $translate_data['translate_question_label'];
     }
@@ -207,8 +512,14 @@ else
     {
         $query = "select * from translate_login
                   where translate_id='$translate_id'";
-        $result = mysql_query($query) or die('NAS query error 12' . mysql_error());
-        $translate_data = mysql_fetch_array($result);
+
+
+        $result = $conn->query($query);
+        while ($row = $result->fetch_assoc()) {
+
+            $translate_data = $row;
+        }
+
 
         $GLOBALS['hotel_label_1']      = $translate_data['hotel_label_1'];
         $GLOBALS['hotel_label_2']      = $translate_data['hotel_label_2'];
@@ -218,8 +529,13 @@ else
     {
         $query = "select * from translate_email
                   where translate_id='$translate_id'";
-        $result = mysql_query($query) or die('NAS query error 13' . mysql_error());
-        $translate_data = mysql_fetch_array($result);
+
+
+        $result = $conn->query($query);
+        while ($row = $result->fetch_assoc()) {
+
+            $translate_data = $row;
+        }
 
         $GLOBALS['hotel_label_1']      = $translate_data['hotel_label_1'];
         $GLOBALS['hotel_label_2']      = $translate_data['hotel_label_2'];
@@ -230,8 +546,13 @@ else
     {
         $query = "select * from translate_fb
                   where translate_id='$translate_id'";
-        $result = mysql_query($query) or die('NAS query error 13_1' . mysql_error());
-        $translate_data = mysql_fetch_assoc($result);
+
+
+        $result = $conn->query($query);
+        while ($row = $result->fetch_assoc()) {
+
+            $translate_data = $row;
+        }
 
         $GLOBALS['title']        = $translate_data['title'];
         $GLOBALS['middle_title'] = $translate_data['middle_title'];
@@ -243,12 +564,20 @@ else
     $translate_term = "select * from translate_term
                               left join languages on languages.id = translate_term.language_id
                               where languages.id='$language_id'";
-    $result = mysql_query($translate_term) or die('NAS query error 13_1 ' . mysql_error());
-    $translate_term_data = mysql_fetch_array($result);
+    $result = $conn->query($translate_term);
+    while ($row = $result->fetch_assoc()) {
+
+        $translate_term_data = $row;
+    }
 
     $GLOBALS['term_title'] = $translate_term_data['title'];
     $GLOBALS['term_text'] = $translate_term_data['text'];
 }
+
+
+
+
+
 
 
 /**
@@ -257,14 +586,20 @@ else
  * @param $hotel_id
  * @param $translate_id
  * @param $template_id
+ * @param $conn - MySQL
  * @return array
  */
-function checkFirstLogin($mac_address, $hotel_id, $translate_id)
+function checkFirstLogin($mac_address, $hotel_id, $translate_id, $conn)
 {
     //Get hotel questions timeout
     $query = "SELECT questions_timeout FROM hotels WHERE id = '$hotel_id'";
-    $result = mysql_query($query) or die('NAS query error 14 ' . mysql_error());
-    $myrow = mysql_fetch_array($result);
+
+    $result = $conn->query($query);
+    while ($row = $result->fetch_assoc()) {
+
+        $myrow = $row;
+    }
+
 
     // Get timeout in days
     $questions_timeout = intval($myrow['questions_timeout']);
@@ -274,8 +609,13 @@ function checkFirstLogin($mac_address, $hotel_id, $translate_id)
 
     //First of all we should check if timeout is expired so we delete all old questions and stat from scratch
     $query  = 'SELECT updated_at FROM answers WHERE mac_address = "'. $mac_address .'"';
-    $result = mysql_query($query) or die('NAS query error 15 ' . mysql_error());
-    $myrow = mysql_fetch_array($result);
+
+    $result = $conn->query($query);
+    while ($row = $result->fetch_assoc()) {
+
+        $myrow = $row;
+    }
+
     $last_answer_time = strtotime($myrow['updated_at']);
 
     //current time
@@ -284,32 +624,50 @@ function checkFirstLogin($mac_address, $hotel_id, $translate_id)
     //If current time more than $last_answer_time so timeout was expired
     if($current_time - $last_answer_time > $questions_timeout) {
         $query = "DELETE FROM answers WHERE mac_address='$mac_address'";
-        mysql_query($query) or die('NAS query error 15_1 ' . mysql_error());
+
+        $conn->query($query);
+
+
     }
 
     $query  = 'SELECT * FROM answers WHERE mac_address = "'. $mac_address .'"';
-    $result = mysql_query($query) or die('NAS query error 16 ' . mysql_error());
 
-    if(mysql_num_rows($result)) {
-        // This mean that user already has minimum one answer
-        // And we check are there any non-answered questions
+    $result = $conn->query($query);
+
+
+    //I AM HERE
+
+
+    if ($result->num_rows > 0) {
+        // output data of each row
         return checkIfExistsNonAnsweredQuestion($mac_address, $hotel_id, $translate_id);
 
-    } else {
+        }
+
+    else {
         // This mean that user hasn't even one answer so we show 'is_first' question
         //Find Hotel's Question template's is_first question
         $query_1 = "select * from translate_question
                     left join hotel_question on hotel_question.question_id = translate_question.question_id
                     where translate_id='$translate_id' and hotel_id='$hotel_id' and is_first='1'";
-        $result = mysql_query($query_1) or die('NAS query error 17' . mysql_error());
-        $myrow = mysql_fetch_array($result);
+
+        $result = $conn->query($query_1);
+        while ($row = $result->fetch_assoc()) {
+
+            $myrow = $row;
+        }
 
         //Get template icon set
         $icon_set_id = $myrow['icon_set_id'];
 
+
         $query_2 = "select icon_1, icon_2, icon_3 from icon_sets where id='$icon_set_id'";
-        $result = mysql_query($query_2) or die('Get Icons ' . mysql_error());
-        $myrow_2 = mysql_fetch_array($result);
+
+        $result = $conn->query($query_2);
+        while ($row = $result->fetch_assoc()) {
+
+            $myrow_2 = $row;
+        }
 
         return [
             'question'    => $myrow['text'],
@@ -321,23 +679,34 @@ function checkFirstLogin($mac_address, $hotel_id, $translate_id)
     }
 }
 
-function checkIfExistsNonAnsweredQuestion($mac_address, $hotel_id, $translate_id)
+
+
+
+function checkIfExistsNonAnsweredQuestion($mac_address, $hotel_id, $translate_id, $conn)
 {
     //Get all answers of this user
     $query  = 'SELECT answer FROM answers WHERE mac_address = "'. $mac_address .'"';
-    $result = mysql_query($query) or die('NAS query error 18' . mysql_error());
-    $myrow  = mysql_fetch_array($result);
+
+    $result = $conn->query($query);
+    while ($row = $result->fetch_assoc()) {
+
+        $myrow = $row;
+    }
+
+
     $answers_arr = json_decode($myrow['answer'], true);
 
     $answered_ids = array_keys($answers_arr);
 
     //Get all answers ids for this hotel
     $query   =  'SELECT question_id FROM hotel_question WHERE hotel_id = "'. $hotel_id .'"';
-    $result  = mysql_query($query) or die('NAS query error 19' . mysql_error());
-    $all_answers_ids = [];
-    while($myrow_2 =  mysql_fetch_array($result)) {
+
+    $result = $conn->query($query);
+    while ($myrow_2 = $result->fetch_array()) {
+
         $all_answers_ids[] = intval($myrow_2['question_id']);
     }
+
 
 //    sort($answered_ids);
 //    sort($all_answers_ids);
@@ -354,8 +723,11 @@ function checkIfExistsNonAnsweredQuestion($mac_address, $hotel_id, $translate_id
                   left join templates_variables on templates.id = templates_variables.template_id
                   where templates.name='Login template' and hotel_id='$hotel_id'";
 
-        $result = mysql_query($query) or die('NAS query error 20' . mysql_error());
-        $myrow = mysql_fetch_array($result);
+
+        $result = $conn->query($query);
+
+
+        $myrow = $result->fetch_array();
         $GLOBALS['image']              = $myrow['hotel_logo'];
         $GLOBALS['bg_color']           = $myrow['hotel_bg_color'];
         //Color of Header
@@ -373,8 +745,10 @@ function checkIfExistsNonAnsweredQuestion($mac_address, $hotel_id, $translate_id
 
         $query = "select * from translate_login
                   where translate_id='$translate_id'";
-        $result = mysql_query($query) or die('NAS query error 21' . mysql_error());
-        $translate_data = mysql_fetch_array($result);
+
+        $result = $conn->query($query);
+        $translate_data = $result->fetch_array();
+
 
         $GLOBALS['hotel_label_1']      = $translate_data['hotel_label_1'];
         $GLOBALS['hotel_label_2']      = $translate_data['hotel_label_2'];
@@ -391,15 +765,21 @@ function checkIfExistsNonAnsweredQuestion($mac_address, $hotel_id, $translate_id
 
         $query_1 = "select * from translate_question
                     where translate_id='$translate_id' and question_id='$non_answered_question_id'";
-        $result = mysql_query($query_1) or die('NAS query error 22' . mysql_error());
-        $myrow = mysql_fetch_array($result);
+
+        $result = $conn->query($query_1);
+        $myrow = $result->fetch_array();
+
+
 
         //Get template icon set
         $query_2 = "select icon_1, icon_2, icon_3 from icon_sets
                     left join hotel_question on  hotel_question.icon_set_id = icon_sets.id
                     where question_id='$non_answered_question_id'";
-        $result = mysql_query($query_2) or die('NAS query error 23' . mysql_error());
-        $myrow_2 = mysql_fetch_array($result);
+
+        $result = $conn->query($query_2);
+        $myrow_2 = $result->fetch_array();
+
+
 
         return [
             'question'    => $myrow['text'],
@@ -411,15 +791,19 @@ function checkIfExistsNonAnsweredQuestion($mac_address, $hotel_id, $translate_id
     }
 }
 
+
+
+
 /**
  * If user loged in more than 2 weeks ago so we show him again Email page, otherwise just Login page
  */
-function checkEmailLogin($mac_address, $translate_id, $hotel_id)
+function checkEmailLogin($mac_address, $translate_id, $hotel_id, $conn)
 {
     //Get hotel emails timeout
     $query = "SELECT emails_timeout FROM hotels WHERE id = '$hotel_id'";
-    $result = mysql_query($query) or die('NAS query error 24' . mysql_error());
-    $myrow = mysql_fetch_array($result);
+
+    $result = $conn->query($query);
+    $myrow = $result->fetch_array();
     $emails_timeout = intval($myrow['emails_timeout']);
 
     // Convert days to seconds
@@ -433,8 +817,9 @@ function checkEmailLogin($mac_address, $translate_id, $hotel_id)
     //Get user's last login
 //    $query = "SELECT updated_at FROM emails WHERE mac_address='$mac_address' and hotel_id = '$hotel_id' and type = 'wifi'";
     $query = "SELECT updated_at FROM emails WHERE mac_address='$mac_address' and hotel_id = '$hotel_id'";
-    $result = mysql_query($query) or die('NAS query error 25' . mysql_error());
-    $myrow = mysql_fetch_array($result);
+    $result = $conn->query($query);
+    $myrow = $result->fetch_array();
+
 
     // Last time when user loged in via Email page
     $last_login_time = strtotime($myrow['updated_at']);
@@ -455,8 +840,9 @@ function checkEmailLogin($mac_address, $translate_id, $hotel_id)
 
         $query = "select * from templates left join templates_variables on templates.id = templates_variables.template_id
                   where templates.name='Login template' and hotel_id = '$hotel_id'";
-        $result = mysql_query($query) or die('NAS query error 26' . mysql_error());
-        $myrow = mysql_fetch_array($result);
+
+        $result = $conn->query($query);
+        $myrow = $result->fetch_array();
 
         $GLOBALS['image']              = $myrow['hotel_logo'];
         $GLOBALS['bg_color']           = $myrow['hotel_bg_color'];
@@ -475,8 +861,10 @@ function checkEmailLogin($mac_address, $translate_id, $hotel_id)
 
         $query = "select * from translate_login
                   where translate_id='$translate_id'";
-        $result = mysql_query($query) or die('NAS query error 27' . mysql_error());
-        $translate_data = mysql_fetch_array($result);
+
+        $result = $conn->query($query);
+        $translate_data = $result->fetch_array();
+
 
         $GLOBALS['hotel_label_1']      = $translate_data['hotel_label_1'];
         $GLOBALS['hotel_label_2']      = $translate_data['hotel_label_2'];
@@ -491,8 +879,10 @@ if ($GLOBALS['template_name'] == 'Question template') {
     $question_data = checkFirstLogin($macaddress, $hotel_id, $translate_id, $template_id);
 }
 else if($GLOBALS['template_name'] == 'Email template') {
-    checkEmailLogin($macaddress, $translate_id, $hotel_id);
+    checkEmailLogin($macaddress, $translate_id, $hotel_id, $conn);
 }
+
+
 
 
 function hex2rgba($color, $opacity = false, $darkness = 0)
@@ -539,12 +929,13 @@ function hex2rgba($color, $opacity = false, $darkness = 0)
 }
 
 
-mysql_free_result($result);
-mysql_close($link);
 
-?>
 
-<?php
+$conn->close();
+
+
+
+
 
 if ($GLOBALS['template_name'] == 'Facebook template'){
 

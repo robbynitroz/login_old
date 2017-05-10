@@ -114,19 +114,50 @@ if (isset($accessToken)) {
         header('Location: '. $back_url);
     }
 
-    $link = mysql_connect('localhost', 'root', 'Zq4F3R607h1K') or die('Connection failed ' . mysql_error());
-    mysql_select_db('radius') or die('DB selection failed');
+
+
+
+
+    /*
+ * MySQL connection
+ * */
+
+
+    $servername = "localhost";
+    $username = "radius";
+    $password = "rcFGmPSu68ZY";
+    $dbname = "radius";
+// Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+
+    //Security for Hotel ID
+    $hotel_id=mysqli_real_escape_string($conn, $hotel_id);
+
+    //Security for User email
+    $user_email=mysqli_real_escape_string($conn, $user_email);
+
+
+
 
     // Get page from hotels table
     $query = "SELECT  facebook_page_id  FROM hotels where id = '$hotel_id'";
-    $result = mysql_query($query) or die('Get hotel id ' . mysql_error());
-    $myrow = mysql_fetch_array($result);
-    $facebook_page_id = $myrow['facebook_page_id'];
+
+    $result = $conn->query($query);
+    $myrow = $result->fetch_array();
+
 
     // Check have this user liked
     $query = "SELECT * FROM facebook where email='$user_email' and page_id='$facebook_page_id'";
-    $result = mysql_query($query) or die('Get like ' . mysql_error());
-    $myrow = mysql_fetch_array($result);
+
+    $result = $conn->query($query);
+    $myrow = $result->fetch_array();
+
+
 
     // Such user haven't liked yet
     if (!$myrow) {
@@ -146,3 +177,5 @@ if (isset($accessToken)) {
 
     header("Location: $loginUrl");
 }
+
+$conn->close();

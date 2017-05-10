@@ -1,3 +1,18 @@
+<?php  
+
+if(isset($_GET['liked'])){
+
+$_GET['liked']=$_GET['liked'];
+
+}
+else{
+
+$_GET['liked']=false;
+
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -78,6 +93,9 @@
 				<form action="http://login.com/emailSave.php" method="post">
 					<h1 class="heading"><?php echo $GLOBALS['title']; ?></h1>
 					<?php
+               
+               
+               
 						if ($_GET['liked'] == 'false'):
 					?>
 						<div class="form-w3step1">
@@ -114,7 +132,11 @@
 						endif;
 					?>
 
-					<input type="hidden" id="user_email" value="<?php echo urldecode($_GET['email']); ?>">
+					<input type="hidden" id="user_email" value="<?php
+
+                    if (isset($_GET['email'])){ echo urldecode($_GET['email']);}
+
+                     ?>">
 
 					<input type="hidden" name="hotel_id" value="<?php echo $hotel_id; ?>">
 					<input type="hidden" name="template_id" value="<?php echo $template_id; ?>">

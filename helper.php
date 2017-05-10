@@ -2,6 +2,25 @@
 
 /*  Edd new template_variables */
 
+
+/*
+ * MySQL connection
+ * */
+
+$servername = "localhost";
+$username = "radius";
+$password = "rcFGmPSu68ZY";
+$dbname = "radius";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+
+
 // Get all email templates ID
 $query = 'select f.id as f_id, f.hotel_id, e.id as e_id
             from templates f, templates e
@@ -9,10 +28,13 @@ $query = 'select f.id as f_id, f.hotel_id, e.id as e_id
             and e.name = "Email template"
             and f.hotel_id = e.hotel_id
             ORDER BY f.hotel_id';
-$result = mysql_query($query) or die('Radius query error ' . mysql_error());
+
+$result = $conn->query($query);
+
+
 
 $all_ids = [];
-while($myrow =  mysql_fetch_array($result)) {
+while($myrow =  $result->fetch_array()) {
     $all_ids[] = [
         'f_id' => intval($myrow['f_id']),
         'e_id' => intval($myrow['e_id']),
@@ -21,8 +43,9 @@ while($myrow =  mysql_fetch_array($result)) {
 $result_array = [];
 foreach ($all_ids as $item) {
     $query  = 'select * from templates_variables where template_id = "'. $item['e_id'] .'"';
-    $result = mysql_query($query) or die('Radius query error ' . mysql_error());
-    $myrow  = mysql_fetch_assoc($result);
+
+    $result = $conn->query($query);
+    $myrow =  $result->fetch_array();
     unset($myrow['id']);
     $myrow['template_id'] = $item['f_id'];
 
@@ -43,9 +66,16 @@ foreach ($all_ids as $item) {
 
     $query = "INSERT INTO templates_variables ($columns) VALUES ($template_id, '$hotel_bg_color', '$hotel_bg_image', '$hotel_logo', '$hotel_centr_color', '$hotel_btn_bg_color', '$hotel_font_color1','$hotel_font_color2', '$hotel_font_color3', $hotel_font_size1, $hotel_font_size2, $hotel_font_size3)";
 
-    mysql_query($query) or die('Radius query error ' . mysql_error());
+    if($conn->query($query)!==true){
+
+        die("MySQL error");
+    };
+
+
 }
 
 /*  Edd new template */
 "INSERT INTO templates (hotel_id, name)
 SELECT DISTINCT hotel_id, 'Facebook template' FROM templates;";
+
+$conn->close();

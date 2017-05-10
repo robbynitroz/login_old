@@ -1,9 +1,26 @@
 <?php
 error_reporting(0);
 
-$link = mysql_connect('localhost', 'root', 'Zq4F3R607h1K') or die('Connection failed ' . mysql_error());
 
-mysql_select_db('radius') or die('DB selection failed');
+/*
+ * MySQL connection
+ * */
+
+$servername = "localhost";
+$username = "radius";
+$password = "rcFGmPSu68ZY";
+$dbname = "radius";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+
+
+
 
 if (isset($_POST['page_id'])) {
 
@@ -12,17 +29,31 @@ if (isset($_POST['page_id'])) {
     $page_id     = $_POST['page_id'];
     $email       = urldecode($_POST['email']);
 
+
+//Security check
+
+//Security for MAC
+    $mac_address=mysqli_real_escape_string($conn, $mac_address);
+    $hotel_id=mysqli_real_escape_string($conn, $hotel_id);
+    $page_id=mysqli_real_escape_string($conn, $page_id);
+    $email=mysqli_real_escape_string($conn, $email);
+
+
     $query = "SELECT  *  FROM facebook where email='$email' and page_id='$page_id'";
-    $result = mysql_query($query) or die('Radius query error 100' . mysql_error());
-    $result_count = mysql_num_rows($result);
+
+    $result = $conn->query($query);
+
 
     // Such user already exists
-    if ($result_count == 0) {
-        $record = mysql_fetch_assoc($result);
+    if ($result->num_rows == 0) {
+
+        $record = $row = $result->fetch_assoc();
 
         $query = "INSERT INTO facebook (mac_address, hotel_id, email, page_id) VALUES ('$mac_address', '$hotel_id', '$email', '$page_id')";
-        $result = mysql_query($query) or die('Radius query error 102' . mysql_error());
+        $result = $conn->query($query);
+
     }
 
     echo 1;
 }
+$conn->close();
