@@ -347,7 +347,6 @@ $sql ="select * from hotel_language
           where hotel_language.hotel_id='$hotel_id' and languages.name='$language_codes[$lang]'";
 $result = $conn->query($sql);
 
-
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
